@@ -1,0 +1,30 @@
+<!--pages/userlogin/userlogin.wxml-->
+<view class="userlogin-container">
+<!-- Login-icon -->
+<view class="loginicon-container">
+<image src="/images/icons/home.png" class="login-icon"/>
+<text class="login-text">智慧社区  |  欢迎你的加入</text>
+</view>
+<!-- Login-button -->
+<view class="button-container">
+<button class="local-num-button" style="width: 70%" bindtap="localLoginClick"  open-type="getPhoneNumber" 
+    bindgetphonenumber="onGetPhoneNumber" >本机号码登录</button>
+<button class="input-num-button" style="width: 70%" bindtap="inputLoginClick">输入号码登录</button>
+</view>
+
+<!-- prompt message -->
+<view class="prompt-message-container">
+  <text class="prompt-message">未注册的用户登录将自动注册</text>
+</view>
+
+<!-- user agreement -->
+<view class="user-agreement-container">
+  <checkbox-group bindchange="checkboxChange">
+  <label class="user-agreement-radio" >
+      <checkbox value="1" />勾选同意  《智慧社区平台用户服务协议》| 《智慧社区平台用户隐私协议》
+    </label>
+    </checkbox-group>
+</view>
+
+</view>
+

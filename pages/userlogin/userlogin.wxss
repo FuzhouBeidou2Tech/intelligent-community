@@ -1,0 +1,68 @@
+/* pages/userlogin/userlogin.wxss */
+.userlogin-container{
+  padding: 20rpx;
+  background-color: #f0f0f0;
+
+}
+
+/* Login-icon */
+.loginicon-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 20rpx;
+  width: 100%;
+  height: 500rpx;
+}
+.login-icon{
+  width: 200rpx;
+  height: 200rpx;
+  padding-top: 200rpx;
+}
+.login-text{
+  font-size: large;
+}
+
+/* Login-button */
+.button-container{
+  
+}
+
+.local-num-button{
+  padding-top: 10rpx;
+  background-color: orange;
+  color: white;
+  border-radius: 50rpx;
+}
+.input-num-button{
+  margin-top: 10rpx;
+  padding-top: 10rpx;
+  color: orange;
+  border-radius: 50rpx;
+  background-color: white;
+  border: 2rpx solid orange;
+}
+
+/* prompt-message */
+
+.prompt-message-container{
+  width: 100%;
+  text-align: center;
+}
+.prompt-message{
+  font-size: small;
+  color: rgba(51, 51, 51, 0.473);
+}
+
+/* user agreement */
+.user-agreement-container{
+  margin-top: 472rpx;
+  display: flex; 
+  align-items: center; 
+}
+.user-agreement-radio{
+  font-size: 10px; 
+  color: gray; 
+  display: flex;
+  align-items: center;
+}

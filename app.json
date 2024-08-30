@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/userlogin/userlogin",
+    "pages/inputlogin/inputlogin"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/images/icons/home.png",
+        "selectedIconPath": "/images/icons/home.png",
+        "text": "Home0"
+      },
+      {
+        "pagePath": "pages/userlogin/userlogin",
+        "iconPath": "/images/icons/logo.png",
+        "selectedIconPath": "/images/icons/logo.png",
+        "text": "Home1"
+      },{
+        "pagePath": "pages/inputlogin/inputlogin",
+        "iconPath": "/images/icons/logo.png",
+        "selectedIconPath": "/images/icons/logo.png",
+        "text": "Home3"
+      }
+    ]
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

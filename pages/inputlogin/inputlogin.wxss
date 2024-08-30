@@ -1,0 +1,94 @@
+/* pages/inputlogin/inputlogin.wxss */
+.user-agreement-containe{
+  padding: 20rpx;
+  background-color: #f0f0f0;
+}
+/* Login-icon */
+.loginicon-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 20rpx;
+  width: 100%;
+  height: 500rpx;
+}
+.login-icon{
+  width: 200rpx;
+  height: 200rpx;
+  padding-top: 200rpx;
+}
+.login-text{
+  font-size: large;
+}
+
+/*  num-input  */
+.num-input-container{
+  margin-top: 20rpx;
+}
+.num-input-border{
+ 
+  border-bottom: 1px solid rgba(80, 78, 78, 0.24);
+  width: 70%;
+  margin: 0 auto;
+  height: 80rpx;
+}
+.num-input{
+  height: 70rpx;
+
+}
+.verification-code-container{
+  display: flex;
+  border-bottom: 1px solid rgba(80, 78, 78, 0.24);
+  width: 70%;
+  margin: 0 auto;
+  height: 80rpx;
+  
+}
+.verification-code{
+  height: 70rpx;
+}
+.space-mark{
+  margin-left: 20rpx;
+  height: 80rpx;
+  margin-top: 15rpx;
+}
+
+.verification-code-button{
+  height: 70rpx;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  color: orange;
+}
+/* Login-button  */
+.Login-button-container{
+  margin-top: 70rpx;
+}
+/* prompt message */
+.prompt-message-container{
+  width: 100%;
+  text-align: center;
+}
+.Login-button{
+  border-radius: 50rpx;
+  color: white;
+  background-color: orange;
+}
+.prompt-message{
+  font-size: small;
+  
+  color: rgba(51, 51, 51, 0.473);
+}
+
+/* user agreement */
+.user-agreement-container{
+  margin-top: 300rpx;
+  display: flex; 
+  align-items: center; 
+}
+.user-agreement-radio{
+  font-size: 10px; 
+  color: gray; 
+  display: flex;
+  align-items: center;
+}
