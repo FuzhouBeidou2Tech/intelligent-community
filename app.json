@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/userlogin/userlogin",
-    "pages/inputlogin/inputlogin"
+    "pages/inputlogin/inputlogin",
+    "pages/test/test"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -19,7 +20,7 @@
         "text": "Home0"
       },
       {
-        "pagePath": "pages/userlogin/userlogin",
+        "pagePath": "pages/test/test",
         "iconPath": "/images/icons/logo.png",
         "selectedIconPath": "/images/icons/logo.png",
         "text": "Home1"

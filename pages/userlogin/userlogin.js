@@ -53,24 +53,30 @@ Page({
             wx.request({
               url: 'http://localhost:8080/user/login',  // 服务器地址
               method: 'POST',
+              header: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'  // 确保接收 JSON 格式的响应
+            },
               data: {
                 code: res.code,//登录凭证  开发者服务器可以使用这个 code，结合小程序的 AppID 和 AppSecret，向微信服务器发起请求，以获取用户的 openid（用户唯一标识）和 session_key（会话密钥）
                 encryptedData: e.detail.encryptedData,//用户手机号码的加密数据
                 iv: e.detail.iv //解密 encryptedData 时必需的参数之一。
               },
               success: (response) => {
-                const { phoneNumber, userInfo } = response.data;
+                console.log("成功");
                 // 保存用户信息到本地缓存
-                wx.setStorageSync('userInfo', userInfo);
-                wx.setStorageSync('phoneNumber', phoneNumber);
                 
+                //保存用户登录态
+                wx.setStorageSync('session_key', response.data.data.session_key);
                 // 更新全局数据
-                getApp().globalData.userInfo = userInfo;
+                console.log(response.data);
+               
+                console.log(response.data.data.session_key);
 
                 // 登录成功后跳转到主页面
-                wx.navigateTo({
-                  url: '/pages/home/home'
-                });
+                wx.switchTab({
+                  url: '/pages/index/index'
+              });
               },
               fail: () => {
                 wx.showToast({
