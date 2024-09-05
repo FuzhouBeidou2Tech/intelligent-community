@@ -24,7 +24,7 @@ Page({
     if (this.data.useragreement == 1) {
       // 用户已同意协议，跳转页面
       wx.navigateTo({
-        url: 'pages/index/index' // 跳转的页面路径
+        url: '/pages/inputlogin/inputlogin' // 跳转的页面路径
       });
     } else {
       // 用户未同意协议，弹出提示信息
@@ -44,7 +44,6 @@ Page({
       });
       return; // 终止登录流程，不调用后续登录方法
     }
-
     if (e.detail.errMsg === "getPhoneNumber:ok") {
       wx.login({
         success: (res) => {
@@ -65,14 +64,22 @@ Page({
               success: (response) => {
                 console.log("成功");
                 // 保存用户信息到本地缓存
-                
+                wx.setStorageSync('userinfo', response.data.data);
                 //保存用户登录态
                 wx.setStorageSync('session_key', response.data.data.session_key);
+                //转换为js对象
+                //保存用户手机号码
+                const decryptedData = JSON.parse(response.data.data.decryptedData);
+                wx.setStorageSync('phone_Number', decryptedData.phoneNumber);
+                //保存用户名
+                wx.setStorageSync('user_Name', response.data.data.user_name);
+                //保存用户状态
+                wx.setStorageSync('user_Status', response.data.data.user_status);
+                //保存用户性别
+                wx.setStorageSync('user_Gender', response.data.data.user_gender);
                 // 更新全局数据
-                console.log(response.data);
-               
-                console.log(response.data.data.session_key);
-
+                console.log("参数1");
+                console.log(response.data.data.user_status);
                 // 登录成功后跳转到主页面
                 wx.switchTab({
                   url: '/pages/index/index'
@@ -100,6 +107,4 @@ Page({
       });
     }
   },
-   
-  
 })

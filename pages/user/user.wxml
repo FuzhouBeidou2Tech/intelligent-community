@@ -1,0 +1,59 @@
+<!--pages/user/user.wxml-->
+<view class="container">
+<!-- header-container -->
+  <view class="header-container">
+  <image src="/images/users/user.png" class="user-icon"/>
+  <view>
+  <block wx:if="{{onshow == 1}}">
+    <view class="user-info">
+      <view class="user-name">用户名:{{username}}</view>
+      <view class="user-phone">{{userphone}}</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="user-info">
+      <view class="no-login" bindtap="loginClick">点击登录</view>
+    </view>
+  </block>
+</view>
+  <view class="user-status">{{userstatusname}}</view>
+  </view>
+</view>
+<!-- body-container -->
+  <view class="body-container">
+  <view class="list-item" bindtap="userinfoClick">
+    <text class="icon">👤</text>
+    <text class="item-title">个人资料</text>
+    <view class="right-section">
+      <text class="status-text">修改</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <view class="list-item" bindtap="userinfoClick">
+    <text class="icon">👤</text>
+    <text class="item-title">管理员验证</text>
+    <view class="right-section">
+      <text class="status-text">未验证</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <view class="list-item" bindtap="userinfoClick">
+    <text class="icon">👤</text>
+    <text class="item-title">用户协议</text>
+    <view class="right-section">
+      <text class="status-text">查看</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <view class="list-item" bindtap="userinfoClick">
+    <text class="icon">👤</text>
+    <text class="item-title">退出登录</text>
+    <view class="right-section">
+      <text class="status-text">退出</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+</view>

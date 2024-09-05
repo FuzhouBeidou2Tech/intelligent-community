@@ -27,7 +27,6 @@
 .button-container{
   
 }
-
 .local-num-button{
   padding-top: 10rpx;
   background-color: orange;

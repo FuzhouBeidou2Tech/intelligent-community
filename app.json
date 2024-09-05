@@ -4,7 +4,11 @@
     "pages/logs/logs",
     "pages/userlogin/userlogin",
     "pages/inputlogin/inputlogin",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/test01/test01",
+    "pages/user/user",
+    "pages/setting/setting",
+    "pages/userinfosetting/userinfosetting"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -24,8 +28,9 @@
         "iconPath": "/images/icons/logo.png",
         "selectedIconPath": "/images/icons/logo.png",
         "text": "Home1"
-      },{
-        "pagePath": "pages/inputlogin/inputlogin",
+      },
+      {
+        "pagePath": "pages/user/user",
         "iconPath": "/images/icons/logo.png",
         "selectedIconPath": "/images/icons/logo.png",
         "text": "Home3"

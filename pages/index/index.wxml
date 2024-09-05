@@ -1,1 +1,82 @@
-<view>home</view>
+<!-- pages/index/index.wxml  -->
+<!-- // "custom": true  tabBar in app.json -->
+<!-- <bottom-nav current="home" bind:change="onNavChange" /> -->
+
+<view class="container">
+  <!-- Community Announcements -->
+  <view class="section">
+    <view class="section-title">社区公告</view>
+    <view class="announcement-scroll">
+      <scroll-view scroll-x="true" class="announcement-content">
+        <text>{{latestAnnouncement}}</text>
+      </scroll-view>
+    </view>
+  </view>
+
+  <!-- Quick Services -->
+  <view class="section">
+    <view class="section-title">快捷服务</view>
+    <view class="quick-services">
+      <view class="service-item">
+        <icon type="success" size="40"></icon>
+        <text>物业缴费</text>
+      </view>
+      <view class="service-item">
+        <icon type="success" size="40"></icon>
+        <text>停车充值</text>
+      </view>
+      <view class="service-item">
+        <icon type="success" size="40"></icon>
+        <text>物业报修</text>
+      </view>
+      <view class="service-item">
+        <icon type="success" size="40"></icon>
+        <text>社区活动</text>
+      </view>
+      <view class="service-item">
+        <icon type="success" size="40"></icon>
+        <text>家政服务</text>
+      </view>
+      <view class="service-item">
+        <icon type="success" size="40"></icon>
+        <text>快递代收</text>
+      </view>
+      <view class="service-item">
+        <icon type="success" size="40"></icon>
+        <text>记事</text>
+      </view>
+      <view class="service-item">
+        <icon type="success" size="40"></icon>
+        <text>投诉建议</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Activity Recommendations -->
+  <view class="section">
+    <view class="section-title">活动推荐</view>
+    <view class="activities">
+      <view class="activity-item" wx:for="{{activities}}" wx:key="id">
+        <image src="{{item.image}}" class="activity-image"></image>
+        <view class="activity-info">
+          <text class="activity-title">{{item.title}}</text>
+          <text class="activity-description">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Promotions and Discounts -->
+  <view class="section">
+    <view class="section-title">优惠促销</view>
+    <view class="promotions">
+      <view class="promotion-item" wx:for="{{promotions}}" wx:key="id">
+        <image src="{{item.image}}" class="promotion-image"></image>
+        <view class="promotion-info">
+          <text class="promotion-title">{{item.title}}</text>
+          <text class="promotion-description">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

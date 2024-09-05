@@ -1,0 +1,31 @@
+<view class="container">
+  <!-- 手机号 -->
+  <view class="userphone-container">
+    <view class="userphone-text">手机号</view>
+    <view class="userphone-value">{{userphone}}</view>
+  </view>
+
+  <!-- 用户名 -->
+  <view class="username-container">
+    <view class="username-text">用户名:</view>
+    <input type="text" placeholder="{{username}}" class="username-value" bindinput="setUsername" value="{{username}}"/>
+  </view>
+
+  <!-- 性别 -->
+  <view class="gender-container">  
+    <radio-group bindchange="setGender" class="radio-group">
+      <view>性别:</view>
+      <label wx:for="{{items}}" wx:key="{{item.value}}" class="label">
+        <view class="radio-value"> 
+          <radio value="{{item.value}}" checked="{{item.value == gender}}"></radio>
+        </view> 
+        <view class="weui-cell__bd">{{item.name}}</view>
+      </label>
+    </radio-group>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-container">
+    <button style="width: 90%" class="submit-button" bindtap="submitClick">保存</button>
+  </view>
+</view>
