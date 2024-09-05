@@ -78,8 +78,8 @@ Page({
                 //保存用户性别
                 wx.setStorageSync('user_Gender', response.data.data.user_gender);
                 // 更新全局数据
-                console.log("参数1");
-                console.log(response.data.data.user_status);
+              
+                console.log(response.data.data);
                 // 登录成功后跳转到主页面
                 wx.switchTab({
                   url: '/pages/index/index'

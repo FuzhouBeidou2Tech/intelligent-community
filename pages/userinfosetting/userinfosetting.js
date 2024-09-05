@@ -12,7 +12,6 @@ Page({
     gender: '', 
     setgender: ''
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -29,7 +28,7 @@ Page({
     console.log(this.data.gender);
   }, 
   onShow(){
-
+    
   },
   setUsername(e) {
     this.setData({
@@ -57,7 +56,6 @@ Page({
       })
     }
     wx.request({
-      
       url:'http://localhost:8080/user/update',  // 拼接更新用户信息的后端接口 URL
       method: 'PUT', // 使用 PUT 请求
         data:{
@@ -82,7 +80,6 @@ Page({
               delta: 1
             });
           },2000)
-         
         } else {
           wx.showToast({
             title: '用户信息更新失败',

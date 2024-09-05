@@ -18,7 +18,17 @@
 </view>
   <view class="user-status">{{userstatusname}}</view>
   </view>
-</view>
+
+
+<!-- 卡片样式 -->
+<view class="card">
+    <view class="card-content">
+      <text class="card-title">智慧社区管理</text>
+      <view>
+      <text class="card-subtitle">新社区 新生活</text>
+      </view>
+    </view>
+  </view>
 <!-- body-container -->
   <view class="body-container">
   <view class="list-item" bindtap="userinfoClick">
@@ -31,7 +41,7 @@
   </view>
 
   <view class="list-item" bindtap="userinfoClick">
-    <text class="icon">👤</text>
+    <text class="icon">🔒</text>
     <text class="item-title">管理员验证</text>
     <view class="right-section">
       <text class="status-text">未验证</text>
@@ -40,7 +50,7 @@
   </view>
 
   <view class="list-item" bindtap="userinfoClick">
-    <text class="icon">👤</text>
+    <text class="icon">📄</text>
     <text class="item-title">用户协议</text>
     <view class="right-section">
       <text class="status-text">查看</text>
@@ -48,12 +58,13 @@
     </view>
   </view>
 
-  <view class="list-item" bindtap="userinfoClick">
-    <text class="icon">👤</text>
+  <view class="list-item" bindtap="logout">
+    <text class="icon">🚪</text>
     <text class="item-title">退出登录</text>
     <view class="right-section">
       <text class="status-text">退出</text>
       <text class="arrow">></text>
     </view>
   </view>
+</view>
 </view>

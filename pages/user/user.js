@@ -80,5 +80,43 @@ Page({
       });
     }
    
-  }
+  },
+  logout() {
+    //判断用户有没有登录
+    if(this.data.onshow){
+      wx.showModal({
+        title: '提示',
+        content: '您确定要退出登录吗？',
+        success(res) {
+          if (res.confirm) {
+            // 用户点击了确定，执行退出登录操作
+            wx.clearStorageSync();
+            // 获取当前页面实例
+            const currentPage = getCurrentPages().pop();
+            if (currentPage) {
+              const url = currentPage.route; // 当前页面的路径
+              wx.reLaunch({
+                url: `/${url}`
+              });
+            }
+          } else if (res.cancel) {
+            // 用户点击了取消，什么都不做
+            wx.showToast({
+              title: '取消退出',
+              icon: 'none',
+              duration: 2000
+            });
+          }
+        }
+      });
+    }else{
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none',
+        duration: 2000
+      });
+    }
+   
+
+}
 })
