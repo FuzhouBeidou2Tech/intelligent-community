@@ -1,0 +1,8 @@
+<!--pages/setaddresscommunities/setaddresscommunities.wxml-->
+<view class="container">
+  <block wx:for="{{communities}}" wx:key="id" class="communities-container">
+    <view class="community-item" data-id="{{item.id}}" bindtap="onCommunityTap">
+      <text>{{item.name}}</text>
+    </view>
+  </block>
+</view>

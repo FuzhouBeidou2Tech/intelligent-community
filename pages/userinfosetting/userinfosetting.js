@@ -10,13 +10,18 @@ Page({
     setusername: '', 
     userphone:'',
     gender: '', 
-    setgender: ''
+    setgender: '',
+    address:'未绑定'
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    
+    if(wx.getStorageSync('room_name')){
+      this.setData({
+        address:wx.getStorageSync('community_name')+wx.getStorageSync('building_name')+wx.getStorageSync('room_name')
+      })
+    }
     let phone=wx.getStorageSync('phone_Number');
     let hiddenPhoneNumber = phone.substring(0, 3) + "****" + phone.substring(7);
     this.setData({
@@ -98,5 +103,13 @@ Page({
       }
     });
   }    
+  ,
+  setaddressClick(){
+  wx.navigateTo({
+    url: '/pages/setaddresscommunities/setaddresscommunities',
+  })
+  
+  }
+
 }
 )

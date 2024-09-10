@@ -1,0 +1,16 @@
+/* pages/buildings/buildings.wxss */
+.container{
+  background-color: e9e9e9;
+  
+}
+.community-container{
+  
+}
+.community-item{
+  width: 90%;
+  border: 1px solid rgba(224, 224, 224, 0.7);
+  border-left: none; /* 取消左侧边框 */
+  border-right: none; /* 取消右侧边框 */
+  padding: 20rpx;
+  height: 50rpx; /* 确保高度能够自动调整 */
+}

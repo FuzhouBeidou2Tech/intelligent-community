@@ -77,6 +77,8 @@ Page({
                 wx.setStorageSync('user_Status', response.data.data.user_status);
                 //保存用户性别
                 wx.setStorageSync('user_Gender', response.data.data.user_gender);
+                //保存用户id
+                wx.setStorageSync('user_Id', response.data.data.user_id);
                 // 更新全局数据
               
                 console.log(response.data.data);

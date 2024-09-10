@@ -8,7 +8,13 @@
     "pages/test01/test01",
     "pages/user/user",
     "pages/setting/setting",
-    "pages/userinfosetting/userinfosetting"
+    "pages/userinfosetting/userinfosetting",
+    "pages/setaddresscommunities/setaddresscommunities",
+    "pages/buildings/buildings",
+    "pages/rooms/rooms",
+    "pages/QuickService/communityactivity",
+    "pages/QuickService/communityactivity/communityactivity",
+    "pages/QuickService/advice/advice"
   ],
   "window": {
     "navigationBarTextStyle": "black",

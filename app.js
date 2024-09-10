@@ -16,8 +16,9 @@ App({
   globalData: {
     userInfo: null,
     result:{
-      
-       
-    }
+    },
+    
+    buildings:[],
+    rooms:[]
   }
 })

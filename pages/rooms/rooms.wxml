@@ -1,0 +1,8 @@
+<!--pages/rooms/rooms.wxml-->
+<view class="container">
+  <block wx:for="{{localrooms}}" wx:key="id" class="communities-container">
+    <view class="community-item" data-id="{{item.id}}" bindtap="onRoomsTap">
+      <text>{{item.roomNumber}}</text>
+    </view>
+  </block>
+</view>

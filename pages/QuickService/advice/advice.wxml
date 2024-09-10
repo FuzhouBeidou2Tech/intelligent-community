@@ -1,0 +1,8 @@
+<!--pages/QuickService/advice/advice.wxml-->
+<view class="container">
+  <view class="button-container">
+    <view class="advice-button">我要投诉</view>
+    <view class="progress-button">投诉进度</view>
+    <view class="cancel-button">撤销投诉</view>
+  </view>
+</view>

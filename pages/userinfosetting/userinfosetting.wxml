@@ -23,7 +23,16 @@
       </label>
     </radio-group>
   </view>
-
+<!-- 用户地址 -->
+  <view class="useraddress-container">
+  <view class="card-container">
+    <view class="useraddress-text">当前绑定地址:</view>
+    <view class="useraddress-value">{{address}}</view>
+  </view>
+    <view class="useraddress-submit">
+      <button style="width: 70%" class="useraddress-button" bindtap="setaddressClick">点击修改地址</button>
+    </view>
+  </view>
   <!-- 提交按钮 -->
   <view class="submit-container">
     <button style="width: 90%" class="submit-button" bindtap="submitClick">保存</button>

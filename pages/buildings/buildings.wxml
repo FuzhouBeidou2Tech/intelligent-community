@@ -1,0 +1,7 @@
+<view class="container">
+  <block wx:for="{{localbuildings}}" wx:key="id" class="communities-container">
+    <view class="community-item" data-id="{{item.id}}" bindtap="onBuildingsTap">
+      <text>{{item.name}}</text>
+    </view>
+  </block>
+</view>

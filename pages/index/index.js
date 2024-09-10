@@ -49,6 +49,20 @@ Page({
   fetchPromotions() {
     // Simulate fetching promotions
     console.log("Fetching promotions");
+  },
+
+  // 快捷服务
+
+  //社区活动
+  acviteClick(){
+    wx.navigateTo({
+      url: '/pages/QuickService/communityactivity/communityactivity',
+    })
+  },
+  adviceClick(){
+    wx.navigateTo({
+      url: '/pages/QuickService/advice/advice',
+    })
   }
 
 });

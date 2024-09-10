@@ -30,7 +30,7 @@
         <text>物业报修</text>
       </view>
       <view class="service-item">
-        <icon type="success" size="40"></icon>
+        <icon type="success" size="40" bind:tap="acviteClick"></icon>
         <text>社区活动</text>
       </view>
       <view class="service-item">
@@ -46,7 +46,7 @@
         <text>记事</text>
       </view>
       <view class="service-item">
-        <icon type="success" size="40"></icon>
+        <icon type="success" size="40" bind:tap="adviceClick"></icon>
         <text>投诉建议</text>
       </view>
     </view>
