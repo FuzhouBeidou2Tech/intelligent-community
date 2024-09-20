@@ -1,0 +1,43 @@
+/* pages/admfuncton/informhome/informhome.wxss */
+
+.container{
+  width: 100vw; /* 视口宽度的 100% */
+  height: 100vh; /* 视口高度的 100% */
+  background-color: #f0f0f0;
+}
+
+.button-container{
+
+}
+
+.announce-button{
+  padding-top: 10rpx;
+  background-color: orange;
+  color: white;
+  border-radius: 50rpx;
+  width: 50vw;
+  height: 70rpx;
+  text-align: center;
+}
+
+.modification-button{
+  padding-top: 10rpx;
+  background-color: black;
+  color: white;
+  border-radius: 50rpx;
+  width: 50vw;
+  height: 70rpx;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.delete-button{
+  padding-top: 10rpx;
+  background-color:  white;
+  color: orange;
+  border-radius: 50rpx;
+  width: 50vw;
+  height: 70rpx;
+  text-align: center;
+  margin-top: 30rpx;
+}

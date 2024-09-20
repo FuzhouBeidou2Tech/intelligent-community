@@ -1,0 +1,8 @@
+<view class="container">
+    <view id="console" class="well">
+        <view wx:for="{{consoleMessages}}" wx:key="index" class="msg-color">
+            {{item}}
+        </view>
+    </view>
+    <button bind:tap=""></button>
+</view>

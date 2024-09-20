@@ -1,0 +1,53 @@
+<view class="container">
+
+  <!-- 填写通知类型 -->
+  <view class="form-section">
+    <view class="form-item">
+      <text class="label">通知类型</text>
+      <view class="input-right">
+        <text class="placeholder" bindtap="selectNoticeType">{{noticeType || '请选择 >>'}}</text>
+      </view>
+    </view>
+    <view class="divider"></view>
+    
+    <!-- 填写标题 -->
+    <view class="label-form-item">
+      <text class="label">标题:</text>
+      <input class="input" placeholder="请输入标题" bindinput="onTitleInput" value="{{title}}"/>
+    </view>
+    <view class="divider"></view>
+    
+    <!-- 填写内容 -->
+    <view class="form-item">
+      <text class="label">内容:</text>
+      <textarea class="textarea" placeholder="请输入内容" bindinput="onContentInput" value="{{content}}"></textarea>
+    </view>
+  </view>
+
+  <!-- 上传图片和附件的图标 -->
+  <view class="icon-section">
+    <view class="icon-text-container">
+      <view class="icon-text">添加照片</view>
+    <image src="/images/camera.png" class="icon" bindtap="chooseImage"/>
+    </view>
+
+    <view class="image-list">
+
+  <view wx:for="{{images}}" wx:key="*this">
+    <view class="image-container">
+      <image class="uploaded-image" src="{{item}}" mode="aspectFit"></image>
+      <view class="delete-icon" data-index="{{index}}" bindtap="deleteImage">×</view>
+    </view>
+  </view>
+<!-- 上传图片按钮，仅当图片数量少于5张时显示 -->
+<view wx:if="{{images.length < 6}}">
+  <button bindtap="chooseImage" style="width: 150rpx;height: 150rpx;" class="add-image">添加图片</button>
+</view>
+  </view>
+</view>
+
+  <!-- 提交按钮 -->
+  <view class="button-section">
+    <button class="submit-button" bindtap="submitForm">提交</button>
+  </view>
+</view>

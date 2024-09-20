@@ -14,7 +14,14 @@
     "pages/rooms/rooms",
     "pages/QuickService/communityactivity",
     "pages/QuickService/communityactivity/communityactivity",
-    "pages/QuickService/advice/advice"
+    "pages/QuickService/advice/advice",
+    "pages/admfuncton/admhmone/admhome",
+    "pages/admfuncton/inform/inform",
+    "pages/admfuncton/informhome/informhome",
+    "pages/admfuncton/informpublish/informpublish",
+    "pages/chats/chat/chat",
+    "pages/chats/chatmessage/chatmessage",
+    "pages/chats/chatview/chatview"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -30,7 +37,7 @@
         "text": "Home0"
       },
       {
-        "pagePath": "pages/test/test",
+        "pagePath": "pages/chats/chat/chat",
         "iconPath": "/images/icons/logo.png",
         "selectedIconPath": "/images/icons/logo.png",
         "text": "Home1"
@@ -42,6 +49,15 @@
         "text": "Home3"
       }
     ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "Your location will be used for app functionality."
+    }
   },
   "style": "v2",
   "componentFramework": "glass-easel",

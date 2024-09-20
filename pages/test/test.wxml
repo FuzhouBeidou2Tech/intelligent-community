@@ -1,9 +1,2 @@
-<view class="container">
-<view class="text">请选择你的身份</view>
-<view class="visitor">
-<button style="width: 150px; height: 150px;" class="visitor-btn">我是访客</button>
-</view>
-<view class="user">
-<button style="width: 150px; height: 150px;" class="user-btn">我是用户</button>
-</view>
-</view>
+<!--pages/test/test.wxml-->
+<text>pages/test/test.wxml</text>

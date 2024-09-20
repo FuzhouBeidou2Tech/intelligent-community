@@ -1,0 +1,8 @@
+<!--pages/admfuncton/admhmone/admhome.wxml-->
+<view class="container">
+  <view class="button-container">
+    <view class="inform-button" bind:tap="informClick">通知管理</view>
+    <view class="fault-button">故障处理</view>
+    <view class="complaint-button">投诉处理</view>
+  </view>
+</view>

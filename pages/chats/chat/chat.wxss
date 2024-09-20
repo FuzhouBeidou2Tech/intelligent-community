@@ -1,0 +1,84 @@
+/* pages/chat/chat.wxss */
+.chat-container {
+  background-color: rgba(128, 128, 128, 0.151);
+  width: 100vw;
+  height: 100vh;
+}
+/* header */
+.chat-header-container {
+  display: flex;
+  width: 100vw;
+  margin-top: 0;
+  justify-content: space-between;
+  margin-left: 5rpx;
+  border-bottom: 2px solid black; /* 设置下边框的宽度、样式和颜色 */
+  border-top: none; /* 上边框设置为无 */
+  border-left: none; /* 左边框设置为无 */
+  border-right: none; /* 右边框设置为无 */
+  padding: 5px; /* 可选：设置内边距以调整文本和下边框的间距 */
+}
+.header-icon {
+  display: flex;
+  margin-right: 5rpx;
+}
+.chat-search-icon {
+  width: 70rpx;
+  height: 70rpx;
+}
+.chat-adduser-icon {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+/* chat-body-container */
+.chat-body-container{
+  
+}
+.system-container{
+  display: flex;
+  border-left: 0; /* 取消左边框 */
+  border-right: 0; /* 取消右边框 */
+  border-top: 0; /* 取消上边框 */
+  border-bottom:5rpx solid black;
+}
+/*  */
+.image-container{
+  position: relative;
+  width: 100rpx;
+  height: 100rpx;
+  margin: 10rpx;
+  flex-basis: 100rpx; /* 确定每个图片容器的基础宽度 */
+}
+.system-icon{
+  height: 100rpx;
+  width: 100rpx;
+}
+.unreadmessagemun{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(252, 1, 1, 1);
+  color: white;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+}
+.system-text-container{
+  margin-left: 50rpx;
+  position: relative;
+  width: 600rpx;
+  
+}
+.system-text-title{
+  font-size:40rpx;
+}
+.system-text{
+  font-size: 20rpx;
+  position: absolute;
+  bottom: 5rpx;
+  
+}

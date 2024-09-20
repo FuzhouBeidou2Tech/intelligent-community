@@ -1,0 +1,107 @@
+/* pages/chats/chatview/chatview.wxss */
+
+/* 聊天容器 */
+.chatview-container {
+  display: flex;
+  flex-direction: column;    /* 将子元素垂直排列 */
+  height: 100vh;             /* 视窗高度 */
+  background-color: #f5f5f5;
+}
+
+/* 聊天记录区 */
+.chat-list {
+  /* 占据剩余的可用高度 */
+  flex: 1;
+  /* height: calc(100vh - 120rpx);                     */
+  /* height: 1350rpx; */
+  overflow-y: scroll;         /* 使列表可以垂直滚动 */
+  /* 为底部填充， */
+  padding: 20rpx;
+  padding-bottom: 150rpx; 
+  background-color: #ffffff;
+  box-sizing: border-box;     /* 确保 padding 包含在高度中 */
+  z-index: 1000;              /* 确保在其他内容之上 */
+}
+
+/* 单条聊天消息 */
+.chat-item {
+  display: flex;
+  align-items: flex-end;      /* 垂直方向靠底对齐 */
+  margin-bottom: 20rpx;
+}
+
+.chat-item.self {
+  flex-direction: row-reverse; /* 自己的消息右对齐 */
+}
+
+.chat-item.other {
+  flex-direction: row;         /* 对方消息左对齐 */
+}
+
+.avatar {
+  margin: 0 20rpx;
+}
+
+.avatar-image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+}
+
+/* 消息内容 */
+.message-content {
+  max-width: 70%;
+  padding: 20rpx;
+  background-color: #e0e0e0;
+  border-radius: 10rpx;
+  word-wrap: break-word;      /* 长文本自动换行 */
+}
+
+.chat-item.self .message-content {
+  background-color: #d1f0ff;  /* 发送方消息背景颜色 */
+}
+
+.chat-item.other .message-content {
+  background-color: #e0e0e0;  /* 接收方消息背景颜色 */
+}
+
+/* 聊天输入框 */
+.chat-input-container{
+  height: 120rpx;
+  position: fixed;          /* 固定在页面底部 */
+  bottom: 0;                /* 定位到页面底部 */
+  left: 0;                  /* 左对齐 */
+  width: 100%;              /* 充满整个页面宽度 */
+  background-color: #f9f9f9; /* 背景颜色 */
+  padding: 5rpx;           /* 内边距 */
+  box-shadow: 0 -4rpx 10rpx rgba(0, 0, 0, 0.1); /* 阴影效果 */
+  display: flex;            /* 使用 flex 布局 */
+  align-items: center;      /* 内容垂直居中 */
+  z-index: 1000;            /* 确保在其他内容之上 */
+  box-sizing: border-box;    /* 包括内边距在宽度内 */
+}
+
+.chat-input {
+  flex: 1;                  /* 输入框占据剩余的可用空间 */
+  padding: 20rpx;           /* 输入框内边距 */
+  border: 2rpx solid #ccc;   /* 边框样式 */
+  border-radius: 8rpx;      /* 圆角边框 */
+  font-size: 32rpx;         /* 字体大小 */
+  margin-right: 20rpx;      /* 输入框与按钮间距 */
+  outline: none;            /* 移除输入框聚焦时的外边框 */
+}
+
+.chat-input-button {
+  padding: 20rpx 30rpx;       /* 按钮内边距 */
+  background-color: #007bff; /* 按钮背景色 */
+  color: white;             /* 按钮文字颜色 */
+  border: none;             /* 移除按钮边框 */
+  border-radius: 8rpx;      /* 按钮圆角边框 */
+  cursor: pointer;          /* 鼠标悬停效果 */
+}
+
+.chat-input-button:hover {
+  /* 悬停时按钮颜色 */
+  background-color: #0056b3; 
+  
+}

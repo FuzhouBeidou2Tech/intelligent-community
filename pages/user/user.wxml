@@ -66,5 +66,14 @@
       <text class="arrow">></text>
     </view>
   </view>
+
+  <view class="list-item" bindtap="admClick">
+    <text class="icon">🚪</text>
+    <text class="item-title">管理员功能</text>
+    <view class="right-section">
+      <text class="status-text">查看</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
 </view>
 </view>

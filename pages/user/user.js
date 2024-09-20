@@ -118,5 +118,10 @@ Page({
     }
    
 
+},
+admClick(){
+  wx.navigateTo({
+    url: '/pages/admfuncton/admhmone/admhome',
+  })
 }
 })

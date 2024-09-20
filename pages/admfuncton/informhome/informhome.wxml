@@ -1,0 +1,8 @@
+<!--pages/admfuncton/informhome/informhome.wxml-->
+<view class="container">
+  <view class="button-container">
+    <view class="announce-button" bind:tap="announceClick">发布通知</view>
+    <view class="modification-button">修改通知</view>
+    <view class="delete-button">删除通知</view>
+  </view>
+</view>
