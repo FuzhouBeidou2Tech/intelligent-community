@@ -1,0 +1,13 @@
+<!--pages/chats/pendingfriendsview/pendingfriendsview.wxml-->
+<view class="pendingfriends-container">
+  <view class="system-container" wx:for="{{peddingList}}" wx:for-index="index">
+      <view class="image-container">
+        <image src="/images/icons/calendar.png" class="system-icon"/>
+      </view>
+      <view class="system-text-container" bind:tap="intomessageClick" data-id="{{item.user2Id}}">
+        <view class="system-text-title">{{item.user1Name}}</view>
+        <view class="agree-button" bind:tap="agreeClick" data-index="{{index}}">同意</view>
+        <view class="refuse-button" bind:tap="refuseClick" data-index="{{index}}">拒绝</view>
+      </view>
+    </view>
+</view>

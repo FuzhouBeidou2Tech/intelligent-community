@@ -4,28 +4,24 @@
     <view class="chat-header-text"> 消息</view>
     <view class="header-icon">
         <image src="/images/icons/search.png" class="chat-search-icon"/>
-        <image src="/images/icons/adduser.png" class="chat-adduser-icon"/>
+        <image src="/images/icons/adduser.png" class="chat-adduser-icon" bind:tap="addfrinedClick"/>
     </view>
   </view>
 
 <view class="chat-body-container">
 
-<view class="system-container">
-  <image src="/images/icons/calendar.png" class="system-icon"/>
+<view class="system-container" bind:tap="pendingClick">
+  <view class="image-container"> 
+    <image src="/images/icons/calendar.png" class="system-icon"/>
+    <view class="unreadmessagemun" wx:if="{{paddingnum >0}}">
+    {{paddingnum}}</view>
+  </view>
+ 
   <view class="system-text-container">
-    <view class="system-text-title">待处理请求</view>
+    <view class="system-text-title" >待处理请求</view>
     <view class="system-text">发现更多优质人脉</view>
   </view>
 </view>
-
-    <view class="system-container">
-      <image src="/images/icons/calendar.png" class="system-icon"/>
-      <view class="system-text-container" bind:tap="intomessageClick">
-        <view class="system-text-title">测试1</view>
-        <view class="system-text">信息</view>
-      </view>
-    </view>
-  
     <view class="system-container" wx:for="{{userList}}">
       <view class="image-container">
         <image src="/images/icons/calendar.png" class="system-icon"/>
@@ -36,9 +32,7 @@
         <view class="system-text">{{item.lastmessage}}</view>
       </view>
     </view>
+    
+</view>
 
-</view>
-<view>
-<button bind:tap="messageClick">1</button>
-</view>
 </view>

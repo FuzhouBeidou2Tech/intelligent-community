@@ -1,0 +1,83 @@
+/* pages/chats/addfriends/addfriends.wxss */
+.addfriends-container{
+  background-color: #f0f0f0;
+  height: 100vh;
+  padding-top: 20rpx;
+}
+
+.search-container{
+  display: flex;
+  background-color: white;  
+  border-radius: 25rpx;
+  width: 95%;
+  margin: 0 auto;
+  height: 50rpx;
+}
+.search-icon{
+  height: 50rpx;
+  width: 50rpx;
+ 
+}
+.input{
+  flex-grow: 1;
+  height: 50rpx;
+  border-radius: 25rpx;
+}
+
+/* body */
+.body-search-container{
+  height: 110rpx;
+  margin-top: 20rpx;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  border-radius: 10rpx;
+}
+.body-search-icon{
+  height: 90rpx;
+  width: 90rpx;
+  background-color: green;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+}
+.body-search-text{
+  margin-left: 15rpx;
+  
+}
+
+/*  */
+.addfriends-user-container{  
+  padding: 5rpx;
+  
+}
+
+.user-container{
+  height: 110rpx;
+  margin-top: 20rpx;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+}
+.user-icon{
+  height: 90rpx;
+  width: 90rpx;
+  border-radius: 10rpx;
+  margin-left: 10rpx;
+}
+.user-text{
+  padding-left: 15rpx;
+  
+}
+.user-adduser-click{
+  background-color: green;
+  margin-left: 300rpx;
+  border-radius: 15rpx;
+  height: 70rpx;
+  width: 150rpx;
+  text-align: center;
+  line-height: 70rpx;
+}

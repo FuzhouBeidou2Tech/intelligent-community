@@ -3,7 +3,7 @@
     "@holytiny/wxmp-socket.io-client": "^1.1.2",
     "express": "^4.20.0",
     "weapp.socket.io": "^2.2.1"
-   
+    
   }
       
    

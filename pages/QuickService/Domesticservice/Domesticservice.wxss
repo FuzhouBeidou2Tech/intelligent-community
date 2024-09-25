@@ -1,0 +1,100 @@
+/* pages/QuickService/Domesticservice/Domesticservice.wxss */
+.Domestice-container{
+  background-color: #f0f0f0;
+  height: 100vh;
+}
+/* 快捷入口 */
+.Title-text{
+  padding-top: 25rpx;
+  padding-left: 25rpx;
+}
+
+.Click-container{
+  background-color: #ffffff;
+  padding: 10rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-radius: 25rpx;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 20rpx;
+}
+
+.item{
+  flex-basis: calc(33.333%-20rpx);
+  
+  margin: 40rpx;
+  padding: 5prx;
+}
+.item-icon{
+  width: 70rpx;
+  height: 70rpx;
+  margin-left: 25rpx;
+}
+
+.item-text{
+  font-size:27rpx;
+}
+/*  推荐服务 */
+.recommed-container{
+  background-color: #ffffff;
+  border-radius: 25rpx;
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 50rpx;
+  
+}
+.recommed-title{
+  margin-left: 25rpx;
+  padding-top: 25rpx;
+  
+}
+
+.recommed-item-container{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  margin-top: 20rpx;
+  padding: 10rpx;
+  
+  border: 1rpx solid black;
+  
+}
+.recommed-item-icon{
+  height: 200rpx;
+  width: 200rpx;
+  padding-left: 15rpx;
+  
+}
+.text-container{
+  padding: 5rpx;
+  padding-left: 10rpx;
+}
+.recommed-item-title{
+  font-size: 45rpx;
+}
+.recommed-item-text{
+  font-size: 25rpx;
+  opacity: 0.5; /* 50% 的透明度 */
+  margin-top: 15rpx;
+  max-width: 300rpx; /* 设置一个最大宽度 */
+  overflow-wrap: break-word; /* 允许单词在边界内换行 */
+}
+.recommed-price-container{
+  display: flex;
+  height: 50rpx;
+  justify-content:space-between ;
+  margin-top: 15rpx;
+}
+.recommed-price{
+  color: rgba(255, 0, 0, 0.7); /* 红色，与50%的透明度 */
+  
+  
+}
+.recommed-evaluate{
+  font-size: 25rpx;
+  opacity: 0.3; /* 50% 的透明度 */
+ 
+  padding-top: 5rpx;
+}

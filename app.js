@@ -17,6 +17,7 @@ App({
     })
   },
   connect() {
+    const app=this;
     var userId = '3';
     var opts = {
         query: 'userId=' + userId
@@ -32,6 +33,8 @@ App({
       reconnectionDelay: 2000, // 重新连接间隔时间毫秒
       forceNew:true,
   }));
+   
+    app.globalData.globalsocket=socket;
     console.log("进去1");
     // 连接成功的事件处理
       socket.on('connect', () => {
@@ -53,29 +56,7 @@ App({
           
         }//用户在线，但没有打开当前聊天会话
         else{
-           const currentDate = new Date();
-        // 中国时区的偏移量是 +8 小时（相对 UTC）
-        const offset = 8 * 60 * 60 * 1000; // 偏移量转换为毫秒
-        const chinaDate = new Date(currentDate.getTime() + offset);
-        // 获取各个部分
-        const year = chinaDate.getUTCFullYear();
-        const month = String(chinaDate.getUTCMonth() + 1).padStart(2, '0'); // 月
-        const day = String(chinaDate.getUTCDate()).padStart(2, '0'); // 日
-        const hours = String(chinaDate.getUTCHours()).padStart(2, '0'); // 时
-        const minutes = String(chinaDate.getUTCMinutes()).padStart(2, '0'); // 分
-        const seconds = String(chinaDate.getUTCSeconds()).padStart(2, '0'); // 秒
-        // 格式化为 ISO 8601 格式（中国时区）
-        const formattedDateChina = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000+08:00`;
-        console.log("中国时区时间", formattedDateChina); // 输出中国时区的时间         
-          this.setData({
-            messageList: [...this.data.messageList, { 
-              messageID: null, 
-              senderID: senderId, 
-              receiverID: userId, 
-              content: message, 
-              createdTime: formattedDateChina
-          }]
-          })
+          
           const useId=wx.getStorageSync('user_Id');
           wx.request({
             url: `http://localhost:8080/Friends/getfriends?user1Id=${useId}`,  // 服务器地址
@@ -135,7 +116,10 @@ App({
     globalMessageId:null,
     globalMessageList:[],
     globaluserlist:[],
-    globalMessage:[]
+    globalMessage:[],
+    globalsocket:null,
+    globalNotification:null,
+    globalpendinglist:[]
   }, 
 })
 

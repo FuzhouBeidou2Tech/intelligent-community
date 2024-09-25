@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userList:[]
+    userList:[],
+    paddingnum:0
   },
   messageClick(){
     wx.navigateTo({
@@ -38,16 +39,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const app = getApp();
     
-    // 监听 globaluserlistChange 事件
-    this.updateUserList = this.updateUserList.bind(this); // 确保 this 绑定正确
-    app.addEventListener('globaluserlistChange', this.updateUserList);
     
-    // 初始化时获取全局的 userlist
-    this.setData({
-      userlist: app.globalData.globaluserlist
-    });
+  
   },
   //
   updateUserList(newList) {
@@ -61,13 +55,22 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    
+        // 监听 globaluserlistChange 事件
+      this.updateUserList = this.updateUserList.bind(this); // 确保 this 绑定正确
+      app.addEventListener('globaluserlistChange', this.updateUserList);
+      
+      // 初始化时获取全局的 userlist
+      this.setData({
+        userlist: app.globalData.globaluserlist
+      });
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    const app=getApp();
+    
+    this.updateUserList = this.updateUserList.bind(this);
+    app.addEventListener('globaluserlistChange', this.updateUserList);
     if(wx.getStorageSync('user_Id')==null){
       wx.showToast({
         title: '请先登录',
@@ -93,17 +96,36 @@ Page({
       },
         success:(res)=>{
           console.log("信息1",res.data);
-          console.log("信息2",res.data.unreadMessageList);
+          
           app.globalData.globaluserlist=res.data;
+           // 过滤出 status 为 "Accepted" 的项目
+          const acceptedFriends = res.data.filter(friend => friend.status === "Accepted");
+          // 过滤出 status 为 "Pending" 的项目
+          const pendingFriends=res.data.filter(friend=>friend.status==="Pending");
+          app.globalData.globalpendinglist=pendingFriends;
+
+          // 获取 pendingFriends 的元素数量
+          const pendingnum = pendingFriends.length
           this.setData({
-            userList:res.data
+            userList:acceptedFriends,
+            paddingnum:pendingnum
           })   
           
         }
       })
     }
   },
-
+// 添加用户
+addfrinedClick(){
+  wx.navigateTo({
+    url: '/pages/chats/addfriends/addfriends',
+  })
+},
+pendingClick(){
+  wx.navigateTo({
+    url: '/pages/chats/pendingfriendsview/pendingfriendsview',
+  })
+},
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -118,8 +140,7 @@ Page({
     
     // 页面卸载时移除事件监听
     app.removeEventListener('globaluserlistChange', this.updateUserList);
-
-    
+    userList=null;
   },
 
   /**

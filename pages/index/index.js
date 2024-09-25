@@ -1,5 +1,5 @@
 // index.js
-
+const app=getApp();
 
 Page({
   data:{
@@ -16,7 +16,8 @@ Page({
     promotions: [
       { id: 1, title: '商家促销1', description: '享受限时折扣。', image: '/images/examples/activity1.jpg' },
       { id: 2, title: '商家促销2', description: '会员专属优惠。', image: '/images/examples/activity2.jpg' }
-    ]
+    ],
+    notificationTitle:[]
   },
   onShow: function () {
     
@@ -26,6 +27,20 @@ Page({
     this.fetchAnnouncements();
     this.fetchActivities();
     this.fetchPromotions();
+
+    wx.request({
+      url: 'http://localhost:8080/Notification/Title',
+      method:'GET',
+      header: {
+        'Content-Type': 'application/json'  // 请求头，确保是 JSON 格式
+      },
+      success:(res)=>{
+        console.log("标题通知数据",res.data);
+        this.setData({
+          notificationTitle:res.data
+        })
+      }
+    })
   },
 
   fetchAnnouncements() {
@@ -63,6 +78,24 @@ Page({
     wx.navigateTo({
       url: '/pages/QuickService/advice/advice',
     })
+  },
+  intonotification: function(e) {
+    const itemId = e.currentTarget.dataset.id; // 获取传递的 item.id   
+    app.globalData.globalNotification=itemId;
+    
+    wx.navigateTo({
+      url: '/pages/notification/notificationshow/notificationshow',
+    })
+  },
+  notificationhomeClick(){
+    wx.navigateTo({
+      url: '/pages/notification/notificationhome/notificationhome',
+    })
+  },
+  //家政服务
+  domesticeClick(){
+    wx.navigateTo({
+      url: '/pages/QuickService/Domesticservice/Domesticservice',
+    })
   }
-
 });

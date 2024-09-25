@@ -21,7 +21,13 @@
     "pages/admfuncton/informpublish/informpublish",
     "pages/chats/chat/chat",
     "pages/chats/chatmessage/chatmessage",
-    "pages/chats/chatview/chatview"
+    "pages/chats/chatview/chatview",
+    "pages/notification/notificationshow/notificationshow",
+    "pages/notification/notificationhome/notificationhome",
+    "pages/QuickService/Domesticservice/Domesticservice",
+    "pages/chats/addfriends/addfriends",
+    "pages/Community/Communityhome/Communityhome",
+    "pages/chats/pendingfriendsview/pendingfriendsview"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -56,7 +62,7 @@
   },
   "permission": {
     "scope.userLocation": {
-      "desc": "Your location will be used for app functionality."
+      "desc": "你的位置信息将用于..."
     }
   },
   "style": "v2",

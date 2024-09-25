@@ -1,0 +1,27 @@
+<!--pages/notification/notificationshow/notificationshow.wxml-->
+<view class="notification-container">
+  <view class="title">
+    {{notification.title}}
+  </view>
+
+  <view class="pushinfo-container">
+    <view class="push-time">{{notification.publishTime}}</view>
+    <view class="push-publisher">发布人:{{notification.publisher}}</view>
+    <view class="push-type">通知类型:{{notification.type}}</view>
+    <view class="push-department">通知部门:{{notification.department}}</view>
+  </view>
+
+
+  <view class="content-container">
+    <view class="content-text">通知内容:</view>
+  <view class="content">
+    <view>{{notification.content}}</view>
+  </view>
+  </view>
+ 
+  </view>
+
+
+  
+
+

@@ -1,0 +1,52 @@
+/* pages/chats/pendingfriendsview/pendingfriendsview.wxss */
+.pendingfriends-container{
+  background-color: #f0f0f0;
+}
+.system-container{
+  display: flex;
+  border-left: 0; /* 取消左边框 */
+  border-right: 0; /* 取消右边框 */
+  border-top: 0; /* 取消上边框 */
+  border-bottom:5rpx solid black;
+}
+
+.image-container{
+  
+  width: 100rpx;
+  height: 100rpx;
+  margin: 10rpx;
+  flex-basis: 100rpx; /* 确定每个图片容器的基础宽度 */
+}
+.system-icon{
+  height: 100rpx;
+  width: 100rpx;
+}
+.system-text-container{
+  margin-left: 30rpx;
+  display: flex;
+  width: 600rpx;
+  align-items: center;
+}
+.system-text-title{
+  font-size:40rpx;
+}
+.agree-button{
+  margin-left: 100rpx;
+  background-color: green;
+  color:white;
+  height: 70rpx;
+  width: 140rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 25rpx;
+}
+.refuse-button{
+  margin-left: 100rpx;
+  background-color: black;
+  color:white;
+  height: 70rpx;
+  width: 140rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 25rpx;
+}

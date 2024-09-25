@@ -2,7 +2,8 @@
 import io from '../../@holytiny/wxmp-socket.io-client/socket.io.js';
 const app=getApp();
 let socketUrl='ws://127.0.0.1:3300';
-var that
+var that;
+var socket1;
 Page({
 
   /**
@@ -13,6 +14,7 @@ Page({
   senderid:null,
   inputValue: '',
   scrollToView: '',     // 用于指定滚动到某个视图的id
+ 
   },
 
   /**
@@ -24,28 +26,34 @@ Page({
   },
   connect() { 
     var userId = '3';
-    const socket = (this.socket = io(socketUrl,{
-      // path:'/',
-      query:'userId=' + userId ,
-      allowEIO3: true,
-      transports: ['websocket'], // 此项必须设置
-      reconnectionAttempts: 3, // 失败后重新连接次数
-      reconnectionDelay: 2000, // 重新连接间隔时间毫秒
-      forceNew:true,
-  }));
+    socket1 = app.globalData.globalsocket; // 复用全局的 socket 实例
     console.log("进去1");
     // 连接成功的事件处理    
-      socket.on('connect', () => {
+      socket1.on('connect', () => {
         console.log("连接2成功");
       
     });
     console.log("进去2");
     // 连接断开的事件处理
-    socket.on('disconnect', () => {
+    socket1.on('disconnect', () => {
         //this.output('<span class="msg-color">下线了。 </span>');
     });
     // 接收特定频道消息的事件处理
-    socket.on('channel_user', (data) => {
+    socket1.on('channel_user', (data) => {
+      const senderId=data.senderid;
+      const userId=wx.getStorageSync('user_Id');
+      if(data.senderid==app.globalData.globalMessageId){
+        wx.request({
+          url: `http://localhost:8080/IMessage/readMessage?userId=${userId}&senderId=${senderId}`,
+          method: 'GET',
+          header: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'  // 确保接收 JSON 格式的响应
+        },
+        success:()=>{
+        }
+        })
+      }
         let msg = JSON.stringify(data);
         console.log("接受信息2");
         console.log("data=",data);
@@ -72,12 +80,22 @@ Page({
               receiverID: wx.getStorageSync('user_Id'), 
               content: data.message, 
               createdTime: formattedDateChina
-          }]
-          })
+          }],
+          //更新视图
+          scrollToView: `msg${this.data.messageList.length}`
+        }
+          )
         }else{
           console.log("进去页面");
         }
     });
+},
+socketStop: function () {
+  if (socket1) {
+    console.log("关闭");
+    socket1.close();
+    socket1 = null;
+  }
 },
     output: function (message) {
         var newMessages = this.data.consoleMessages;
@@ -86,13 +104,7 @@ Page({
             consoleMessages: newMessages
         });
     },
-    socketStop: function () {
-      if (this.socket) {
-        console.log("关闭");
-        this.socket.close()
-        this.socket = null
-      }
-    },
+   
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -103,20 +115,51 @@ Page({
     })
     const senderId=app.globalData.globalMessageList.user1Id;
     const receiverId=app.globalData.globalMessageList.user2Id;
-    wx.request({
-      url: `http://localhost:8080/IMessage/getImessage?senderId=${senderId}&receiverId=${receiverId}`,
-      method: 'GET',
-      header: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'  // 确保接收 JSON 格式的响应
-    },
-      success:(res)=>{
+    // wx.request({
+    //   url: `http://localhost:8080/IMessage/getImessage?senderId=${senderId}&receiverId=${receiverId}`,
+    //   method: 'GET',
+    //   header: {
+    //     'Content-Type': 'application/json',
+    //     'Accept': 'application/json'  // 确保接收 JSON 格式的响应
+    // },
+    //   success:(res)=>{
+    //     this.setData({
+    //       messageList:res.data
+    //     })
+    //     console.log("messageList=",this.data. messageList);
+    //   }
+    // })
+    this.getMessageList(senderId, receiverId).then(() => {
+      // 数据加载完成后，在这里设置滚动到最新消息
+      if (this.data.messageList.length > 0) {
         this.setData({
-          messageList:res.data
-        })
-        console.log("messageList=",this.data. messageList);
+          scrollToView: `msg${this.data.messageList.length - 1}`
+        });
       }
-    })
+    });
+  },
+  getMessageList(senderId, receiverId) {
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: `http://localhost:8080/IMessage/getImessage?senderId=${senderId}&receiverId=${receiverId}`,
+        method: 'GET',
+        header: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'  // 确保接收 JSON 格式的响应
+        },
+        success: (res) => {
+          this.setData({
+            messageList: res.data
+          });
+          console.log("messageList=", this.data.messageList);
+          resolve(); // 请求成功，resolve Promise
+        },
+        fail: (error) => {
+          console.error("Failed to fetch message list", error);
+          reject(error); // 请求失败，reject Promise
+        }
+      });
+    });
   },
   //输入框数据绑定
   onInput: function(e) {
@@ -153,7 +196,6 @@ Page({
         // 格式化为 ISO 8601 格式（中国时区）
         const formattedDateChina = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000+08:00`;
         console.log("中国时区时间", formattedDateChina); // 输出中国时区的时间
-         
           this.setData({
             messageList: [...this.data.messageList, { 
               messageID: null, 
@@ -163,7 +205,7 @@ Page({
               createdTime: formattedDateChina
           }],
           inputValue: '',  // 发送后清空输入框
-          scrollToView: 'message' + (messageList.length - 1) // 滚动到最新的消息
+          scrollToView: `msg${this.data.messageList.length}` // 滚动到最新的消息
           })
         //
         }
@@ -177,21 +219,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+  
+  
+},
 
-  },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
+    if (this.data.messageList.length > 0) {
+      this.setData({
+        scrollToView: `msg${this.data.messageList.length - 1}`
+      }, () => {
+        wx.nextTick(() => {
+          this.setData({
+            scrollToView: `msg${this.data.messageList.length - 1}`
+          });
+        });
+      });
+    }
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-    this.socketStop();
+    // this.socketStop();
     app.globalData.globalMessageId=null;
 
   },

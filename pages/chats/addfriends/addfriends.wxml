@@ -1,0 +1,20 @@
+<!--pages/chats/addfriends/addfriends.wxml-->
+<view class="addfriends-container">
+  <view class="search-container">
+    <image src="/images/chat/icon/搜索.png"  class="search-icon" />
+    <input type="text" placeholder="用户名/手机号" class="input"  bindconfirm="onSearch"      bindblur="onBlur" bindinput="onInput" value="{{inputValue}}" /> 
+  </view>
+
+  <view class="body-search-container" wx:if="{{inputValue}}" bind:tap="searchClick">
+    <image src="/images/chat/icon/白色-搜索.png"  class="body-search-icon" />
+    <view class="body-search-text">搜索:{{inputValue}}</view>
+  </view>
+
+  <view class="addfriends-user-container">
+    <view wx:for="{{userList}}" wx:for-index="index" class="user-container"> 
+      <image src="/images/icons/qq.png" class="user-icon"/>
+      <view class="user-text">用户名:{{item.username}}</view>
+      <view class="user-adduser-click" bind:tap="addsuerClick" data-index="{{index}}">添加好友</view>
+    </view>
+  </view>
+</view>

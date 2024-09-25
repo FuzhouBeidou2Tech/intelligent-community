@@ -41,6 +41,7 @@
   border-top: 0; /* 取消上边框 */
   border-bottom:5rpx solid black;
 }
+
 /*  */
 .image-container{
   position: relative;
@@ -71,13 +72,12 @@
   margin-left: 50rpx;
   position: relative;
   width: 600rpx;
-  
 }
 .system-text-title{
   font-size:40rpx;
 }
 .system-text{
-  font-size: 20rpx;
+  font-size: 25rpx;
   position: absolute;
   bottom: 5rpx;
   

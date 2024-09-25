@@ -5,11 +5,24 @@
 <view class="container">
   <!-- Community Announcements -->
   <view class="section">
-    <view class="section-title">社区公告</view>
-    <view class="announcement-scroll">
-      <scroll-view scroll-x="true" class="announcement-content">
-        <text>{{latestAnnouncement}}</text>
-      </scroll-view>
+    <view class="section-title-container">
+      <view class="section-title">社区公告</view>
+      <view class="more-notification" bind:tap="notificationhomeClick">更多></view>
+    </view>
+    
+    <view class="notification-container">
+      
+      <view wx:for="{{notificationTitle}}" wx:for-item="item" class="notification" bind:tap="intonotification" data-id="{{item.id}}">
+        <view wx:if="{{item.urgencyStatus=='urgent'}}" class="urgent-container">
+          <view class="urgent-icon">紧急</view>
+          <view class="notificationText">{{item.title}}</view>
+          <view  class="intonotificationClick">></view>
+        </view>
+        <view wx:else class="nourgent-container">
+          <view class="notificationText">{{item.title}}</view>
+          <view bindtap="intonotification" class="intonotificationClick">  ></view>
+        </view>
+      </view>
     </view>
   </view>
 
@@ -18,35 +31,36 @@
     <view class="section-title">快捷服务</view>
     <view class="quick-services">
       <view class="service-item">
-        <icon type="success" size="40"></icon>
+        <image src="/images/icons/物业缴费mdpi.png" mode="" class="item-icon"/>
+
         <text>物业缴费</text>
       </view>
       <view class="service-item">
-        <icon type="success" size="40"></icon>
+        <image src="/images/icons/智慧停车.png" mode="" class="item-icon"/>
         <text>停车充值</text>
       </view>
       <view class="service-item">
-        <icon type="success" size="40"></icon>
+        <image src="/images/icons/物业报修.png" mode="" class="item-icon"/>
         <text>物业报修</text>
       </view>
       <view class="service-item">
-        <icon type="success" size="40" bind:tap="acviteClick"></icon>
+        <image src="/images/icons/社区活动.png" mode="" class="item-icon"/>
         <text>社区活动</text>
       </view>
       <view class="service-item">
-        <icon type="success" size="40"></icon>
+        <image src="/images/icons/管家管理.png" mode="" class="item-icon"/>
+        <text>物业管家</text>
+      </view>
+      <view class="service-item">
+        <image src="/images/icons/问卷调查.png" mode="" class="item-icon"/>
+        <text>问卷调查</text>
+      </view>
+      <view class="service-item" bind:tap="domesticeClick">
+        <image src="/images/icons/家政服务.png" mode="" class="item-icon"/>
         <text>家政服务</text>
       </view>
       <view class="service-item">
-        <icon type="success" size="40"></icon>
-        <text>快递代收</text>
-      </view>
-      <view class="service-item">
-        <icon type="success" size="40"></icon>
-        <text>记事</text>
-      </view>
-      <view class="service-item">
-        <icon type="success" size="40" bind:tap="adviceClick"></icon>
+        <image src="/images/icons/投诉建议.png" mode="" class="item-icon"/>
         <text>投诉建议</text>
       </view>
     </view>

@@ -2,7 +2,7 @@
 <view class="chatview-container">
   <!-- 聊天记录 -->
   <scroll-view class="chat-list" scroll-y="true" scroll-into-view="{{scrollToView}}">
-    <view wx:for="{{messageList}}"  class="chat-item {{item.senderID==senderid ? 'self' : 'other'}}">
+    <view wx:for="{{messageList}}"  wx:key="id" class="chat-item {{item.senderID==senderid ? 'self' : 'other'}}"  id="msg{{index}}">
       <view class="avatar">
         <image src="/images/icons/qq.png" class="avatar-image" />
       </view>

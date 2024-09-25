@@ -1,0 +1,53 @@
+/* pages/notification/notificationshow/notificationshow.wxss */
+.notification-container{
+  padding: 5rpx;
+  padding-left: 20rpx; 
+  background-color: #f0f0f0;  
+  height: 100vh;
+}
+
+.title{
+  width: 100%;
+  font-size: large;
+  text-align: center;
+  margin-top: 20rpx;
+}
+/*  */
+.pushinfo-container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15rpx;
+  flex-wrap: wrap;  /* 允许换行 */
+}
+
+.push-time{
+  flex-basis: 50%;
+  color: rgba(0, 0, 0, 0.5); 
+}
+
+.push-publisher{
+  flex-basis: 50%;
+  color: rgba(0, 0, 0, 0.5); 
+  
+}
+.push-type{
+  flex-basis: 50%;
+  color: rgba(0, 0, 0, 0.5); 
+ 
+}
+.push-department{
+  flex-basis: 50%;
+  color: rgba(0, 0, 0, 0.5); 
+  
+}
+/* 内容 */
+
+.content-container{
+  background-color:white;
+  margin-top: 20rpx;
+}
+.content{
+  margin-top: 20rpx;
+  border-radius: 25rpx;
+  text-indent: 2em; /* 缩进2个字符 */
+}
