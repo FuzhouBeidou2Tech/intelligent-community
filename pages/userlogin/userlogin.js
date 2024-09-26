@@ -79,8 +79,18 @@ Page({
                 wx.setStorageSync('user_Gender', response.data.data.user_gender);
                 //保存用户id
                 wx.setStorageSync('user_Id', response.data.data.user_id);
+                //保存社区名称
+                if(response.data.data.community_name!=null){
+                  wx.setStorageSync('community_name', response.data.data.community_name);
+                  wx.setStorageSync('community_address', response.data.data.community_address);
+                  wx.setStorageSync('building_name', response.data.data.building_name);
+                  wx.setStorageSync('room_name', response.data.data.room_name);
+                  wx.setStorageSync('user_communityId',response.data.data.community_id);
+                }
+               
+
                 // 更新全局数据
-              
+                
                 console.log(response.data.data);
                 // 登录成功后跳转到主页面
                 wx.switchTab({

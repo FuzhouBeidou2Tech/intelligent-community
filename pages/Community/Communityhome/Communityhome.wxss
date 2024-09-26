@@ -1,1 +1,46 @@
 /* pages/Community/Communityhome/Communityhome.wxss */
+.Community-container{
+  background-color: #f0f0f0;
+}
+
+.header-container{
+  background: linear-gradient(to bottom, rgba(14, 69, 189, 0.712), white);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.community-icon{
+  height: 150rpx;
+  width: 150rpx;
+}
+.header-text-container{
+  padding: 5rpx;
+}
+.header-text-community{
+  
+  font-size: 40rpx;
+}
+.header-text-address{
+  font-size: 20rpx;
+  opacity: 0.7; /* 50% 透明度 */
+
+}
+.header-text-sign{
+  font-size: 70rpx;
+  opacity: 0.5; 
+}
+.body-container{
+
+}
+.body-text-container{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+.body-text-community{
+  opacity: 0.7; 
+}
+.body-text-more{
+  opacity: 0.7; 
+}

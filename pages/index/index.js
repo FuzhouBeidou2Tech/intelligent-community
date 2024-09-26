@@ -97,5 +97,17 @@ Page({
     wx.navigateTo({
       url: '/pages/QuickService/Domesticservice/Domesticservice',
     })
+  },
+  //物业管家
+  manage(){
+    if(wx.getStorageSync('user_Id')){
+      
+    }
+    else{
+     wx.showToast({
+       title: '请先登录',
+       icon:'error',
+     })
+    }
   }
 });

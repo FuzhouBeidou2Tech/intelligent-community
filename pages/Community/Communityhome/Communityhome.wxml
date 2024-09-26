@@ -1,2 +1,24 @@
 <!--pages/Community/Communityhome/Communityhome.wxml-->
-<text>pages/Community/Communityhome/Communityhome.wxml</text>
+<view class="Community-container">
+  <view class="header-container">
+    <image src="/images/Community/home.jpg" mode="" class="community-icon" />
+    <view class="header-text-container">
+      <view class="header-text-community">{{CommunityName}}</view>
+      <view class="header-text-address">{{CommunityAddress}}</view>
+    </view>
+    <view class="header-text-sign">></view>
+  </view>
+
+  <view class="body-container">
+    <view class="body-text-container">
+      <view class="body-text-community">社区广场</view>
+      <view class="body-text-more">更多></view>
+    </view>
+
+    <view class="body-home-container">
+      <view >
+      </view>
+    </view>
+    
+  </view>
+</view>
