@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/intelligent_community?serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 8080
+
+wechat:
+  appid: wxfe69c06f07332014
+  secret: 458b39d2cd00289e923ec5595c1f5e7a
+
+socketio:
+  host: 127.0.0.1
+  port: 3300
+  maxFramePayloadLength: 1048576
+  maxHttpContentLength: 1048576
+  bossCount: 1
+  workCount: 100
+  allowCustomRequests: true
+  upgradeTimeout: 1000000
+  pingTimeout: 600000
+  pingInterval: 25000
