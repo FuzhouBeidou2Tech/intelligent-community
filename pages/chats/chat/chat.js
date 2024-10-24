@@ -140,7 +140,10 @@ pendingClick(){
     
     // 页面卸载时移除事件监听
     app.removeEventListener('globaluserlistChange', this.updateUserList);
-    userList=null;
+    this.setData({
+      userList:null
+    })
+    
   },
 
   /**

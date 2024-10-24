@@ -1,0 +1,46 @@
+<!-- pages/business/business.wxml -->
+<view class="container">
+  <!-- <header title="Business" showBack="{{false}}" /> -->
+  <view class="search-bar">
+    <input class="search-input" placeholder="搜索周边商业商品..."  bindinput="searchInput" value="{{searchtext}}" />
+    <image 
+    wx:if="{{ifSearch == 1 || searchtext != ''}}" 
+    src="/images/icons/删除.png" 
+    class="delete-icon" 
+    bindtap="clearInput"
+  />
+    <button class="search-button" style="width: 100px;" bind:tap="searchClick">搜索</button>
+    
+  </view>
+  <view class="category-container">
+    <scroll-view scroll-x="true" enable-flex="true" class="category-scroll-view">
+      <view wx:for="{{BusinessCategory}}" wx:key="id" wx:for-index="index" 
+      class="{{index==IndexId ? 'oncategory-item':'category-item'}}" 
+      data-id="{{item.id}}" data-index="{{index}}"
+      bind:tap="CategoryClick">
+        {{item.categoryName}}
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="store-container">
+    <view wx:for="{{Business}}" wx:key="id" class="store-card" data-id="{{item.business.id}} "
+    bindtap="BusinessClick">
+      <view class="store-info">
+        <image class="store-image" src="{{item.business.titleImage}}" />
+        <view class="store-name-container">
+          <text class="store-name">{{item.business.name}}</text>
+        </view>
+      </view>
+      <scroll-view scroll-x="true" class="product-scroll-view">
+        <view wx:for="{{item.productdto}}" wx:key="id" class="product-item" catch:tap="productClick" data-id="{{item.id}}">
+          <image class="product-image" src="{{item.imageList[0].imageUrl}}" 
+           />
+          <text class="product-name">{{item.name}}</text>
+          <view class="product-price">￥{{item.price}}</view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <!-- <bottom-nav current="business" bind:change="onNavChange" /> -->
+</view>

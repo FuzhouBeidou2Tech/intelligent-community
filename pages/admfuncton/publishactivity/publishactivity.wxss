@@ -1,0 +1,192 @@
+/* 容器的整体样式 */
+.updateactivity-Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx;
+  background-color: #f9f9f9;
+  border-radius: 16rpx;
+  box-shadow: 0rpx 8rpx 16rpx rgba(0, 0, 0, 0.1);
+  max-width: 750rpx;
+  margin: 0 auto;
+}
+
+/* 头部容器 */
+.header-Container {
+  width: 100%;
+  margin-bottom: 40rpx;
+}
+
+.image-container {
+  width: 100%;
+  height: 400rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+/* 每个字段的容器样式 */
+.name-Container, .subtitle-Container, .details-Container, 
+.address-Container, .gatheringPlace-Container, .organizer-Container, 
+.organizerPhone-Container, .signupCountMax-Container, 
+.signupstarttime-Container, .signupstartdata-Container, 
+.signupendtime-Container, .signupenddate-Container, 
+.starttime-Container, .startdata-Container, 
+.endtime-Container, .enddata-Container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+
+/* 标题和输入框的样式 */
+.name-text, .subtitle-text, .details-text, 
+.address-text, .gatheringPlace-text, .organizer-text, 
+.organizerPhone-text, .signupCountMax-text, 
+.signupstarttime-text, .signupstartdata-text, 
+.signupendtime-text, .signupenddate-text, 
+.starttime-text, .startdata-text, 
+.endtime-text, .enddata-text {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  color: #333;
+}
+
+input[type="text"], input[type="number"] {
+  height: 80rpx; /* 设置输入框的高度 */
+  padding: 0 20rpx; /* 水平内边距 */
+  line-height: 80rpx; /* 使文字与输入框高度一致，垂直居中 */
+  font-size: 28rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 8rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  color: #999; /* 提示文字颜色 */
+  line-height: 80rpx; /* 确保提示文字垂直居中 */
+}
+.picker {
+  width: 100%;
+  padding: 20rpx;
+  background-color: #fff;
+  border: 1rpx solid #ddd;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  cursor: pointer;
+}
+
+/* 图片容器样式 */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16rpx;
+}
+
+/* 提交按钮样式 */
+.submit-button {
+  width: 100%;
+  padding: 24rpx;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  border-radius: 8rpx;
+  cursor: pointer;
+  font-size: 32rpx;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: 40rpx;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* 图标部分样式 */
+.icon-section {
+  display: flex;
+  justify-content: left;
+  padding: 10px;
+  width: 100vw;
+  height: 400rpx;
+  background-color: white;
+  
+}
+
+.icon-text-container {
+  margin-left: 10rpx;
+}
+
+.icon-text {
+  margin-top: 105rpx;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 10rpx;
+  margin-top: 15rpx;
+}
+
+/*  图片列表容器 */
+.image-list {
+  display: flex;
+  flex-wrap: wrap; /* 允许换行 */
+  justify-content: flex-start; /* 图片水平排列 */
+  margin-top: 10px;
+}
+
+/* 单个图片容器 */
+.image-container {
+  position: relative;
+  width: 150rpx;
+  height: 150rpx;
+  margin: 10rpx;
+  flex-basis: 150rpx; /* 确定每个图片容器的基础宽度 */
+}
+
+/* 上传的图片样式 */
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+/* 删除图标样式 */
+.delete-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+}
+.add-image{
+  font-size: 25rpx;
+  text-align: center;
+}
+/* 按钮部分样式 */
+.button-section {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.submit-button {
+  width: 200px;
+  height: 40px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border-radius: 20px;
+  text-align: center;
+ 
+}

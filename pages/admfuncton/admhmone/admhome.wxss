@@ -42,3 +42,13 @@
   text-align: center;
   margin-top: 30rpx;
 }
+.deletepost-button{
+  padding-top: 10rpx;
+  background-color:  red;
+  color: white;
+  border-radius: 50rpx;
+  width: 50vw;
+  height: 70rpx;
+  text-align: center;
+  margin-top: 30rpx;
+}

@@ -1,0 +1,61 @@
+<!--pages/Post/Posthome/Posthome.wxml-->
+<view class="Posthome-container">
+  <view class="Posthome-header-container">
+    <view class="header-text-container">
+      <view class="text-new">最新</view>
+      <view class="text-hot">最热</view>
+    </view>
+  </view>
+
+  <scroll-view class="Posthome-body-container" scroll-y="true" scroll-with-animation="true" >
+    <view wx:for="{{PostList}}"  wx:for-index="index" class="PostList"  bind:tap="PostviewClick" data-id="{{item.id}}">
+    <view class="Posthome-body-title-container">
+      <image src="/images/icons/qq.png"  class="Posthome-body-title-icon" mode="scaleToFill" />
+      <view class="Posthome-body-title-text-container">
+        <view class="post-name">{{item.author}}</view>
+        <view class="post-createtime">{{item.createdAt}}</view>
+      </view>
+
+      <view class="{{item.iffollow==0 ? 'unfollow-icon':'follow-icon'}}" data-index="{{index}}" 
+      catchtap="followClick">{{item.iffollow==0 ?'关注':'已关注'}}</view>
+    </view>
+      <view class="post-title">{{item.title}}</view>
+      <view class="post-content">{{item.content}}</view>
+<!-- 图片展示 -->
+<view class="image-list-conntainer">
+  <view wx:for="{{item.imageList}}" wx:key="*this" class="image-list">
+    <view class="image-container">
+      <image class="uploaded-image" src="{{item.imageUrl}}" mode="scaleToFill"></image>
+    </view>
+  </view>
+
+</view>
+
+
+
+      <view class="Posthome-footer-container">
+        <view class="good-container" catchtap="addlikeClick" data-index="{{index}}" data-id="{{item.id}}">
+          <image 
+          src="{{item.iflike == 0 ? '/images/post/icon/点赞.png' : '/images/post/icon/点赞成功.png'}}" class="good-icon"/>
+          <view class="good-num" >{{item.likeCount}}</view>
+        </view>
+        <view class="review-container" catchtap="addfavoriteClick"  data-index="{{index}}" data-id="{{item.id}}">
+          <image src="{{item.iffavorite==0 ? '/images/post/icon/收藏.png' :'/images/post/icon/收藏成功.png'}}" class="good-icon"/>
+          <view class="review-num">{{item.favoriteCount}}</view>
+        </view>
+        <view class="share-container">
+          <image src="/images/post/icon/分享.png" class="good-icon"/>
+          <view class="share-num">分享</view>
+        </view> 
+      </view>
+    </view>
+  </scroll-view>
+    <!-- <view class="footer-container">
+      <view class="my-post" bind:tap="myPostClick">我的帖子</view>
+      <view class="push-post" bind:tap="addPostClick">发布帖子</view>
+      <view class="my-star" bind:tap="myfavoriteClick">我的收藏</view>
+    </view> -->
+    <view class="publish-button" bindtap="publishPost">
+    <image src="/images/post/icon/发布.png" class="publish-icon" bind:tap="addPostClick"/>
+  </view>
+</view>

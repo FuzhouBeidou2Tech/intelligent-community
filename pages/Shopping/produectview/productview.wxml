@@ -1,0 +1,22 @@
+<!--pages/Shopping/produectview/productview.wxml-->
+<view class="productview-Container">
+  <view class="header-Container"> 
+    <swiper class="image-container" autoplay="true" interval="2000" duration="500" indicator-dots="true" circular="true" >
+      <block wx:for="{{productdto.imageList}}" wx:key="id">
+    <swiper-item>
+      <image src="{{item.imageUrl}}" class="image" mode="scaleToFill"/>
+    </swiper-item>
+    </block>
+</swiper>
+  </view>
+
+  <view class="Title-Container">
+    <view class="product-price">￥{{productdto.price}}</view>
+    <view class="product-name">{{productdto.name}}</view>
+  </view>
+
+  <view class="description-Container">
+    <view>商品详情:</view>
+    <view class="product-description">{{productdto.description}}</view>
+  </view>
+</view>

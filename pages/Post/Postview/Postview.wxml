@@ -1,0 +1,54 @@
+<!--pages/Post/Postview/Postview.wxml-->
+<view class="Postview-container">
+  <view class="Postview-header-container">
+    <view class="post-title">{{Post.title}}</view>
+    <view class="header-title-container">
+      <image src="/images/icons/qq.png" class="header-title-icon"/>
+      <view class="header-title-name">{{Post.author}}</view>
+    </view>
+    <view class="post-content">{{Post.content}}</view>
+
+    <!-- 图片展示 -->
+<view class="image-list-conntainer">
+  <view wx:for="{{imageList}}" wx:key="*this" class="image-list">
+    <view class="image-container">
+      <image class="uploaded-image" src="{{item.imageUrl}}" mode="scaleToFill"></image>
+    </view>
+  </view>
+</view>
+
+
+    <view class="post-text">本文由楼主发布在智慧社区，未经楼主许可，禁止转载</view>
+    <view class="post-info-container">
+      <view class="post-date">{{Post.updatedAt}}</view>
+      <view class="detailed-information-container">
+        <image src="/images/post/icon/information.png"  class="post-information-icon"/>
+        <view class="post-information-num">{{Post.commentCount}}</view>
+        <image src="/images/post/icon/收藏.png" class="post-favorite-icon"/>
+        <view class="post-favorite-num">{{Post.favoriteCount}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <scroll-view class="post-body-container" scroll-y="true" style="flex: 1;">
+  <view class="comment-distinction-container">
+    <view class="comment-all-text">全部</view>
+    <view class="comment-viewowner-text">只看楼主</view>
+  </view>
+    <view wx:for="{{CommentList}}"class="comment-container">
+      <image src="/images/icons/qq.png" class="comment-icon"/>
+      <view class="comment-info-container">
+        <view class="comment-username">{{item.username}}</view>
+        <view class="comment-content">{{item.content}}</view>
+        <view class="residue-date">{{item.formattedResidue}}前</view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="post-footer-container">
+    <input type="text" placeholder="请输入评论" class="comment-input" bindinput="setComment" 
+    value="{{Comment}}" 
+    />
+    <view class="sendClick" bind:tap="sendButton">发送</view>
+  </view>
+</view>

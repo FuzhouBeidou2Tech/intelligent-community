@@ -19,6 +19,19 @@
   </view>
   </view>
  
+ <!-- <view class="image-container">
+ 
+  <view wx:for="{{imageList}}" class="imageList" wx:key="id">
+    <image src="{{item.imageUrl}}" class="image"/>
+  </view>
+ </view> -->
+ <swiper class="image-container" autoplay="true" interval="2000" duration="500" indicator-dots="true" circular="true" >
+  <block wx:for="{{imageList}}" wx:key="id">
+    <swiper-item>
+      <image src="{{item.imageUrl}}" class="image" mode="scaleToFill"/>
+    </swiper-item>
+  </block>
+</swiper>
   </view>
 
 

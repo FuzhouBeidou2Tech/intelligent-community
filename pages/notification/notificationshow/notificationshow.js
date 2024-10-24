@@ -15,7 +15,8 @@ Page({
       title:"null",
       type:"null",
       urgencyStatus:"null"
-    }
+    },
+    imageList:[]//图片
   },
 
   /**
@@ -38,10 +39,12 @@ Page({
         'Accept': 'application/json'  // 确保接收 JSON 格式的响应
     },
     success:(res)=>{
+      console.log(res.data);
       this.setData({
-        notification: res.data
+        notification: res.data.notification,
+        imageList:res.data.imageList
       });
-
+      console.log("图片",this.data.imageList);
       console.log("通知详细信息:",this.data.notification);
     }
     })

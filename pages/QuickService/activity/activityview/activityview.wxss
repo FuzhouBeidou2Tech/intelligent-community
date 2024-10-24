@@ -1,0 +1,116 @@
+/* pages/QuickService/activity/activityview/activityview.wxss */
+.activity-Container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  padding: 20rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.header-Container {
+  margin-bottom: 20rpx;
+}
+
+.image-container {
+  width: 100%;
+  height: 300rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+}
+
+.body-container {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.activity-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.activity-details-Container {
+  margin-bottom: 16rpx;
+  border: 1rpx solid black;
+  border-radius: 15rpx;
+  padding-left: 5rpx;
+}
+
+.details {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #555555;
+  margin-bottom: 8rpx;
+}
+
+.activity-details {
+ 
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.6;
+  
+}
+
+.activity-organizer, .activity-organizerPhone, .activity-startTime, .activity-endTime, .activity-signupEndTime, .activity-signupCount {
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 8rpx;
+}
+
+.foot-Container {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.share-icon {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 16rpx;
+}
+
+.apply-button {
+  background-color: #ff6600;
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  padding: 16rpx;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.unapply-button{
+  background-color: gray;
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  padding: 16rpx;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.apply-button:hover {
+  background-color: #e55d00;
+}
+

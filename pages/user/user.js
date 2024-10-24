@@ -123,5 +123,10 @@ admClick(){
   wx.navigateTo({
     url: '/pages/admfuncton/admhmone/admhome',
   })
+},
+chatClick(){
+  wx.navigateTo({
+    url: '/pages/chats/chat/chat',
+  })
 }
 })

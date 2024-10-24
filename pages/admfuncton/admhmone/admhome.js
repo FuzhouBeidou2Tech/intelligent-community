@@ -19,6 +19,17 @@ Page({
       url: '/pages/admfuncton/informhome/informhome',
     })
   },
+  // 删除帖子
+  deletepostClick(){
+    wx.navigateTo({
+      url: '/pages/admfuncton/deletePost/deletePost',
+    })
+  },
+  activityClick(){
+    wx.navigateTo({
+      url: '/pages/admfuncton/activityhome/activityhome',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,0 +1,84 @@
+/* pages/Post/myPost/myPost.wxss */
+.myPost-container{
+  background-color: #f0f0f0;
+  padding-top: 20rpx;
+}
+.myPost-header-container{
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding-left: 30rpx;
+}
+.user-icon{
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 50rpx;
+}
+.username{
+  font-size: 40rpx;
+}
+.item-container{
+  display: flex;
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+}
+.item-putpost{
+
+}
+.item-follow{
+  margin-left: 15rpx;
+}
+.item-fun{
+  margin-left: 15rpx;
+}
+
+/*  */
+.myPost-body-container{
+ width: 95%;
+ margin: 0 auto;
+ margin-top: 30rpx;
+}
+.post-list{
+  background-color: white;
+  border-radius: 15rpx;
+  border: 1rpx solid black;
+  margin-top: 20rpx;
+  padding: 5rpx;
+}
+.item-title{
+
+}
+.post-info-container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+.item-time{
+  opacity: 50%;
+}
+/* 按钮 */
+.Button-container{
+  display: flex;
+  justify-content: flex-end;
+}
+.edit{
+  
+  margin-right: 60rpx;
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: white;
+  text-align: center;
+  background-color: blue;
+  border-radius: 15rpx;
+}
+.delete{
+  margin-right: 15rpx;
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: white;
+  text-align: center;
+  background-color: red;
+  border-radius: 15rpx;
+}

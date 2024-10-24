@@ -1,0 +1,148 @@
+<view class="updateactivity-Container">
+
+  <view class="header-Container" >
+    <swiper class="image-container" autoplay="true" interval="2000" duration="500" indicator-dots="true" circular="true" >
+      <block wx:for="{{activityDTO.imageList}}" wx:key="id">
+    <swiper-item>
+      <image src="{{item.imageUrl}}" class="image" mode="aspectFit"/>
+    </swiper-item>
+    </block>
+</swiper>
+  </view>
+
+<view class="name-Container">
+  <view class="name-text">活动名称</view>
+  <input type="text"  placeholder="{{name}}" class="name-value" bindinput="setname" value="{{name}}"/>
+</view>
+ 
+ <view class="subtitle-Container">
+  <view class="subtitle-text">活动副标题</view>
+  <input type="text"  placeholder="{{subtitle}}" class="subtitle-value" bindinput="setsubtitle" value="{{subtitle}}"/>
+ </view>
+
+ <view class="details-Container">
+  <view class="details-text">活动详情</view>
+  <input type="text"  placeholder="{{details}}" class="details-value" bindinput="setdetails" value="{{details}}"/>
+ </view>
+
+ <view class="address-Container">
+  <view class="address-text">活动地址</view>
+  <input type="text"  placeholder="{{address}}" class="address-value" bindinput="setaddress" value="{{address}}"/>
+ </view>
+
+ <view class="gatheringPlace-Container">
+  <view class="gatheringPlace-text">活动集合地址</view>
+  <input type="text"  placeholder="{{gatheringPlace}}" class="gatheringPlace-value" bindinput="setgatheringPlace" value="{{gatheringPlace}}"/>
+ </view>
+
+ <view class="organizer-Container">
+  <view class="organizer-text">活动负责人</view>
+  <input type="text"  placeholder="{{organizer}}" class="organizer-value" bindinput="setorganizer" value="{{organizer}}"/>
+ </view>
+
+ <view class="organizer-Container">
+  <view class="organizer-text">活动报名费用</view>
+  <input type="text"  placeholder="{{signupfee}}" class="organizer-value" bindinput="setsignupfee" value="{{signupfee}}"/>
+ </view>
+
+ <view class="organizerPhone-Container">
+  <view class="organizerPhone-text">活动手机号码</view>
+  <input type="number"  placeholder="{{organizerPhone}}" class="organizerPhone-value" bindinput="setorganizerPhone" value="{{organizerPhone}}"/>
+ </view>
+
+ <view class="signupCountMax-Container">
+  <view class="signupCountMax-text">最大报名人数</view>
+  <input type="number"  placeholder="{{signupCountMax}}" class="signupCountMax-value" bindinput="setsignupCountMax" value="{{signupCountMax}}"/>
+ </view>
+
+ <view class="signupstarttime-Container">
+  <view class="signupstarttime-text">报名开始时间</view>
+  <picker mode="time" value="{{signupstarttime}}"  bindchange="setsignupstarttime">
+    <view class="signupstarttime-picker">
+      当前选择: {{signupstarttime}}
+    </view>
+  </picker>
+</view>
+
+<view class="signupstartdata-Container">
+  <view class="signupstartdata-text">报名开始日期</view>
+  <picker mode="date" value="{{signupstartdata}}" bindchange="setsignupstartdata">
+    <view class="signupstartdata-picker">
+      当前选择: {{signupstartdata}}
+    </view>
+  </picker>
+</view>
+
+<view class="signupendtime-Container">
+  <view class="signupendtime-text">报名结束时间</view>
+  <picker mode="time" value="{{signupendtime}}"  bindchange="setsignupendtime">
+    <view class="signupendtime-picker">
+      当前选择: {{signupendtime}}
+    </view>
+  </picker>
+</view>
+
+<view class="signupenddate-Container">
+  <view class="signupenddate-text">报名结束日期</view>
+  <picker mode="date" value="{{signupenddate}}" bindchange="setsignupenddate">
+    <view class="signupenddate-picker">
+      当前选择: {{signupenddate}}
+    </view>
+  </picker>
+</view>
+
+<view class="starttime-Container">
+  <view class="starttime-text">活动开始时间</view>
+  <picker mode="time" value="{{starttime}}"  bindchange="setstarttime">
+    <view class="starttime-picker">
+      当前选择: {{starttime}}
+    </view>
+  </picker>
+</view>
+
+<view class="startdata-Container">
+  <view class="startdata-text">活动开始日期</view>
+  <picker mode="date" value="{{startdata}}" bindchange="setstartdata">
+    <view class="startdata-picker">
+      当前选择: {{startdata}}
+    </view>
+  </picker>
+</view>
+
+<view class="endtime-Container">
+  <view class="endtime-text">活动结束时间</view>
+  <picker mode="time" value="{{endtime}}"  bindchange="setendtime">
+    <view class="endtime-picker">
+      当前选择: {{endtime}}
+    </view>
+  </picker>
+</view>
+
+<view class="enddata-Container">
+  <view class="enddata-text">活动结束日期</view>
+  <picker mode="date" value="{{enddata}}" bindchange="setenddata">
+    <view class="enddata-picker">
+      当前选择: {{enddata}}
+    </view>
+  </picker>
+</view>
+
+<view class="endtime-Container">
+  <view class="endtime-text">集合时间</view>
+  <picker mode="time" value="{{gatheringtime}}"  bindchange="setgatheringtime">
+    <view class="endtime-picker">
+      当前选择: {{gatheringtime}}
+    </view>
+  </picker>
+</view>
+
+<view class="enddata-Container">
+  <view class="enddata-text">集合日期</view>
+  <picker mode="date" value="{{gatheringdata}}" bindchange="setgatheringdata">
+    <view class="enddata-picker">
+      当前选择: {{gatheringdata}}
+    </view>
+  </picker>
+</view>
+<view class="submit-button" bind:tap="submitForm">提交修改</view>
+</view>

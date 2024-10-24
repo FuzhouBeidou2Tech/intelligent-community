@@ -27,7 +27,31 @@
     "pages/QuickService/Domesticservice/Domesticservice",
     "pages/chats/addfriends/addfriends",
     "pages/Community/Communityhome/Communityhome",
+<<<<<<< HEAD
     "pages/chats/pendingfriendsview/pendingfriendsview"
+=======
+    "pages/chats/pendingfriendsview/pendingfriendsview",
+    "pages/Post/Posthome/Posthome",
+    "pages/Post/Postview/Postview",
+    "pages/Post/myPost/myPost",
+    "pages/QuickService/Repair/Repairhome/Repairhome",
+    "pages/QuickService/Repair/AddRepair/AddRepair",
+    "pages/Post/addPost/addPost",
+    "pages/Post/favoritePost/favoritePost",
+    "pages/Post/editPost/editPost",
+    "pages/admfuncton/deletePost/deletePost",
+    "pages/QuickService/activity/activityhome/activityhome",
+    "pages/QuickService/activity/applyactivity/applyactivity",
+    "pages/QuickService/activity/activityview/activityview",
+    "pages/QuickService/advice/advicehome/advicehome",
+    "pages/admfuncton/activityhome/activityhome",
+    "pages/admfuncton/updateactivity/updateactivity",
+    "pages/admfuncton/publishactivity/publishactivity",
+    "pages/Shopping/shoppinghome/shoppinghome",
+    "pages/QuickService/advice/addadvice/addadvice",
+    "pages/Shopping/produectview/productview",
+    "pages/Shopping/Shoppingview/Shoppingview"
+>>>>>>> 9a3cfc8 (新加模块:商城模块)
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -40,6 +64,7 @@
         "pagePath": "pages/index/index",
         "iconPath": "/images/icons/home.png",
         "selectedIconPath": "/images/icons/home.png",
+<<<<<<< HEAD
         "text": "Home0"
       },
       {
@@ -47,6 +72,21 @@
         "iconPath": "/images/icons/logo.png",
         "selectedIconPath": "/images/icons/logo.png",
         "text": "Home1"
+=======
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/Post/Posthome/Posthome",
+        "iconPath": "/images/icons/社区.png",
+        "selectedIconPath": "/images/icons/社区.png",
+        "text": "论坛"
+      },
+      {
+        "pagePath": "pages/Shopping/shoppinghome/shoppinghome",
+        "iconPath": "/images/icons/商城.png",
+        "selectedIconPath": "/images/icons/商城.png",
+        "text": "商城"
+>>>>>>> 9a3cfc8 (新加模块:商城模块)
       },
       {
         "pagePath": "pages/user/user",

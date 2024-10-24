@@ -1,0 +1,180 @@
+/* pages/Post/Posthome/Posthome.wxss */
+.Posthome-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 视口高度 */
+  background-color: #f0f0f0;
+}
+
+.Posthome-header-container {
+  height: 70rpx; /* 根据需要调整 */
+  line-height: 70rpx;
+}
+
+.header-text-container {
+  display: flex;
+}
+
+.text-new, .text-hot {
+  font-size: 40rpx;
+  margin-left: 30rpx;
+}
+
+.Posthome-body-container {
+  flex: 1; /* 让中间内容自动占据剩余空间 */
+  overflow: auto; /* 确保内容可以滚动 */
+}
+
+.PostList {
+  background-color: white;
+  border-radius: 25rpx;
+  margin-top: 1rpx;
+  padding: 20rpx 30rpx; /* 合并 padding 配置 */
+}
+
+.Posthome-body-title-container {
+  display: flex;
+}
+
+.Posthome-body-title-icon {
+  height: 100rpx;
+  width: 100rpx;
+}
+
+.Posthome-body-title-text-container {
+  padding-left: 20rpx;
+}
+
+.post-name {
+  font-size: 40rpx;
+}
+
+.post-createtime {
+  font-size: 20rpx;
+  opacity: 0.5; /* 50% 透明度 */
+}
+/* 关注按钮 */
+.unfollow-icon{
+  margin-left: 200rpx;
+  background-color: #1c89fd;
+  color: white;
+  height: 70rpx;
+  line-height: 70rpx;
+  width: 140rpx;
+  text-align: center;
+  border-radius: 15rpx;
+}
+.follow-icon{
+  margin-left: 200rpx;
+  background-color: #ff4d4d; /* 改变背景色，与unfollow-icon区分开 */
+  color: black; /* 改变文字颜色 */
+  height: 70rpx;
+  line-height: 70rpx;
+  width: 140rpx;
+  text-align: center;
+  border-radius: 15rpx;
+  border: 2rpx solid #ff4d4d; /* 增加边框，与unfollow-icon区别 */
+  font-weight: bold; /* 加粗文字 */
+}
+.post-title {
+  font-size: 30rpx;
+}
+
+.post-content {
+  font-size: 25rpx;
+  margin-top: 30rpx;
+}
+
+.Posthome-footer-container {
+  display: flex;
+  justify-content: space-between;
+  height: 70rpx;
+}
+
+.good-container, .review-container, .share-container {
+  display: flex;
+  flex-basis: 33%;
+  border: 1rpx solid black;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.good-container {
+  border-radius: 0 0 0 20rpx; /* 左下角圆角 */
+}
+
+.share-container {
+  border-radius: 0 0 20rpx 0 ; /* 右下角圆角 */
+}
+
+.good-icon, .review-icon, .share-icon {
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.footer-container {
+  height: 100rpx; /* 根据需要调整 */
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  align-items: center;
+  border-top: 1rpx solid gray;
+}
+.my-post{
+ 
+}
+
+/*  图片列表容器 */
+/* 图片列表总容器 */
+.image-list-conntainer {
+  display: flex;
+  flex-wrap: wrap; /* 允许换行 */
+  justify-content: flex-start; /* 从左到右对齐 */
+}
+
+/* 单个图片列表容器 */
+.image-list {
+  display: flex;
+  flex-basis: calc((100% - 60rpx) / 3); /* 每个图片占三分之一减去间隙 */
+  margin: 10rpx; /* 图片间距 */
+  box-sizing: border-box; /* 包括padding和border在内进行宽高计算 */
+}
+
+/* 单个图片容器 */
+.image-container {
+  width: 100%;
+  height: 0; /* 设为0以便用padding占位 */
+  padding-top: 100%; /* 1:1比例占位 */
+  position: relative; /* 为了让子元素定位 */
+  overflow: hidden; /* 超出隐藏，确保裁剪 */
+}
+
+/* 上传的图片样式 */
+.uploaded-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover; /* 保持图片比例填充容器 */
+}
+
+/* 发布按钮 */
+.publish-button {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+ 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 999; /* 确保按钮在最上层 */
+}
+
+.publish-icon {
+  width: 100%;
+  height: 100%;
+}

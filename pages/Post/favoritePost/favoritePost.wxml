@@ -1,0 +1,23 @@
+<!--pages/Post/favoritePost/favoritePost.wxml-->
+<!--pages/Post/myPost/myPost.wxml-->
+<view class="myPost-container">
+  <view class="myPost-header-container">
+  <image src="/images/icons/qq.png" class="user-icon"/>
+  <view class="username">{{username}}</view>
+  </view>
+
+  <view class="item-container">
+    <view class="item-putpost">我的收藏</view>
+  </view>
+
+  <view class="myPost-body-container">
+    <view wx:for="{{mypostlist}}" class="post-list" bind:tap="PostviewClick" data-id="{{item.id}}">
+      <view class="item-title">{{item.title}}</view>
+      <view class="post-info-container">
+        <view class="item-time">{{item.updatedAt}}</view>
+        <view class="item-time">评论{{item.commentCount}}</view>
+        <view class="item-time">点赞{{item.likeCount}}</view>
+      </view>
+    </view>
+  </view>
+</view>

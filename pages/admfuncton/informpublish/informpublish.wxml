@@ -8,6 +8,21 @@
         <text class="placeholder" bindtap="selectNoticeType">{{noticeType || '请选择 >>'}}</text>
       </view>
     </view>
+
+    <view class="form-item">
+      <text class="label">发布部门</text>
+      <view class="input-right">
+        <text class="placeholder" bindtap="selectDepartment">{{department || '请选择 >>'}}</text>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="label">是否是警告信息</text>
+      <view class="input-right">
+        <text class="placeholder" bindtap="selectUrged">{{urgency_status || '请选择 >>'}}</text>
+      </view>
+    </view>
+
     <view class="divider"></view>
     
     <!-- 填写标题 -->
@@ -45,9 +60,9 @@
 </view>
   </view>
 </view>
-
+ 
   <!-- 提交按钮 -->
   <view class="button-section">
-    <button class="submit-button" bindtap="submitForm">提交</button>
+    <button class="submit-button" bindtap="submitClick">提交</button>
   </view>
 </view>

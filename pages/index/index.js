@@ -9,10 +9,7 @@ Page({
       { id: 2, name: '商家2', image: '/images/business2.jpg' },
       { id: 3, name: '商家3', image: '/images/business3.jpg' },
     ],
-    activities: [
-      { id: 1, title: '社区运动会', description: '参加社区运动会，强身健体。', image: '/images/examples/activity1.jpg' },
-      { id: 2, title: '亲子阅读', description: '和孩子一起享受阅读的快乐时光。', image: '/images/examples/activity2.jpg' },
-    ],
+    activities: [],
     promotions: [
       { id: 1, title: '商家促销1', description: '享受限时折扣。', image: '/images/examples/activity1.jpg' },
       { id: 2, title: '商家促销2', description: '会员专属优惠。', image: '/images/examples/activity2.jpg' }
@@ -40,6 +37,28 @@ Page({
           notificationTitle:res.data
         })
       }
+    });
+    wx.request({
+      url: 'http://localhost:8080/Activity/getActivities',
+      method:'GET',
+      header: {
+        'Content-Type': 'application/json'  // 请求头，确保是 JSON 格式
+      },
+      success:(res)=>{
+        if(res.data.code==0){
+          this.setData({
+            activities:res.data.data
+          })
+          console.log("活动",this.data.activities);
+        }else{
+          wx.showToast({
+            title: '服务器异常,请稍后重试',
+            icon: 'none',
+            duration: 2000
+          });
+          console.error('数据提交失败：', res.data.message);
+        }
+      }
     })
   },
 
@@ -55,7 +74,41 @@ Page({
       latestAnnouncement: announcements[0]
     });
   },
-
+  // 进去活动主页
+  activityviewClick(e){
+    const activityId=e.currentTarget.dataset.id;
+    const userId=wx.getStorageSync('user_Id');
+    wx.request({
+      url: `http://localhost:8080/Activity/getActivityDTO?activityId=${activityId}&userId=${userId}`,
+      method:'GET',
+      header: {
+        'Content-Type': 'application/json'  // 请求头，确保是 JSON 格式
+      },
+      success:(res)=>{
+        if(res.data.code==0){
+          app.globalData.globalActivity=res.data.data;
+          console.log("activity:",app.globalData.globalActivity);
+          wx.navigateTo({
+            url: '/pages/QuickService/activity/activityview/activityview',
+          })
+        }else{
+          wx.showToast({
+            title: '服务器异常,请稍后重试',
+            icon: 'none',
+            duration: 2000
+          });
+          console.error('数据提交失败：', res.data.message);
+        }
+      },
+      fail:(res)=>{
+        wx.showToast({
+          title: '服务器异常,请稍后重试',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    })
+  },
   fetchActivities() {
     // Simulate fetching community activities
     console.log("Fetching community activities");
@@ -76,7 +129,7 @@ Page({
   },
   adviceClick(){
     wx.navigateTo({
-      url: '/pages/QuickService/advice/advice',
+      url: '/pages/QuickService/advice/advicehome/advicehome',
     })
   },
   intonotification: function(e) {
@@ -97,5 +150,40 @@ Page({
     wx.navigateTo({
       url: '/pages/QuickService/Domesticservice/Domesticservice',
     })
+<<<<<<< HEAD
+=======
+  },
+  //物业管家
+  manage(){
+    if(wx.getStorageSync('user_Id')){
+      
+    }
+    else{
+     wx.showToast({
+       title: '请先登录',
+       icon:'error',
+     })
+    }
+  },
+  //物业报修
+  repairClick(){
+    wx.navigateTo({
+      
+      url: '/pages/QuickService/Repair/Repairhome/Repairhome',
+    })
+  },
+  //社区活动
+  communityactivityClick(){
+    wx.navigateTo({
+      url: '/pages/QuickService/activity/activityhome/activityhome',
+      
+    })
+  },
+  //投诉建议
+  adviceClick(){
+    wx.navigateTo({
+      url: '/pages/QuickService/advice/advicehome/advicehome',
+    })
+>>>>>>> 9a3cfc8 (新加模块:商城模块)
   }
 });

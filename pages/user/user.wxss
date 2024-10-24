@@ -19,6 +19,10 @@
   height: 90rpx;
 }
 
+.chat-icon{
+  width: 90rpx;
+  height: 90rpx;
+}
 /* 卡片样式  */
 
 .card {
@@ -63,8 +67,9 @@
   font-size: 35rpx;
 }
 .user-status{
-  margin-left: 250rpx;
+  margin-left: 170rpx;
   margin-top: 25rpx;
+  margin-right: 30rpx;
 }
 /* body-container */
 /* pages/setting/setting.wxss */

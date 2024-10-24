@@ -1,0 +1,32 @@
+<!--pages/admfuncton/deletePost/deletePost.wxml-->
+<view class="Posthome-container">
+  <view class="Posthome-header-container">
+    <view class="header-text-container">
+      <view class="text-new">最新</view>
+      <view class="text-hot">最热</view>
+    </view>
+  </view>
+
+  <scroll-view class="Posthome-body-container" scroll-y="true" scroll-with-animation="true" >
+    <view wx:for="{{PostList}}"  wx:for-index="index" class="PostList"  bind:tap="PostviewClick" data-id="{{item.id}}">
+    <view class="Posthome-body-title-container">
+      <image src="/images/icons/qq.png"  class="Posthome-body-title-icon" />
+      <view class="Posthome-body-title-text-container">
+        <view class="post-name">{{item.author}}</view>
+        <view class="post-createtime">{{item.createdAt}}</view>
+      </view>
+    </view>
+      <view class="post-title">{{item.title}}</view>
+      <view class="post-content">{{item.content}}</view>
+<!-- 图片展示 -->
+    <view class="image-list-conntainer">
+      <view wx:for="{{item.imageList}}" wx:key="*this" class="image-list">
+        <view class="image-container">
+          <image class="uploaded-image" src="{{item.imageUrl}}" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+    <view class="delete-button" catchtap="deleteClick" data-id="{{item.id}}">删除</view>
+  </view>
+</scroll-view>
+</view>

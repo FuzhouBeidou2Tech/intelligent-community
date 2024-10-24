@@ -1,0 +1,110 @@
+/* pages/QuickService/activity/activityhome/activityhome.wxss */
+.activityhome-Container{
+  background-color: #f0f0f0;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 15rpx;
+}
+.activityselect-Container{
+  display: flex;
+  padding: 10rpx;
+  background-color: white;
+}
+/* .unselect{
+  color: gray;
+  font-size: 40rpx;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+}
+.select{
+  color: blue;
+  font-size: 40rpx;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  border-bottom: 1px solid blue; 
+} */
+
+.unselect,
+.select {
+  color: gray;
+  font-size: 40rpx;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  position: relative; /* 使子元素相对定位 */
+}
+
+.select {
+  color: blue;
+}
+
+.select::after {
+  content: "";
+  display: block;
+  width: 100%; /* 与父元素等宽 */
+  height: 2rpx; /* 下划线高度 */
+  background-color: blue;
+  position: absolute;
+  bottom: -10rpx; /* 调整使下划线与父容器底部对齐 */
+  left: 0;
+}
+
+/*  */
+.activitylist-Container {
+  background-color: white;
+  border-radius: 8rpx;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+  overflow: hidden;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.titleImage {
+  display: block;
+  width: 100%;
+  height: 300rpx; /* 可根据需要调整高度 */
+  object-fit: cover;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.item-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin: 24rpx;
+  color: #333;
+}
+
+.item-common {
+  font-size: 24rpx;
+  color: #666;
+  margin: 0 24rpx 16rpx 24rpx;
+}
+
+.apply-button {
+  display: block;
+  text-align: center;
+  margin: 24rpx;
+  padding: 20rpx 0;
+  background-color: #ff5722; /* 橙色背景 */
+  color: white;
+  border-radius: 8rpx;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.apply-button:hover {
+  background-color: #e64a19; /* 加深的橙色 */
+}
+
+.unapply-button{
+  display: block;
+  text-align: center;
+  margin: 24rpx;
+  padding: 20rpx 0;
+  background-color: gray; /* 橙色背景 */
+  color: white;
+  border-radius: 8rpx;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}

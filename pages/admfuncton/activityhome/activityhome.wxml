@@ -1,0 +1,29 @@
+<!--pages/admfuncton/activityhome/activityhome.wxml-->
+<view class="activityhome-Container">
+  <view class="activityselect-Container">
+    <view class="{{selectid == 0 ? 'select' : 'unselect'}}"    
+          bindtap="onUnderwayTap">进行中</view>
+    <view class="{{selectid == 1 ? 'select' : 'unselect'}}" 
+          bindtap="onFinishTap">已结束</view>
+  </view>
+
+  <scroll-view class="Posthome-body-container" scroll-y="true" scroll-with-animation="true" >
+  <view wx:for="{{activitylist}}" class="activitylist-Container" bind:tap="viewClick" wx:for-index="index" data-index="{{index}} ">
+    <image src="{{item.titleImage}}" class="titleImage"/>
+    <view class="item-title">{{item.name}}</view>
+    <view class="item-common">活动时间开始:{{item.startTime}}</view>
+    <view class="item-common">活动结束时间:{{item.endTime}}</view>
+    <view class="item-common">活动地点:{{item.address}}</view>
+    <view class="item-common">报名人数:{{item.signupCount}}/{{item.signupCountMax}}</view>
+    <view class="button-Container">
+      <view class="apply-button"  
+       data-activityid="{{item.id}}" bind:tap="updateClick"> 修改</view>
+      <view class="apply-button" bind:tap="deleteClick" data-activityid="{{item.id}}" 
+        data-offlineactivityid="{{item.offlineActivityId}}">删除</view>
+  </view>
+  </view>
+  </scroll-view>
+  <view class="foot-Container">
+    <view class="issue-Button" bind:tap="publishactivityClick">发布活动</view>
+  </view>
+</view>

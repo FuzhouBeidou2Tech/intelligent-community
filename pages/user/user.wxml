@@ -17,6 +17,7 @@
   </block>
 </view>
   <view class="user-status">{{userstatusname}}</view>
+  <image src="/images/icons/chat.png" class="chat-icon" bind:tap="chatClick"/>
   </view>
 
 
@@ -67,7 +68,7 @@
     </view>
   </view>
 
-  <view class="list-item" bindtap="admClick">
+  <view class="list-item" bindtap="admClick" wx:if="{{userstatus==2}}">
     <text class="icon">🚪</text>
     <text class="item-title">管理员功能</text>
     <view class="right-section">

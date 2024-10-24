@@ -1,0 +1,176 @@
+/* pages/Post/addPost/addPost.wxss */
+.addPost-container {
+  padding: 0;
+  background-color: #f5f5f5;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* 顶部导航栏样式 */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background-color: white;
+  padding: 0 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.back-arrow {
+  height: 24px;
+  width: 24px;
+}
+
+.nav-title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 表单部分样式 */
+.form-section {
+  margin: 10px 0;
+  background-color: white;
+  width: 100%;
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.label-form-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+
+.label {
+  flex: 1;
+  font-size: 16px;
+  color: #333;
+  width: 50rpx;
+  
+}
+
+.textarea{
+  
+}
+.input-right {
+  flex: 2;
+  text-align: right;
+}
+
+.placeholder {
+  color: #999;
+}
+
+.input {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  background-color: white;
+}
+
+.textarea {
+  width: 100%;
+  height: 100px;
+  padding: 5px;
+  border: none;
+  background-color: white;
+}
+
+.divider {
+  height: 1px;
+  background-color: #e5e5e5;
+  margin-left: 10px;
+}
+
+/* 图标部分样式 */
+.icon-section {
+  display: flex;
+  justify-content: left;
+  padding: 10px;
+  width: 100vw;
+  height: 400rpx;
+  background-color: white;
+  
+}
+
+.icon-text-container {
+  margin-left: 10rpx;
+}
+
+.icon-text {
+  margin-top: 105rpx;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 10rpx;
+  margin-top: 15rpx;
+}
+
+/*  图片列表容器 */
+.image-list {
+  display: flex;
+  flex-wrap: wrap; /* 允许换行 */
+  justify-content: flex-start; /* 图片水平排列 */
+  margin-top: 10px;
+}
+
+/* 单个图片容器 */
+.image-container {
+  position: relative;
+  width: 150rpx;
+  height: 150rpx;
+  margin: 10rpx;
+  flex-basis: 150rpx; /* 确定每个图片容器的基础宽度 */
+}
+
+/* 上传的图片样式 */
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+/* 删除图标样式 */
+.delete-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+}
+.add-image{
+  font-size: 25rpx;
+  text-align: center;
+}
+/* 按钮部分样式 */
+.button-section {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.submit-button {
+  width: 200px;
+  height: 40px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border-radius: 20px;
+  text-align: center;
+ 
+}

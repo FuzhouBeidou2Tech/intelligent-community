@@ -1,0 +1,163 @@
+/* pages/business/business.wxss */
+.container {
+  display: flex;
+  padding: 20px;
+  background-color: #f9f9f9;
+  width: 100%;
+  overflow: hidden;
+}
+
+.search-bar {
+  display: flex;
+  padding: 10px;
+  background-color: #fff;
+  width: 100%;
+  position: relative;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding-right: 60rpx; /* 确保输入框右侧有足够的空间放置图标 */
+}
+/* 删除图片 */
+.delete-icon {
+  position: absolute;
+  right: 230rpx; /* 根据实际情况调整这个值，使其位于按钮左边 */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40rpx;  /* 根据图标大小调整 */
+  height: 40rpx; /* 根据图标大小调整 */
+}
+.search-button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 10px;
+}
+
+/* Scroll view for horizontal scrolling */
+.category-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.category-scroll-view {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  padding: 10px 0;
+  height: 40px;
+}
+
+/* Individual category items */
+.category-item {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  font-size: 16px;
+  text-align: center;
+  height: 20px;
+}
+.oncategory-item{
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #007aff;
+  border-radius: 20px;
+  font-size: 16px;
+  text-align: center;
+  height: 20px;
+}
+/* Container for the store list */
+.store-container {
+  padding: 20px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Each store card */
+.store-card {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.store-info {
+  position: relative;
+}
+
+/* Store image */
+.store-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Store name */
+.store-name-container {
+  display: inline-block;
+}
+
+.store-name {
+  margin-top: 10px;
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  top: 0px;
+}
+
+/* Scroll view for horizontal product list */
+.product-scroll-view {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+/* Individual product item */
+.product-item {
+  display: inline-block;
+  margin-right: 10px;
+  
+}
+
+/* Product image */
+.product-image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+  object-fit: cover;
+  display: block; /* Ensures image behaves as a block element */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+/* Product name */
+.product-name {
+  display: inline-block; /* 确保应用宽度限制 */
+  margin-top: 5px;
+  font-size: 25rpx;
+  color: #333;
+  max-width: 100rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  
+}
+.product-price{
+  font-size: 20rpx;
+  color: red;
+}

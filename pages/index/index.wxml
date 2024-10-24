@@ -40,11 +40,11 @@
         <text>停车充值</text>
       </view>
       <view class="service-item">
-        <image src="/images/icons/物业报修.png" mode="" class="item-icon"/>
+        <image src="/images/icons/物业报修.png" mode="" class="item-icon" bind:tap="repairClick" />
         <text>物业报修</text>
       </view>
       <view class="service-item">
-        <image src="/images/icons/社区活动.png" mode="" class="item-icon"/>
+        <image src="/images/icons/社区活动.png" mode="" class="item-icon" bind:tap="communityactivityClick"/>
         <text>社区活动</text>
       </view>
       <view class="service-item">
@@ -60,7 +60,7 @@
         <text>家政服务</text>
       </view>
       <view class="service-item">
-        <image src="/images/icons/投诉建议.png" mode="" class="item-icon"/>
+        <image src="/images/icons/投诉建议.png" mode="" class="item-icon" bind:tap="adviceClick"/>
         <text>投诉建议</text>
       </view>
     </view>
@@ -70,11 +70,11 @@
   <view class="section">
     <view class="section-title">活动推荐</view>
     <view class="activities">
-      <view class="activity-item" wx:for="{{activities}}" wx:key="id">
-        <image src="{{item.image}}" class="activity-image"></image>
+      <view class="activity-item" wx:for="{{activities}}" data-id="{{item.id}}" bind:tap="activityviewClick">
+        <image src="{{item.titleImage}}" class="activity-image"></image>
         <view class="activity-info">
-          <text class="activity-title">{{item.title}}</text>
-          <text class="activity-description">{{item.description}}</text>
+          <text class="activity-title">{{item.name}}</text>
+          <text class="activity-description">{{item.subtitle}}</text>
         </view>
       </view>
     </view>
