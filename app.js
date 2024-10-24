@@ -119,9 +119,7 @@ App({
     globalMessage:[],
     globalsocket:null,
     globalNotification:null,
-<<<<<<< HEAD
-    globalpendinglist:[]
-=======
+
     globalpendinglist:[],
     globalPostid:null,
     globalPost:'',//全局帖子表
@@ -129,7 +127,7 @@ App({
     globalActivityId:'',//全局活动表
     globalActivity:'',
     globalproductId:''//全局商品id
->>>>>>> 9a3cfc8 (新加模块:商城模块)
+
   }, 
 })
 

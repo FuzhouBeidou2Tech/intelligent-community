@@ -27,9 +27,7 @@
     "pages/QuickService/Domesticservice/Domesticservice",
     "pages/chats/addfriends/addfriends",
     "pages/Community/Communityhome/Communityhome",
-<<<<<<< HEAD
-    "pages/chats/pendingfriendsview/pendingfriendsview"
-=======
+
     "pages/chats/pendingfriendsview/pendingfriendsview",
     "pages/Post/Posthome/Posthome",
     "pages/Post/Postview/Postview",
@@ -51,7 +49,7 @@
     "pages/QuickService/advice/addadvice/addadvice",
     "pages/Shopping/produectview/productview",
     "pages/Shopping/Shoppingview/Shoppingview"
->>>>>>> 9a3cfc8 (新加模块:商城模块)
+
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -64,15 +62,6 @@
         "pagePath": "pages/index/index",
         "iconPath": "/images/icons/home.png",
         "selectedIconPath": "/images/icons/home.png",
-<<<<<<< HEAD
-        "text": "Home0"
-      },
-      {
-        "pagePath": "pages/chats/chat/chat",
-        "iconPath": "/images/icons/logo.png",
-        "selectedIconPath": "/images/icons/logo.png",
-        "text": "Home1"
-=======
         "text": "主页"
       },
       {
@@ -86,7 +75,7 @@
         "iconPath": "/images/icons/商城.png",
         "selectedIconPath": "/images/icons/商城.png",
         "text": "商城"
->>>>>>> 9a3cfc8 (新加模块:商城模块)
+
       },
       {
         "pagePath": "pages/user/user",

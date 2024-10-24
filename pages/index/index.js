@@ -150,8 +150,7 @@ Page({
     wx.navigateTo({
       url: '/pages/QuickService/Domesticservice/Domesticservice',
     })
-<<<<<<< HEAD
-=======
+
   },
   //物业管家
   manage(){
@@ -184,6 +183,6 @@ Page({
     wx.navigateTo({
       url: '/pages/QuickService/advice/advicehome/advicehome',
     })
->>>>>>> 9a3cfc8 (新加模块:商城模块)
+
   }
 });
