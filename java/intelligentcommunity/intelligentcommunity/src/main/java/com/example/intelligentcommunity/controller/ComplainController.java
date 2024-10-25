@@ -54,4 +54,44 @@ public class ComplainController {
             return Result.error(e.getMessage());
         }
     }
+//    获取全部投诉建议
+    @GetMapping("getComplainallnoId")
+    public Result<List<ComplaintDTO>> getComplainallnoId(){
+        try {
+            return Result.success(complaintService.findAllComplaints());
+        }catch (Exception e){
+            return Result.error(e.getMessage());
+        }
+    }
+
+    //   处理中
+    @PutMapping("SetINPROGRESS")
+    public Result setINPROGRESS(@RequestParam int Id) {
+        try {
+            complaintService.updateINPROGRESS(Id);
+            return Result.success();
+        }catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+    }
+    //处理完成
+    @PutMapping("SetCOMPLETED")
+    public Result setCOMPLETED(@RequestParam int Id) {
+        try {
+            complaintService.updateCOMPLETED(Id);
+            return Result.success();
+        }catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+    }
+    //审核失败
+    @PutMapping("SetREJECTED")
+    public Result setREJECTED(@RequestParam int Id) {
+        try {
+            complaintService.updateREJECTED(Id);
+            return Result.success();
+        }catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+    }
 }

@@ -3,6 +3,7 @@ package com.example.intelligentcommunity.service;
 import com.example.intelligentcommunity.dao.Business;
 import com.example.intelligentcommunity.dao.BusinessCategory;
 import com.example.intelligentcommunity.dao.Product;
+import com.example.intelligentcommunity.dao.RepairRequest;
 import com.example.intelligentcommunity.dto.BusinessDTO;
 import com.example.intelligentcommunity.dto.ProductDTO;
 
@@ -21,4 +22,6 @@ public interface BusinessService {
     ProductDTO findProductById(Integer Id);
 //根据id搜索店铺
     BusinessDTO findBusinessById(Integer Id);
+
+
 }

@@ -57,4 +57,31 @@ public class ComplaintServiceimpl implements ComplaintService {
     public void deleteComplaint(Integer Id) {
         complaintMapper.deleteComplaint(Id);
     }
+
+    @Override
+    public List<ComplaintDTO> findAllComplaints() {
+        return complaintMapper.findAllComplaints().stream().map(complaint -> {
+            ComplaintDTO complaintDTO = new ComplaintDTO();
+            complaintDTO.setComplaint(complaint);
+            if(complaintDTO.getComplaint().getImageGroupId()!=null){
+                complaintDTO.setImages(imageService.findImageByGroupId(complaintDTO.getComplaint().getImageGroupId()));
+            }
+            return complaintDTO;
+        }).toList();
+    }
+
+    @Override
+    public void updateINPROGRESS(Integer Id) {
+        complaintMapper.updateINPROGRESS(Id);
+    }
+
+    @Override
+    public void updateCOMPLETED(Integer Id) {
+        complaintMapper.updateCOMPLETED(Id);
+    }
+
+    @Override
+    public void updateREJECTED(Integer Id) {
+        complaintMapper.updateREJECTED(Id);
+    }
 }

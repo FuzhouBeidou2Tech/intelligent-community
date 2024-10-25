@@ -44,4 +44,33 @@ public class RepairRequestServiceimpl implements RepairRequestService {
     public void deleterepairRequest(int Id) {
         repairRequestMapper.deleterepairRequest(Id);
     }
+
+    @Override
+    public List<RepairRequestDTO> getRepairRequestsall() {
+        List<RepairRequestDTO> repairRequestDTOList= repairRequestMapper.getRepairRequestsall().stream().map(repairequest->{
+            RepairRequestDTO RepairRequestDTO=new RepairRequestDTO();
+
+            RepairRequestDTO.setRepairRequest(repairequest);
+
+            RepairRequestDTO.setImages(imageMapper.findImageByGroupId(repairequest.getImageGroupId()));
+            return RepairRequestDTO;
+        }).collect(Collectors.toList());
+
+        return repairRequestDTOList;
+    }
+
+    @Override
+    public void updateRepairsINPROGRESS(Integer Id) {
+        repairRequestMapper.updateRepairsINPROGRESS(Id);
+    }
+
+    @Override
+    public void updateRepairsCOMPLETED(Integer Id) {
+        repairRequestMapper.updateRepairsCOMPLETED(Id);
+    }
+
+    @Override
+    public void updateRepairsREJECTED(Integer Id) {
+        repairRequestMapper.updateRepairsREJECTED(Id);
+    }
 }

@@ -1,10 +1,7 @@
 package com.example.intelligentcommunity.mapper;
 
 import com.example.intelligentcommunity.dao.RepairRequest;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -21,5 +18,15 @@ public interface RepairRequestMapper {
     @Delete("delete from repairrequests where id=#{Id}")
     void deleterepairRequest(int Id);
 
-
+    @Select("select * from repairrequests  order by created_at DESC")
+    List<RepairRequest> getRepairRequestsall();
+//修改维修状态为处理中
+    @Update("update repairrequests set status='IN_PROGRESS' where id=#{Id}")
+    void updateRepairsINPROGRESS(Integer Id);
+//    修改维修状态为处理成功
+    @Update("update repairrequests set status='COMPLETED' where id=#{Id}")
+    void updateRepairsCOMPLETED(Integer Id);
+//修改维修状态为审核失败
+    @Update("update repairrequests set status='REJECTED' where id=#{Id}")
+    void updateRepairsREJECTED(Integer Id);
 }

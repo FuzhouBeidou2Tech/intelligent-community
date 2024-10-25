@@ -24,7 +24,7 @@ public class RepairRequestController {
     @Autowired
     ImageService imageService;
 
-    @GetMapping("/getRepairAll")
+    @GetMapping("/getRepair")
     public Result<List<RepairRequestDTO>> getAllRepairRequest(@RequestParam int userId) {
         try {
             return Result.success(repairRequestService.getRepairRequests(userId));
@@ -80,6 +80,45 @@ public class RepairRequestController {
             repairRequestService.deleterepairRequest(Id);
             return Result.success();
         }catch (Exception e){
+            return Result.error(e.getMessage());
+        }
+    }
+
+    @GetMapping("getRepairAll")
+   public Result<List<RepairRequestDTO>> getRepairRequestsall(){
+        try {
+            return Result.success(repairRequestService.getRepairRequestsall());
+        }catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+   }
+//   处理中
+    @PutMapping("SetINPROGRESS")
+   public Result setINPROGRESS(@RequestParam int Id) {
+        try {
+            repairRequestService.updateRepairsINPROGRESS(Id);
+            return Result.success();
+        }catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+   }
+//处理完成
+    @PutMapping("SetCOMPLETED")
+    public Result setCOMPLETED(@RequestParam int Id) {
+        try {
+            repairRequestService.updateRepairsCOMPLETED(Id);
+            return Result.success();
+        }catch (Exception e) {
+            return Result.error(e.getMessage());
+        }
+    }
+//审核失败
+    @PutMapping("SetREJECTED")
+    public Result setREJECTED(@RequestParam int Id) {
+        try {
+            repairRequestService.updateRepairsREJECTED(Id);
+            return Result.success();
+        }catch (Exception e) {
             return Result.error(e.getMessage());
         }
     }

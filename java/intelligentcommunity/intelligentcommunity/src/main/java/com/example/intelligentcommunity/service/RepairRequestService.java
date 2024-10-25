@@ -16,4 +16,12 @@ public interface RepairRequestService {
     void addRepairRequest(RepairRequest repairRequest);
 
     void deleterepairRequest(int Id);
+//获取全局维修表
+    List<RepairRequestDTO> getRepairRequestsall();
+
+    void updateRepairsINPROGRESS(Integer Id);
+
+    void updateRepairsCOMPLETED(Integer Id);
+
+    void updateRepairsREJECTED(Integer Id);
 }

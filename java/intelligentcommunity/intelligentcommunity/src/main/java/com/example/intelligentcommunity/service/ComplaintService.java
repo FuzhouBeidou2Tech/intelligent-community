@@ -13,4 +13,12 @@ public interface ComplaintService {
     void insertComplaint(ComplaintRequest complaintrequest);
 
     void deleteComplaint(Integer Id);
+
+    List<ComplaintDTO> findAllComplaints();
+
+    void updateINPROGRESS(Integer Id);
+
+    void updateCOMPLETED(Integer Id);
+
+    void updateREJECTED(Integer Id);
 }
