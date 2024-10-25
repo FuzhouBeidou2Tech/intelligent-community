@@ -1,0 +1,134 @@
+/* pages/admfuncton/repairhome/repairhome.wxss */
+/* pages/QuickService/Repair/Repairhome/Repairhome.wxss */
+.Repairhome-Container{
+  background: #f0f0f0;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 视口高度 */
+}
+.Repairhome-body-container{
+  flex: 1; /* 让中间内容自动占据剩余空间 */
+  overflow: auto; /* 确保内容可以滚动 */
+  padding-bottom: 15rpx;
+}
+.RepairList{
+  width: 95%;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 10rpx;
+  border-radius: 10rpx;
+  padding: 5rpx;
+  
+}
+.RepairList-Title-Container{
+  display: flex;
+  justify-content: space-between;
+}
+.describe{
+ position: relative;
+}
+
+.describe::after {
+  content: ""; /* 生成伪元素 */
+  position: absolute; /* 绝对定位 */
+   /* 从左边开始，留出 5% 的边距 */
+  left: 2%;
+  bottom: 0; /* 放在底部 */
+  width: 95%; /* 宽度为 90% */
+  height: 1rpx; /* 高度为 1rpx，代表下划线的厚度 */
+  background-color: rgba(0, 0, 0, 0.5); /* 设置颜色为黑色，透明度为 50% */
+}
+/*  图片*/
+.image-container {
+  display: flex;
+  flex-wrap: wrap;  /* 允许换行 */
+  justify-content: space-around;
+  position: relative;
+  margin-top: 15rpx;
+}
+.image-container::after {
+  content: ""; /* 生成伪元素 */
+  position: absolute; /* 绝对定位 */
+   /* 从左边开始，留出 5% 的边距 */
+  left: 2%;
+  bottom: 0; /* 放在底部 */
+  width: 95%; /* 宽度为 90% */
+  height: 1rpx; /* 高度为 1rpx，代表下划线的厚度 */
+  background-color: rgba(0, 0, 0, 0.5); /* 设置颜色为黑色，透明度为 50% */
+}
+.image-List {
+  width: calc(33.33% - 10rpx);  /* 每张图片占1/3的宽度 */
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  margin-bottom: 10rpx;  /* 每行之间保持空间 */
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;  /* 确保图片保持宽高比为 1：1 */
+}
+/* 按钮 */
+.boutton-container{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15rpx;
+  padding-bottom: 15rpx;
+}
+.alter-button{
+  width: 30%;
+  color:blue;
+  background-color: #f0f0f0;
+  text-align: center;
+  border-radius: 15rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.press-button{
+  width: 30%;
+  color:blue;
+  background-color: #f0f0f0;
+  text-align: center;
+  border-radius: 15rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.delete-button{
+  width: 30%;
+  color:red;
+  background-color: #f0f0f0;
+  text-align: center;
+  border-radius: 15rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.feedback-button{
+  width: 30%;
+  color:red;
+  background-color: #f0f0f0;
+  text-align: center;
+  border-radius: 15rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+/* 提交按钮 */
+.submit-Container{
+  height: 100rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.submit{
+  width: 50%;
+  text-align: center;
+  border: 1rpx solid black;
+  background-color: blue;
+  color: white;
+  border-radius: 15rpx;
+  margin: 0 auto;
+  height: 70rpx;
+  line-height: 70rpx;
+}

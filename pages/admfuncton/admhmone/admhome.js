@@ -30,6 +30,18 @@ Page({
       url: '/pages/admfuncton/activityhome/activityhome',
     })
   },
+  // 维修处理
+  repairClick(){
+    wx.navigateTo({
+      url: '/pages/admfuncton/repairhome/repairhome',
+    })
+  },
+  // 投诉建议处理
+  adviceClick(){
+    wx.navigateTo({
+      url: '/pages/admfuncton/advicehome/advicehome',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

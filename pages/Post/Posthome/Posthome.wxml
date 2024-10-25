@@ -30,9 +30,6 @@
   </view>
 
 </view>
-
-
-
       <view class="Posthome-footer-container">
         <view class="good-container" catchtap="addlikeClick" data-index="{{index}}" data-id="{{item.id}}">
           <image 

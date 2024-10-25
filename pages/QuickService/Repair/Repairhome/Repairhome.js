@@ -1,7 +1,6 @@
 // pages/QuickService/Repair/Repairhome/Repairhome.js
 const userid=wx.getStorageSync('user_Id');
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -80,7 +79,7 @@ Page({
              setTimeout(() => {
               
               wx.request({
-                url: `http://localhost:8080/RepairRequest/getRepairAll?userId=${userid}`,
+                url: `http://localhost:8080/RepairRequest/getRepair?userId=${userid}`,
                 method:'GET',
                 header: {
                   'Content-Type': 'application/json',

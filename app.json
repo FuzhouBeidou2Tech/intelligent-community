@@ -27,7 +27,6 @@
     "pages/QuickService/Domesticservice/Domesticservice",
     "pages/chats/addfriends/addfriends",
     "pages/Community/Communityhome/Communityhome",
-
     "pages/chats/pendingfriendsview/pendingfriendsview",
     "pages/Post/Posthome/Posthome",
     "pages/Post/Postview/Postview",
@@ -48,8 +47,9 @@
     "pages/Shopping/shoppinghome/shoppinghome",
     "pages/QuickService/advice/addadvice/addadvice",
     "pages/Shopping/produectview/productview",
-    "pages/Shopping/Shoppingview/Shoppingview"
-
+    "pages/Shopping/Shoppingview/Shoppingview",
+    "pages/admfuncton/repairhome/repairhome",
+    "pages/admfuncton/advicehome/advicehome"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -75,7 +75,6 @@
         "iconPath": "/images/icons/商城.png",
         "selectedIconPath": "/images/icons/商城.png",
         "text": "商城"
-
       },
       {
         "pagePath": "pages/user/user",

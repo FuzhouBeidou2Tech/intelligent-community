@@ -41,16 +41,14 @@
     </view>
 
     <view class="boutton-container">
-      <view wx:if="{{item.complaint.complaintStatus == 'PENDING' || item.repairRequest.status == 'IN_PROGRESS'}}" class="alter-button">修改</view>
-      <view wx:if="{{item.complaint.complaintStatus == 'PENDING' || item.repairRequest.status == 'IN_PROGRESS'}}" class="press-button">催办</view>
-      <view wx:if="{{item.complaint.complaintStatus == 'PENDING' || item.repairRequest.status == 'IN_PROGRESS'}}" class="delete-button" bind:tap="deleteClick" data-id="{{item.complaint.complaintId}}">删除</view>
-      <view wx:if="{{item.complaint.complaintStatus == 'COMPLETED'}}" class="feedback-button">我要反馈</view>
+      <view wx:if="{{item.complaint.complaintStatus == 'PENDING'}}" class="alter-button" data-id="{{item.complaint.complaintId}}" bind:tap="PROGRESSClick">审核通过</view>
+      <view wx:if="{{item.complaint.complaintStatus == 'PENDING' }}" class="press-button" data-id="{{item.complaint.complaintId}}" bind:tap="REJECTEDClick">审核失败</view>
+      <view wx:if="{{item.complaint.complaintStatus == 'IN_PROGRESS'}}" class="delete-button"  data-id="{{item.complaint.complaintId}}" bind:tap="COMPLETEDClick">处理完成</view>
+      
     </view>
   </view>
   </scroll-view>
   
 
-  <view class="submit-Container">
-    <view class="submit" bind:tap="addComplaintClick">添加投诉建议</view>
-  </view>
+  
 </view>

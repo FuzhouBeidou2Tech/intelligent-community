@@ -1,4 +1,5 @@
 // pages/notification/notificationhome/notificationhome.js
+const app=getApp();
 Page({
 
   /**
@@ -7,7 +8,7 @@ Page({
   data: {
     notification:[]
   },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -35,6 +36,14 @@ Page({
       console.log("notification:",this.data.notification);
     }
    
+    })
+  },
+  intonotification: function(e) {
+    const itemId = e.currentTarget.dataset.id; // 获取传递的 item.id   
+    app.globalData.globalNotification=itemId;
+    
+    wx.navigateTo({
+      url: '/pages/notification/notificationshow/notificationshow',
     })
   },
 

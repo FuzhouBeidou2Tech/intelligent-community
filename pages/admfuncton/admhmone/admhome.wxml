@@ -2,8 +2,8 @@
 <view class="container">
   <view class="button-container">
     <view class="inform-button" bind:tap="informClick">通知管理</view>
-    <view class="fault-button">故障处理</view>
-    <view class="complaint-button">投诉处理</view>
+    <view class="fault-button" bind:tap="repairClick">维修处理</view>
+    <view class="complaint-button" bind:tap="adviceClick">投诉建议处理</view>
     <view class="deletepost-button" bind:tap="deletepostClick">删除帖子</view>
     <view class="complaint-button" bind:tap="activityClick">活动管理</view>
   </view>

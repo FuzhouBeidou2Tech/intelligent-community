@@ -1,3 +1,4 @@
+<!--pages/admfuncton/repairhome/repairhome.wxml-->
 <!--pages/QuickService/Repair/Repairhome/Repairhome.wxml-->
 <view class="Repairhome-Container">
   <scroll-view scroll-y="true" scroll-with-animation="true" class="Repairhome-body-container">
@@ -19,12 +20,12 @@
         style="color: blue;">
         处理成功
       </view>
+
       <view class="progressresult"
         wx:if="{{item.repairRequest.status == 'REJECTED'}}"
         style="color: gray;">
         审核失败
       </view>
-
     </view>
 
     <view class="RepairDescription-Container">
@@ -41,17 +42,16 @@
     </view>
 
     <view class="boutton-container">
-      <view wx:if="{{item.repairRequest.status == 'PENDING' || item.repairRequest.status == 'IN_PROGRESS'}}" class="alter-button">修改</view>
-      <view wx:if="{{item.repairRequest.status == 'PENDING' || item.repairRequest.status == 'IN_PROGRESS'}}" class="press-button">催办</view>
-      <view wx:if="{{item.repairRequest.status == 'PENDING' || item.repairRequest.status == 'IN_PROGRESS'}}" class="delete-button" bind:tap="deleteClick" data-id="{{item.repairRequest.id}}">删除</view>
-      <view wx:if="{{item.repairRequest.status == 'COMPLETED'||item.repairRequest.status == 'REJECTED'}}" class="feedback-button">我要反馈</view>
-      
+      <view wx:if="{{item.repairRequest.status == 'PENDING' }}" class="alter-button" data-id="{{item.repairRequest.id}}" bind:tap="PROGRESSClick">通过审核</view>
+      <view wx:if="{{item.repairRequest.status == 'PENDING' }}" class="delete-button" data-id="{{item.repairRequest.id}}" bind:tap="REJECTEDClick">审核失败</view>
+      <view wx:if="{{item.repairRequest.status == 'IN_PROGRESS' || item.repairRequest.status == 'IN_PROGRESS'}}" class="delete-button" bind:tap="deleteClick" data-id="{{item.repairRequest.id}}"
+      bind:tap="COMPLETEDClick">处理成功</view>
     </view>
+
+    
   </view>
   </scroll-view>
   
 
-  <view class="submit-Container">
-    <view class="submit" bind:tap="addRepairClick">添加物业报修</view>
-  </view>
+  
 </view>

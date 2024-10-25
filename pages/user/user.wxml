@@ -41,6 +41,7 @@
     </view>
   </view>
 
+  
   <view class="list-item" bindtap="userinfoClick">
     <text class="icon">🔒</text>
     <text class="item-title">管理员验证</text>

@@ -1,6 +1,7 @@
 <!--pages/notification/notificationhome/notificationhome.wxml-->
+
 <view class="notification-container">
-  <view wx:for="{{notification}}" class="notification">
+  <view wx:for="{{notification}}" class="notification" bind:tap="intonotification" data-id="{{item.id}}">
     <view class="title">{{item.title}} </view>
     <view class="info-container">
       <view class="item">类型:{{item.type}}</view>

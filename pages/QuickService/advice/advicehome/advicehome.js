@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ComplaintList:[]//维修表单
+    ComplaintList:[]//投诉表单
   },
 
   /**
@@ -69,54 +69,63 @@ addComplaintClick(){
   })
 },
 deleteClick(e){
+
   const Id=e.currentTarget.dataset.id;
-  wx.request({
-    url: `http://localhost:8080/Complain/deleteComplain?Id=${Id}`,
-    method:'PUT',
-    header: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'  // 确保接收 JSON 格式的响应 
-  },
-  success:(res)=>{
-    if(res.data.code==0){
-      wx.showToast({
-        title: '删除成功',
-        icon: 'success',
-        duration: 1000
-      })
-         // 延迟 1 秒后重定向页面
-         setTimeout(() => {        
-          wx.request({
-            url: `http://localhost:8080/Complain/getComplainall?userId=${userId}`,
-            method:'GET',
-            header: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'  // 确保接收 JSON 格式的响应 
-          },
-          success:(res)=>{
-            this.setData({
-              ComplaintList:res.data.data
-            });
-          }
+  wx.showModal({
+    title: '提示',
+    content: '您确定要删除该帖吗？',
+    success:(res)=>{
+      if(res.confirm){
+        wx.request({
+          url: `http://localhost:8080/Complain/deleteComplain?Id=${Id}`,
+          method:'PUT',
+          header: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'  // 确保接收 JSON 格式的响应 
+        },
+        success:(res)=>{
+          if(res.data.code==0){
+            wx.showToast({
+              title: '删除成功',
+              icon: 'success',
+              duration: 1000
+            })
+               // 延迟 1 秒后重定向页面
+               setTimeout(() => {        
+                wx.request({
+                  url: `http://localhost:8080/Complain/getComplainall?userId=${userId}`,
+                  method:'GET',
+                  header: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'  // 确保接收 JSON 格式的响应 
+                },
+                success:(res)=>{
+                  this.setData({
+                    ComplaintList:res.data.data
+                  });
+                }
+              })
+                    }, 1000); // 延迟 1000 毫秒 (1 秒)
+            }else{
+              wx.showToast({
+                title: '服务器异常1',
+                icon: 'none',
+                duration: 2000
+              });
+              console.log("错误信息:",res.data.data);
+            }  
+        },
+        fail: (err) => {
+          wx.showToast({
+            title: '服务器异常2',
+            icon: 'none',
+            duration: 2000
+          });
+          console.log("错误信息:",res.data.data);
+        },
         })
-              }, 1000); // 延迟 1000 毫秒 (1 秒)
-      }else{
-        wx.showToast({
-          title: '服务器异常1',
-          icon: 'none',
-          duration: 2000
-        });
-        console.log("错误信息:",res.data.data);
-      }  
-  },
-  fail: (err) => {
-    wx.showToast({
-      title: '服务器异常2',
-      icon: 'none',
-      duration: 2000
-    });
-    console.log("错误信息:",res.data.data);
-  },
+      }
+    }
   })
 },
   /**
