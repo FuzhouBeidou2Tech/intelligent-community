@@ -1,6 +1,6 @@
 // index.js
 const app=getApp();
-
+const userId=wx.getStorageSync('user_Id');
 Page({
   data:{
     latestAnnouncement: '这是最新的社区公告内容。',
@@ -14,11 +14,15 @@ Page({
       { id: 1, title: '商家促销1', description: '享受限时折扣。', image: '/images/examples/activity1.jpg' },
       { id: 2, title: '商家促销2', description: '会员专属优惠。', image: '/images/examples/activity2.jpg' }
     ],
-    notificationTitle:[]
+    userlist:[],
+    notificationTitle:[],
+    MessageList:{
+      user1Id:userId,
+      user2Id:3
+    }//对接全局变量
   },
-  onShow: function () {
-    
-    
+  onShow(){
+    this.receptionmanage();
   },
   onLoad() {
     this.fetchAnnouncements();
@@ -77,7 +81,6 @@ Page({
   // 进去活动主页
   activityviewClick(e){
     const activityId=e.currentTarget.dataset.id;
-    const userId=wx.getStorageSync('user_Id');
     wx.request({
       url: `http://localhost:8080/Activity/getActivityDTO?activityId=${activityId}&userId=${userId}`,
       method:'GET',
@@ -153,9 +156,29 @@ Page({
 
   },
   //物业管家
-  manage(){
+  manageClick(){
     if(wx.getStorageSync('user_Id')){
+      // 用户点击，执行信息已读操作
+      app.globalData.globalMessageId=3;
+      app.globalData.globalMessageList=this.data.MessageList;
+      const senderId=3;
+      console.log("全局变量",app.globalData.globalMessageList);
+      console.log("id=",app.globalData.globalMessageId);
+      wx.request({
+      url: `http://localhost:8080/IMessage/readMessage?userId=${userId}&senderId=${senderId}`,
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'  // 确保接收 JSON 格式的响应
+    },
+    success:()=>{
       
+    }
+    })
+    wx.navigateTo({
+      url: '/pages/chats/chatview/chatview',
+    })
+
     }
     else{
      wx.showToast({
@@ -183,6 +206,63 @@ Page({
     wx.navigateTo({
       url: '/pages/QuickService/advice/advicehome/advicehome',
     })
+  },
+  
+  onReady(){
+        // 监听 globaluserlistChange 事件
+        this.updateUserList = this.updateUserList.bind(this); // 确保 this 绑定正确
+        app.addEventListener('globaluserlistChange', this.updateUserList);
+        
+        // 初始化时获取全局的 userlist
+        this.setData({
+          userlist: app.globalData.globaluserlist
+        });
+        console.log("userlist",this.data.userlist);
+  },
+ //事件监听
+  updateUserList(newList) {
+    console.log("传入的新数据：", newList);
+    // 更新页面的 userlist
+    const updatedList = JSON.parse(JSON.stringify(newList));
+    this.setData({ userList: updatedList });
+    console.log("更新成功");
+  },
+  // 页面卸载
+  onUnload() {  
+    // 页面卸载时移除事件监听
+    app.removeEventListener('globaluserlistChange', this.updateUserList);
+    this.setData({
+      userList:null
+    })
+    
+  },
 
+  // 接受物业管家信息
+  receptionmanage(){
+    wx.request({
+      url: `http://localhost:8080/Friends/getfriends?user1Id=${userId}`,  // 服务器地址
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'  // 确保接收 JSON 格式的响应
+    },
+      success:(res)=>{
+        console.log("信息1",res.data);
+        app.globalData.globaluserlist=res.data;
+         // 过滤出 status 为 "Accepted" 的项目
+        const acceptedFriends = res.data.filter(friend => friend.status === "Accepted");
+        // 过滤出 status 为 "Pending" 的项目
+        const pendingFriends=res.data.filter(friend=>friend.status==="Pending");
+        app.globalData.globalpendinglist=pendingFriends;
+
+        // 获取 pendingFriends 的元素数量
+        const pendingnum = pendingFriends.length
+        this.setData({
+          userList:acceptedFriends,
+          paddingnum:pendingnum
+        })   
+        
+      }
+    })
   }
 });

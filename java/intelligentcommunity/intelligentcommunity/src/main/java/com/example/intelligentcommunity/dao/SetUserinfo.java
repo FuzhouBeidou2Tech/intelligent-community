@@ -7,5 +7,5 @@ public class SetUserinfo {
     private String username;
     private int gender;
     private long phoneNumber;
-
+    private String userimage;
 }

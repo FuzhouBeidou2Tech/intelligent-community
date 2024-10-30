@@ -151,9 +151,7 @@ uploadImages() {
           
           console.log("data:",data);
           if (data.code==0) {
-            
             this.data.uploadedImageUrls.push(data.data);
-
             // 将返回的 URL 添加到 activityDTO 的 imageList 数组中
             const updatedImageList = this.data.activityDTO.imageList.concat(data.data);
             this.setData({
@@ -186,7 +184,6 @@ uploadTitleImages() {
       },
       success: (res) => {
         const data = JSON.parse(res.data); // 解析返回结果
-        
         console.log("data:", data);
         if (data.code == 0) {
           this.setData({

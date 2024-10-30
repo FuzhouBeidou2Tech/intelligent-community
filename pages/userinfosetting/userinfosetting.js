@@ -9,9 +9,11 @@ Page({
     username: '', 
     setusername: '', 
     userphone:'',
+    userimage:'',
     gender: '', 
     setgender: '',
-    address:'未绑定'
+    address:'未绑定',
+    userimagepath:''
   },
   /**
    * 生命周期函数--监听页面加载
@@ -27,6 +29,7 @@ Page({
     this.setData({
       username:wx.getStorageSync('user_Name'),
       userphone:hiddenPhoneNumber,
+      userimage:wx.getStorageSync('user_Image'),
       gender:wx.getStorageSync('user_Gender')
     })
     console.log("性别");
@@ -66,7 +69,8 @@ Page({
         data:{
         username:this.data.setusername,
         gender:this.data.setgender,
-        phoneNumber:wx.getStorageSync('phone_Number')
+        phoneNumber:wx.getStorageSync('phone_Number'),
+        userimage:this.data.userimage
       }, // 传递用户表单数据
       header: {
         'Content-Type': 'application/json'  // 请求头，确保是 JSON 格式
@@ -80,6 +84,7 @@ Page({
           //更新缓存
           wx.setStorageSync('user_Name', self.data.setusername);
           wx.setStorageSync('user_Gender', self.data.setgender);
+          wx.setStorageSync('user_Image', self.data.userimage);
           setTimeout(()=>{
             wx.navigateBack({
               delta: 1
@@ -109,7 +114,69 @@ Page({
     url: '/pages/setaddresscommunities/setaddresscommunities',
   })
   
-  }
-
+  },
+// 更换头像
+imageClick(){
+ 
+},
+// 选择图片
+chooseTitleImage() {
+  wx.chooseMedia({
+    count: 1, // 只能选择1张图片作为标题
+    mediaType: ['image'], // 仅选择图片
+    sourceType: ['album', 'camera'], // 可以指定是相册还是相机
+    sizeType: ['original', 'compressed'], // 可以选择原图或压缩图
+    success: (res) => {
+      const tempFilePath = res.tempFiles[0].tempFilePath; // 取第一个文件路径
+       // 使用 Promise 包装 setData，确保数据更新完成后再调用 uploadimage
+       new Promise((resolve) => {
+        this.setData({
+            userimagepath: tempFilePath // 设置选择的标题图片路径
+          }, () => {
+            resolve(); // setData 完成后调用 resolve
+          });
+      }).then(() => {
+        return this.uploadimage(); // 在用户图像路径设置完成后调用上传方法 
+      }).then((uploadedImageUrl) => {
+        console.log('上传成功:', uploadedImageUrl); // 处理上传成功的逻辑
+      }).catch((error) => {
+        console.error('处理失败:', error);
+      });
+    },
+    fail: (err) => {
+      console.error('选择标题图片失败', err);
+    }
+  });
+},
+// 上传图片
+uploadimage(){
+  const filePath = this.data.userimagepath; // 获取单个标题图片路径
+  return new Promise((resolve, reject) => {
+    wx.uploadFile({
+      url: 'http://localhost:8080/user/inserimage', // 上传接口
+      filePath: filePath, // 上传的文件路径
+      name: 'file', // 对应后台接收文件的参数名
+      header: {
+        'content-type': 'multipart/form-data'
+      },
+      success: (res) => {
+        const data = JSON.parse(res.data); // 解析返回结果
+        
+        console.log("data:", data);
+        if (data.code == 0) {
+          this.setData({
+            userimage: data.data, // 存储上传成功后的图片URL
+          });
+          resolve(data.data); // 上传成功，返回图片URL
+        } else {
+          reject(data.message || '上传失败'); // 上传失败，返回错误信息
+        }
+      },
+      fail: (err) => {
+        reject(err.errMsg || '上传失败'); // 网络或其他错误导致上传失败
+      }
+    });
+  });
+}
 }
 )

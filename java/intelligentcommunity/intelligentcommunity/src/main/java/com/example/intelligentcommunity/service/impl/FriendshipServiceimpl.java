@@ -34,8 +34,14 @@ public class FriendshipServiceimpl implements FriendshipService {
            System.out.println(friendship);
            System.out.println(friendship.getUser2Id());
            String username=userMapper.findNameByid(friendship.getUser2Id());
-           String lastname=messageMapper.getlastMessage(friendship.getUser1Id(),friendship.getUser2Id());
+           Message message=messageMapper.getlastMessage(friendship.getUser1Id(),friendship.getUser2Id());
+           String lastname="";
+           if(message!=null){
+               lastname=message.getContent();
+           }
+
            //更新操作
+
            List<Message> unmessagelist=messageMapper.getunreadMessage(friendship.getUser2Id(),friendship.getUser1Id());
            friendDTO.setUnreadMessageCount(unmessagelist.size());
            friendDTO.setUnreadMessageList(unmessagelist);
@@ -47,15 +53,16 @@ public class FriendshipServiceimpl implements FriendshipService {
            friendDTO.setUser1Id(friendship.getUser1Id());
            friendDTO.setUser1Name(username);
            friendDTO.setLastmessage(lastname);
+           if(messageMapper.getlastMessage(friendship.getUser1Id(),friendship.getUser2Id())!=null){
+               friendDTO.setIfimage(messageMapper.getlastMessage(friendship.getUser1Id(),friendship.getUser2Id()).getIfimage());
+           }
            friendDTOlist.add(friendDTO);
-
        }
     return friendDTOlist;
     }
 
     @Override
     public void addFriendship(int user1Id, int user2Id) {
-
         friendMapper.addFriendship(user1Id,user2Id);
     }
 

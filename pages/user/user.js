@@ -4,13 +4,16 @@ Page({
     username:0,
     userstatus:0,
     userstatusname:0,
+    userimage:'',
     onshow:0
   },
   onShow: function(){
+    
     const sessionKey = wx.getStorageSync('session_key');
     if(sessionKey){
       this.setData({
-        onshow:1
+        onshow:1,
+        userimage:wx.getStorageSync('user_Image')
       })
     }else{
       this.setData({

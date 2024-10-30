@@ -37,7 +37,7 @@
     <view class="recommed-container">
       <view class="recommed-title"> 推荐服务</view>
       <view class="recommed-item-container">
-        <image src="/images/Dometice/日常保洁.jpg" mode="" class="recommed-item-icon"/>
+        <image src="https://intelligent-community627.oss-cn-fuzhou.aliyuncs.com/images/Dometice/%E6%97%A5%E5%B8%B8%E4%BF%9D%E6%B4%81.jpg" mode="" class="recommed-item-icon"/>
         <view class="text-container">
           <view class="recommed-item-title">日常保洁</view>
           <view class="recommed-item-text">提供家庭室内表面清洁服务</view>
@@ -50,7 +50,7 @@
       </view>
       
       <view class="recommed-item-container">
-        <image src="/images/Dometice/油烟机清洗.jpg" mode="" class="recommed-item-icon"/>
+        <image src="https://intelligent-community627.oss-cn-fuzhou.aliyuncs.com/images/Dometice/%E6%B2%B9%E7%83%9F%E6%9C%BA%E6%B8%85%E6%B4%97.jpg" mode="" class="recommed-item-icon"/>
         <view class="text-container">
           <view class="recommed-item-title">油烟机清洗</view>
           <view class="recommed-item-text">20项清洗要点,深度除菌消毒，内外洁净如新</view>
@@ -63,7 +63,7 @@
       </view>
       
       <view class="recommed-item-container">
-        <image src="/images/Dometice/洗衣机清洗.jpg" mode="" class="recommed-item-icon"/>
+        <image src="https://intelligent-community627.oss-cn-fuzhou.aliyuncs.com/images/Dometice/%E6%B4%97%E8%A1%A3%E6%9C%BA%E6%B8%85%E6%B4%97.jpg" mode="" class="recommed-item-icon"/>
         <view class="text-container">
           <view class="recommed-item-title">洗衣机清洗</view>
           <view class="recommed-item-text">内筒，外壁接水口，线屑过滤器等，清洁无垢</view>

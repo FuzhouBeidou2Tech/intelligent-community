@@ -25,7 +25,6 @@ public class TestController {
             testPo.setId(id);
             testPo.setImage(image);
             testService.addImage(testPo);
-
         }
         return "ok";
     }
@@ -34,6 +33,4 @@ public class TestController {
     public void getImage(@RequestParam("id") Integer id, HttpServletResponse response) throws Exception{
         testService.getImage(id,response);
     }
-
-
 }

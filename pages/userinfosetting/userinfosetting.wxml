@@ -1,7 +1,11 @@
 <view class="container">
+
+  <view class="image-container" bind:tap="chooseTitleImage">
+    <image src="{{userimage}}" mode="scaleToFill" class="image-value"/>
+  </view>
   <!-- 手机号 -->
   <view class="userphone-container">
-    <view class="userphone-text">手机号</view>
+    <view class="userphone-text">手机号:</view>
     <view class="userphone-value">{{userphone}}</view>
   </view>
 

@@ -50,9 +50,9 @@ App({
         let msg = JSON.stringify(data);
         //this.output('收到 channel_user 频道消息了：' + msg);
         console.log(data);
-        console.log("data.senderid",data.senderid)
+        console.log("data.senderid",data.senderId)
         //用户在线，且打开当前聊天会话
-        if(app.globalData.globalMessageId==data.senderid){
+        if(app.globalData.globalMessageId==data.senderId){
           
         }//用户在线，但没有打开当前聊天会话
         else{

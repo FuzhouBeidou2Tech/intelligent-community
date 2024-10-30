@@ -27,5 +27,6 @@ public class User {
 
     private  Integer userHousingId;
 
+    private String userimage;
 
 }

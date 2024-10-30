@@ -54,6 +54,7 @@ public class ComplainController {
             return Result.error(e.getMessage());
         }
     }
+
 //    获取全部投诉建议
     @GetMapping("getComplainallnoId")
     public Result<List<ComplaintDTO>> getComplainallnoId(){
@@ -74,6 +75,7 @@ public class ComplainController {
             return Result.error(e.getMessage());
         }
     }
+
     //处理完成
     @PutMapping("SetCOMPLETED")
     public Result setCOMPLETED(@RequestParam int Id) {
@@ -84,6 +86,7 @@ public class ComplainController {
             return Result.error(e.getMessage());
         }
     }
+
     //审核失败
     @PutMapping("SetREJECTED")
     public Result setREJECTED(@RequestParam int Id) {
@@ -94,4 +97,6 @@ public class ComplainController {
             return Result.error(e.getMessage());
         }
     }
+
+
 }

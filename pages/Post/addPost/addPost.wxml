@@ -47,3 +47,4 @@
   <button class="submit-button" bindtap="submitClick">提交</button>
 </view>
 </view>
+

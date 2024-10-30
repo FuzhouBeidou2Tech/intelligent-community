@@ -28,7 +28,13 @@ public class FriendController {
     @PutMapping("/addfriends")
     public Result addFriendship(@RequestParam int user1Id, int user2Id) {
         Friendship friendship= friendshipService.findFriendship(user1Id,user2Id);
+
+        if(user1Id==user2Id){
+            int code=104;
+            return Result.errorcode(code,"不能添加自己为好友");
+        }
         if(friendship==null){
+
             friendshipService.addFriendship(user1Id, user2Id);
             return Result.success();
         }else{
@@ -58,7 +64,6 @@ public class FriendController {
         friendshipService.refuseFriendship(user1Id,user2Id);
         return Result.success();
     }
-
     
 }
 

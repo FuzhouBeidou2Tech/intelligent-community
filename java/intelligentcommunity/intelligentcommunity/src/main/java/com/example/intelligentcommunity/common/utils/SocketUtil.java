@@ -3,6 +3,7 @@ import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.annotation.OnEvent;
 
 import com.example.intelligentcommunity.common.constant.SocketEventContants;
+import com.example.intelligentcommunity.dto.MessageDTO;
 import com.example.intelligentcommunity.mapper.MessageMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,19 +37,49 @@ public class SocketUtil {
         messageMapper.insertMessage(senderId,userId,message);
 
         // 构建消息对象，包含 message 和 senderid
-        Map<String, Object> data = new HashMap<>();
-        data.put("message", message);
-        data.put("senderid", senderId);
+//        Map<String, Object> data = new HashMap<>();
+//        data.put("message", message);
+//        data.put("senderid", senderId);
 
+        MessageDTO messageDTO = new MessageDTO();
+        messageDTO.setMessage(message);
+        messageDTO.setSenderId(senderId);
+        messageDTO.setIsImages(false);
         if (Objects.nonNull(socketClient) ){
             //单独给他发消息
-            socketClient.sendEvent(SocketEventContants.CHANNEL_USER,data);
+            socketClient.sendEvent(SocketEventContants.CHANNEL_USER,messageDTO);
         }else{
             //socketClient.sendEvent(SocketEventContants.CHANNEL_USER,data);
             log.info(userId + "已下线，发送消息对方可能未看见。");
         }
     }
 
+    public  void sendToOneImage(int userId, String message,int senderId) {
+        //拿出某个客户端信息
+        SocketIOClient socketClient = getSocketClient(String.valueOf(userId));
+
+        //消息持久化存储
+        messageMapper.insertMessageImage(senderId,userId,message);
+
+        // 构建消息对象，包含 message 和 senderid
+//        Map<String, Object> data = new HashMap<>();
+//        data.put("message", message);
+//        data.put("senderid", senderId);
+
+        MessageDTO messageDTO = new MessageDTO();
+        messageDTO.setMessage(message);
+        messageDTO.setSenderId(senderId);
+        messageDTO.setIsImages(true);
+
+
+        if (Objects.nonNull(socketClient) ){
+            //单独给他发消息
+            socketClient.sendEvent(SocketEventContants.CHANNEL_USER,messageDTO);
+        }else{
+            //socketClient.sendEvent(SocketEventContants.CHANNEL_USER,data);
+            log.info(userId + "已下线，发送消息对方可能未看见。");
+        }
+    }
     /**
      *  群发消息
      *

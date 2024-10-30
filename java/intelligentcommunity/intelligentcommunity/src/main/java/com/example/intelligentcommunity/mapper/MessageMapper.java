@@ -12,26 +12,30 @@ import java.util.List;
 
 @Mapper
 public interface MessageMapper {
-
+//获取聊天框的聊天信息
     @Select("select * from messages where (sender_id=#{senderId} and receiver_id=#{receiverId}) or (sender_id=#{receiverId} and receiver_id=#{senderId})" +
             " ORDER BY created_time ASC")
     List<Message> getAllMessage(int senderId, int receiverId);
-
-    @Select("select content from messages where " +
+//获取最后一条信息
+    @Select("select * from messages where " +
             "(sender_id=#{senderId} and receiver_id=#{receiverId}) or(sender_id=#{receiverId} and receiver_id=#{senderId})" +
             "ORDER BY created_time DESC" +
             " LIMIT 1")
-    String getlastMessage(int senderId,int receiverId);
-
+    Message getlastMessage(int senderId,int receiverId);
+//获取未读信息
     @Select("select * from messages" +
             " where sender_id=#{senderId}" +
             " and receiver_id=#{receiverId}" +
             " and receive_status='Unread' ")
     List<Message>getunreadMessage(int senderId,int receiverId);
-
+//添加信息到数据库
     @Insert("insert into messages(sender_id,receiver_id,content,created_time) " +
             "values (#{senderId},#{receiverId},#{content},now() )")
     void insertMessage(int senderId,int receiverId,String content);
+//添加图片
+    @Insert("insert into messages(sender_id,receiver_id,content,created_time,ifimage)" +
+            "values (#{senderId},#{receiverId},#{Imageurl},now(),'1')")
+    void insertMessageImage(int senderId,int receiverId,String Imageurl);
 
     @Update("UPDATE messages " +
             "SET receive_status = 'Read'" +
@@ -41,5 +45,4 @@ public interface MessageMapper {
     void readMessage(int senderId,int receiverId);
 
 
-    void addMessage(int senderId,int receiverId,String content);
 }

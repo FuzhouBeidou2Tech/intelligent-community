@@ -10,6 +10,27 @@
   padding: 20rpx;
   height: 50rpx; /* 确保高度能够自动调整 */
 }
+/* 头像 */
+.image-container{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%; /* 设置为圆形 */
+  overflow: hidden; /* 超出部分隐藏 */
+  border: 2px solid #ccc; /* 可选：头像框的边框 */
+  display: flex; /* 使用 Flexbox 来居中内容 */
+  justify-content: center; /* 居中内容 */
+  align-items: center; /* 垂直居中 */
+  background-color: #f0f0f0; /* 可选：未加载时的背景颜色 */
+  
+}
+.image-text{
+
+}
+.image-value{
+  width: 100%;  /* 图片宽度自适应父容器 */
+  height: 100%; /* 图片高度自适应父容器 */
+  object-fit: cover; /* 保持图片比例并裁剪 */
+}
 .userphone-text{
   
 }
@@ -29,6 +50,7 @@
 .username-text{
   
 }
+
 
 .username-value{
   margin-left: 50rpx;

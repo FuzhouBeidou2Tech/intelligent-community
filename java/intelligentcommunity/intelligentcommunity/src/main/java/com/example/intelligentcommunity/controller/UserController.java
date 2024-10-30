@@ -3,6 +3,8 @@ package com.example.intelligentcommunity.controller;
 import com.example.intelligentcommunity.common.WxMappingJackson2HttpMessageConverter;
 import com.example.intelligentcommunity.dao.*;
 import com.example.intelligentcommunity.service.CommunitiesService;
+import com.example.intelligentcommunity.service.FriendshipService;
+import com.example.intelligentcommunity.utils.AliOssUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,16 +20,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.AlgorithmParameters;
 import java.security.Security;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/user")
@@ -44,6 +44,7 @@ public class UserController {
 
     @Autowired
     private CommunitiesService communitiesService;
+
     static {
         Security.addProvider(new BouncyCastleProvider());
     }
@@ -77,11 +78,17 @@ public class UserController {
 
         if(userService.findByPhoneNumber((phoneNumber))==null){
             //未注册用户
-            //注册  默认用户名=手机号
+            //注册  默认用户名=手机号  ，默认添加管理员好友   设置用户默认头像
             userService.register("User",phoneNumber);
+
             newuserif=true;
+//            https://intelligent-community627.oss-cn-fuzhou.aliyuncs.com/%E7%94%A8%E6%88%B7%2C%E5%A4%B4%E5%83%8F.png
+            //设置用户默认头像
+
+
         }else{
             //注册过的用户
+
 
         }
         User user=userService.findByUserinfo(phoneNumber);
@@ -102,6 +109,7 @@ public class UserController {
         response.put("user_gender", user.getGender());
         response.put("user_newuserif", newuserif);
         response.put("user_id", user.getId());
+        response.put("user_image",user.getUserimage());
         if(userHousing!=null){
             Community community = communitiesService.findcommunityinfo(userHousing.getCommunityId());
             Building building=communitiesService.findbuildinfo(userHousing.getBuildingId());
@@ -113,7 +121,6 @@ public class UserController {
             response.put("room_name",room.getRoomNumber());
         }
 
-
         //response.put("userInfo", parseUserInfo(decryptedData)); // 解析用户信息，可以根据需求修改
         return Result.success(response); // 返回封装的结果
     }
@@ -123,8 +130,9 @@ public class UserController {
         String username = user.getUsername();
         int gender = user.getGender();
         long phoneNumber = user.getPhoneNumber();
+        String userimage=user.getUserimage();
         try {
-            userService.update(username,(byte)gender,phoneNumber);
+            userService.update(username,(byte)gender,phoneNumber,userimage);
             return ResponseEntity.ok("用户信息更新成功");
         }catch (Exception e)   {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("用户信息更新失败");
@@ -135,6 +143,17 @@ public class UserController {
     public List<User> searchUser(@RequestParam String value){
         return userService.searchUser(value);
     }
+
+    @PostMapping("/inserimage")
+    public Result<String> uploadImage(@RequestParam("file") MultipartFile file) throws Exception {
+        System.out.println("进去");
+        String originalFilename = file.getOriginalFilename();
+        String filename = UUID.randomUUID().toString() + originalFilename.substring(originalFilename.lastIndexOf("."));
+        String url = AliOssUtil.uploadFile(filename, file.getInputStream());
+        // 假设简单返回文件地址
+        return Result.success(url);
+    }
+
     //利用 Spring 的 RestTemplate 类向微信 API 发送 GET 请求获取 session_key
     private String getSessionKey(String code) {
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + appId + "&secret=" + appSecret + "&js_code=" + code + "&grant_type=authorization_code";
@@ -170,6 +189,4 @@ public class UserController {
         }
         return null;
     }
-
-
 }

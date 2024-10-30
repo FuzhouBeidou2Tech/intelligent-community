@@ -48,7 +48,7 @@
         <text>社区活动</text>
       </view>
       <view class="service-item">
-        <image src="/images/icons/管家管理.png" mode="" class="item-icon"/>
+        <image src="/images/icons/管家管理.png" mode="" class="item-icon" bind:tap="manageClick"/>
         <text>物业管家</text>
       </view>
       <view class="service-item">

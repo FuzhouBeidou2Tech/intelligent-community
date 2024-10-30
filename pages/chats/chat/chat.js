@@ -29,6 +29,7 @@ Page({
         'Accept': 'application/json'  // 确保接收 JSON 格式的响应
     },
     success:()=>{
+      
     }
     })
     wx.navigateTo({
@@ -43,7 +44,7 @@ Page({
     
   
   },
-  //
+  //事件监听
   updateUserList(newList) {
     console.log("传入的新数据：", newList);
     // 更新页面的 userlist
@@ -63,6 +64,7 @@ Page({
       this.setData({
         userlist: app.globalData.globaluserlist
       });
+      console.log("userList",this.data.userlist);
   },
   /**
    * 生命周期函数--监听页面显示

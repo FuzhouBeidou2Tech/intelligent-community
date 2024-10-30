@@ -2,7 +2,7 @@
 <view class="container">
 <!-- header-container -->
   <view class="header-container">
-  <image src="/images/users/user.png" class="user-icon"/>
+  <image src="{{onshow == 1 ? userimage: '/images/users/user.png'}}" class="user-icon"/>
   <view>
   <block wx:if="{{onshow == 1}}">
     <view class="user-info">

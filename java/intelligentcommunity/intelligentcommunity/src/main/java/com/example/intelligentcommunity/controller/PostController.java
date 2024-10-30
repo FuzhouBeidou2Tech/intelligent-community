@@ -80,8 +80,6 @@ public class PostController {
         String originalFilename = file.getOriginalFilename();
         String filename = UUID.randomUUID().toString() + originalFilename.substring(originalFilename.lastIndexOf("."));
         String url = AliOssUtil.uploadFile(filename, file.getInputStream());
-
-
         // 假设简单返回文件地址
         return Result.success(url);
     }

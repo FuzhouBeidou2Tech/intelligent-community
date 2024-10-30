@@ -5,14 +5,14 @@ import com.example.intelligentcommunity.dao.Message;
 
 import com.example.intelligentcommunity.dao.Result;
 import com.example.intelligentcommunity.service.ImessageService;
+import com.example.intelligentcommunity.utils.AliOssUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/IMessage")
@@ -32,4 +32,6 @@ public class ImessageController {
     }
 
 
+
 }
+

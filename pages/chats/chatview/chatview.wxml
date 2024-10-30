@@ -3,18 +3,28 @@
   <!-- 聊天记录 -->
   <scroll-view class="chat-list" scroll-y="true" scroll-into-view="{{scrollToView}}">
     <view wx:for="{{messageList}}"  wx:key="id" class="chat-item {{item.senderID==senderid ? 'self' : 'other'}}"  id="msg{{index}}">
-      <view class="avatar">
+    <view class="chat-date">{{item.createdTime}}</view>
+      <view class="chat-Container">
+        <view class="avatar">
         <image src="/images/icons/qq.png" class="avatar-image" />
       </view>
-      <view class="message-content">
+      <view class="message-content" wx:if="{{item.ifimage==false}}">
         <text>{{item.content}}</text>
       </view>
+      <view class="image-content" wx:if="{{item.ifimage==true}}">
+        <image src="{{item.content}}" mode="scaleToFill" class="image"/>
+      </view>
+      </view>
+      
     </view>
   </scroll-view>
 
   <!-- 聊天发送框 -->
   <view class="chat-input-container">
     <input type="text" placeholder="请输入消息" bindinput="onInput" value="{{inputValue}}" class="chat-input"/>
-    <button bindtap="sendMessage" class="chat-input-button">发送</button>
-  </view>
+    <view bindtap="sendMessage" class="chat-input-button">发送</view>
+    <view class="image-Container" bind:tap="chooseImage">
+      <image src="/images/chat/icon/加号 (1).png" class="icon"/>
+    </view>
+</view>
 </view>

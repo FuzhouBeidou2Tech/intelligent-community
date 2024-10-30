@@ -11,7 +11,8 @@ public class Message {
     private int senderID;
     private int receiverID;
     private String content;
-    private Timestamp createdTime;
+    private String createdTime;
     private String sendStatus;
     private String receiveStatus;
+    private Boolean ifimage;
 }
