@@ -56,7 +56,6 @@ App({
           
         }//用户在线，但没有打开当前聊天会话
         else{
-          
           const useId=wx.getStorageSync('user_Id');
           wx.request({
             url: `http://localhost:8080/Friends/getfriends?user1Id=${useId}`,  // 服务器地址
@@ -119,7 +118,6 @@ App({
     globalMessage:[],
     globalsocket:null,
     globalNotification:null,
-
     globalpendinglist:[],
     globalPostid:null,
     globalPost:'',//全局帖子表
@@ -127,7 +125,6 @@ App({
     globalActivityId:'',//全局活动表
     globalActivity:'',
     globalproductId:''//全局商品id
-
   }, 
 })
 

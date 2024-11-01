@@ -19,11 +19,18 @@ public interface ActivityMapper {
     @Select("SELECT * FROM activity WHERE end_time < NOW() ORDER BY created_at DESC")
     List<Activity> getfinshActivities();
 //获取标题活动
-    @Select("(SELECT * FROM activity WHERE end_time >= NOW() ORDER BY created_at DESC LIMIT 2) " +
-            "UNION ALL " +
-            "(SELECT * FROM activity WHERE end_time < NOW() ORDER BY created_at DESC LIMIT 2) " +
-            "ORDER BY end_time >= NOW() DESC, created_at DESC " +
-            "LIMIT 2;")
+//    @Select("(SELECT * FROM activity WHERE end_time >= NOW() ORDER BY created_at DESC LIMIT 2) " +
+//            "UNION ALL " +
+//            "(SELECT * FROM activity WHERE end_time < NOW() ORDER BY created_at DESC LIMIT 2) " +
+//            "ORDER BY end_time >= NOW() DESC, created_at DESC " +
+//            "LIMIT 2;")
+    @Select("SELECT * FROM (" +
+            "    (SELECT * FROM activity WHERE end_time >= NOW() ORDER BY created_at DESC LIMIT 2)" +
+            "    UNION ALL" +
+            "    (SELECT * FROM activity WHERE end_time < NOW() ORDER BY created_at DESC LIMIT 2)" +
+            ") AS activities" +
+            " ORDER BY end_time >= NOW() DESC, created_at DESC" +
+            " LIMIT 2;")
     List<Activity> getActivitiesTitle();
 
 //获取线下活动表

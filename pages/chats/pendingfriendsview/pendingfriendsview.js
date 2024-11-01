@@ -33,9 +33,9 @@ Page({
     console.log("peddingList:",this.data.peddingList);
   },
   agreeClick(event){
-    const user1Id=wx.getStorageSync('user_Id');
     const index = event.currentTarget.dataset.index; 
-    const user2Id=this.data.peddingList[index].user2Id;
+    const user1Id=this.data.peddingList[index].user1Id;
+    const user2Id=wx.getStorageSync('user_Id');
     wx.request({
       url: `http://localhost:8080/Friends/agreefirend?user1Id=${user1Id}&user2Id=${user2Id}`,
       method: 'PUT',

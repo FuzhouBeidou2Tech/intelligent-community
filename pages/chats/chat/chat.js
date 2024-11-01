@@ -6,7 +6,8 @@ Page({
    */
   data: {
     userList:[],
-    paddingnum:0
+    paddingnum:0,
+    userId:'',
   },
   messageClick(){
     wx.navigateTo({
@@ -14,7 +15,14 @@ Page({
     })
   },
   intomessageClick(e){
-    const user=this.data.userList.find(user=>user.user2Id==e.currentTarget.dataset.id);
+    
+    var user;
+    // 找到对方用户id判断
+    if(this.data.userList.find(user=>user.user2Id==e.currentTarget.dataset.id)){
+       user=this.data.userList.find(user=>user.user2Id==e.currentTarget.dataset.id);
+    }else{
+       user=this.data.userList.find(user=>user.user1Id==e.currentTarget.dataset.id);
+    }
     app.globalData.globalMessageId=e.currentTarget.dataset.id;
     app.globalData.globalMessageList=user;
     const senderId=e.currentTarget.dataset.id;
@@ -22,19 +30,19 @@ Page({
     console.log("全局变量",app.globalData.globalMessageList);
     console.log("id=",app.globalData.globalMessageId);
     wx.request({
-      url: `http://localhost:8080/IMessage/readMessage?userId=${userId}&senderId=${senderId}`,
+      url: `http://localhost:8080/IMessage/readMessage?userId=${senderId}&senderId=${userId}`,
       method: 'GET',
       header: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'  // 确保接收 JSON 格式的响应
     },
     success:()=>{
-      
+      wx.navigateTo({
+        url: '/pages/chats/chatview/chatview',
+      })
     }
     })
-    wx.navigateTo({
-      url: '/pages/chats/chatview/chatview',
-    })
+   
   },
   /**
    * 生命周期函数--监听页面加载
@@ -59,18 +67,19 @@ Page({
         // 监听 globaluserlistChange 事件
       this.updateUserList = this.updateUserList.bind(this); // 确保 this 绑定正确
       app.addEventListener('globaluserlistChange', this.updateUserList);
-      
-      // 初始化时获取全局的 userlist
       this.setData({
-        userlist: app.globalData.globaluserlist
-      });
-      console.log("userList",this.data.userlist);
+        userId:wx.getStorageSync('user_Id')
+      })
+      // 初始化时获取全局的 userlist
+      // this.setData({
+      //   userlist: app.globalData.globaluserlist
+      // });
+      // console.log("userList",this.data.userlist);
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    
     this.updateUserList = this.updateUserList.bind(this);
     app.addEventListener('globaluserlistChange', this.updateUserList);
     if(wx.getStorageSync('user_Id')==null){

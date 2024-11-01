@@ -27,7 +27,7 @@
         <image src="/images/icons/calendar.png" class="system-icon"/>
         <view class="unreadmessagemun" wx:if="{{item.unreadMessageCount > 0}}">{{item.unreadMessageCount}}</view>
       </view>
-      <view class="system-text-container" bind:tap="intomessageClick" data-id="{{item.user2Id}}">
+      <view class="system-text-container" bind:tap="intomessageClick" data-id="{{item.user1Id==userId ?item.user2Id:item.user1Id}}">
         <view class="system-text-title">{{item.user1Name}}</view>
         <view class="system-text">{{item.ifimage?'图片':item.lastmessage}}</view>
       </view>

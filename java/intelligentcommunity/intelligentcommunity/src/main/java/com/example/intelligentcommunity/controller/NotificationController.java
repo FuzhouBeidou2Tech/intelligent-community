@@ -51,8 +51,6 @@ public class NotificationController {
         return notificationService.findNotificationList();
     }
 
-
-
     @PostMapping("/inserimage")
     public Result<String> uploadImage(@RequestParam("file") MultipartFile file) throws Exception {
         System.out.println("进去");
@@ -66,27 +64,21 @@ public class NotificationController {
 
     @PostMapping("/insertnotification")
     public Result<String> createNotification(@RequestBody NotificationRequest request) throws Exception {
-
-
         Notification notification = new Notification();
         notification.setTitle(request.getTitle());
         notification.setContent(request.getContent());
         notification.setDepartment(request.getDepartment());
         notification.setPublisher(request.getPublisher());
-
         if (request.getUrgency_status().equals("1")) {
             notification.setUrgencyStatus("urgent");
         } else {
             notification.setUrgencyStatus("non-urgent");
         }
-
         notification.setType(request.getNoticeType());
-
         // 假设直接保存图片 URL，不保存文件信息
         int imageId = imageService.createImageGroupAndGetId();
         notification.setImageGroupId(imageId);
         notificationService.insertNotification(notification);
-
         for (String url : request.getImagePaths()) {
             Image image = new Image();
             image.setImageUrl(url);
@@ -94,7 +86,6 @@ public class NotificationController {
             image.setDescription("通知图片");
             imageService.insertImage(image);
         }
-
         return Result.success("通知创建成功");
     }
 }

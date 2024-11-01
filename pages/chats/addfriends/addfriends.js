@@ -76,6 +76,7 @@ Page({
       adduserId:null
     })
     //获取下标
+    
     const index = event.currentTarget.dataset.index; 
     console.log('用户数据:', this.data.userList[index].id);  // 可根据下标获取对应的用户数据
     const user1Id=wx.getStorageSync('user_Id');

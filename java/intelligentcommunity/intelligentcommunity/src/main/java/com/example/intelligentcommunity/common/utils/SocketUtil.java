@@ -126,7 +126,6 @@ public class SocketUtil {
         if (!StringUtils.hasLength(message)){
             return;
         }
-
         this.sendToAll(message);
     }
 

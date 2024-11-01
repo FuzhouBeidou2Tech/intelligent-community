@@ -214,14 +214,14 @@ Page({
         app.addEventListener('globaluserlistChange', this.updateUserList);
         
         // 初始化时获取全局的 userlist
-        this.setData({
-          userlist: app.globalData.globaluserlist
-        });
-        console.log("userlist",this.data.userlist);
+        // this.setData({
+        //   userlist: app.globalData.globaluserlist
+        // });
+        // console.log("userlist",this.data.userlist);
   },
  //事件监听
   updateUserList(newList) {
-    console.log("传入的新数据：", newList);
+    console.log("传入的新数据：", newList);    
     // 更新页面的 userlist
     const updatedList = JSON.parse(JSON.stringify(newList));
     this.setData({ userList: updatedList });

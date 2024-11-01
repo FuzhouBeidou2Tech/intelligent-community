@@ -1,9 +1,9 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/intelligent_community?serverTimezone=Asia/Shanghai
-    username: root
-    password: root
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://pgm-bp1uy162lii49dt2ro.pg.rds.aliyuncs.com:5432/intelligent_community?serverTimezone=Asia/Shanghai
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   data:
     redis:
       host: localhost

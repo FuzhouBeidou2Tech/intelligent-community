@@ -27,7 +27,7 @@ Page({
     this.connect();
   },
   connect() { 
-    var userId = '3';
+    
     socket1 = app.globalData.globalsocket; // 复用全局的 socket 实例
     console.log("进去1");
     // 连接成功的事件处理    
@@ -115,7 +115,7 @@ socketStop: function () {
   onReady() {
     
     this.setData({
-      senderid:app.globalData.globalMessageId
+      senderid:wx.getStorageSync('user_Id')
     })
     const senderId=app.globalData.globalMessageList.user1Id;
     const receiverId=app.globalData.globalMessageList.user2Id;
@@ -128,6 +128,7 @@ socketStop: function () {
       }
     });
   },
+  
   getMessageList(senderId, receiverId) {
     return new Promise((resolve, reject) => {
       wx.request({
@@ -159,11 +160,11 @@ socketStop: function () {
   },
   //发送信息事件
   sendMessage(){
-    const messageList = this.data.messageList;
     const userId=wx.getStorageSync('user_Id');
     const senderId=app.globalData.globalMessageId;
     const message=this.data.inputValue;
     if(this.data.inputValue){
+      // 发送人(本id)是senderId
       wx.request({
         url: `http://localhost:8080/Message/sendmessage?userId=${senderId}&message=${message}&senderId=${userId}`,
         method: 'GET',
@@ -211,7 +212,6 @@ socketStop: function () {
   onUnload() {
     // this.socketStop();
     app.globalData.globalMessageId=null;
-
   },
 // 选择图片
 chooseImage() {
