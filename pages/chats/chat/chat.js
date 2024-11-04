@@ -15,7 +15,6 @@ Page({
     })
   },
   intomessageClick(e){
-    
     var user;
     // 找到对方用户id判断
     if(this.data.userList.find(user=>user.user2Id==e.currentTarget.dataset.id)){
@@ -30,7 +29,7 @@ Page({
     console.log("全局变量",app.globalData.globalMessageList);
     console.log("id=",app.globalData.globalMessageId);
     wx.request({
-      url: `http://localhost:8080/IMessage/readMessage?userId=${senderId}&senderId=${userId}`,
+      url: `http://localhost:8080/IMessage/readMessage?receiverId=${userId}&senderId=${senderId}`,
       method: 'GET',
       header: {
         'Content-Type': 'application/json',
@@ -108,7 +107,7 @@ Page({
         success:(res)=>{
           console.log("信息1",res.data);
           
-          app.globalData.globaluserlist=res.data;
+          // app.globalData.globaluserlist=res.data;
            // 过滤出 status 为 "Accepted" 的项目
           const acceptedFriends = res.data.filter(friend => friend.status === "Accepted");
           // 过滤出 status 为 "Pending" 的项目

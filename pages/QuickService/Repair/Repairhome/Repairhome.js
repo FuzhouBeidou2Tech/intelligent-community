@@ -28,7 +28,7 @@ Page({
   onShow() {
     
     wx.request({
-      url: `http://localhost:8080/RepairRequest/getRepairAll?userId=${userid}`,
+      url: `http://localhost:8080/RepairRequest/getRepair?userId=${userid}`,
       method:'GET',
       header: {
         'Content-Type': 'application/json',
@@ -76,8 +76,7 @@ Page({
               })
             
              // 延迟 1 秒后重定向页面
-             setTimeout(() => {
-              
+             setTimeout(() => {         
               wx.request({
                 url: `http://localhost:8080/RepairRequest/getRepair?userId=${userid}`,
                 method:'GET',

@@ -27,7 +27,7 @@ public interface MessageMapper {
             " where sender_id=#{senderId}" +
             " and receiver_id=#{receiverId}" +
             " and receive_status='Unread' ")
-    List<Message>getunreadMessage(int senderId,int receiverId);
+    List<Message>getunreadMessage(int receiverId,int senderId);
 //添加信息到数据库
     @Insert("insert into messages(sender_id,receiver_id,content,created_time) " +
             "values (#{senderId},#{receiverId},#{content},now() )")
@@ -42,7 +42,7 @@ public interface MessageMapper {
             "WHERE sender_id =#{senderId}  " +
             "  AND receiver_id =#{receiverId} " +
             "  AND receive_status = 'Unread' ")
-    void readMessage(int senderId,int receiverId);
+    void readMessage(int receiverId,int senderId);
 
 
 }

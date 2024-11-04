@@ -22,7 +22,9 @@ Page({
     }//对接全局变量
   },
   onShow(){
-    this.receptionmanage();
+    if(userId){
+      this.receptionmanage();
+    }
   },
   onLoad() {
     this.fetchAnnouncements();
@@ -237,7 +239,7 @@ Page({
     
   },
 
-  // 接受物业管家信息
+  // 接收物业管家信息
   receptionmanage(){
     wx.request({
       url: `http://localhost:8080/Friends/getfriends?user1Id=${userId}`,  // 服务器地址
@@ -248,7 +250,7 @@ Page({
     },
       success:(res)=>{
         console.log("信息1",res.data);
-        app.globalData.globaluserlist=res.data;
+        // app.globalData.globaluserlist=res.data;
          // 过滤出 status 为 "Accepted" 的项目
         const acceptedFriends = res.data.filter(friend => friend.status === "Accepted");
         // 过滤出 status 为 "Pending" 的项目

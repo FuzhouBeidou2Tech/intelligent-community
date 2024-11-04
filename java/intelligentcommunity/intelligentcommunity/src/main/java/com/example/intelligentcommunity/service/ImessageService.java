@@ -8,7 +8,7 @@ import java.util.List;
 public interface ImessageService {
     List<Message> getAllMessage(int senderId, int receiverId);
 
-    public void readMessage(int senderId, int receiverId);
+    public void readMessage(int receiverId,int senderId);
 
 
 }

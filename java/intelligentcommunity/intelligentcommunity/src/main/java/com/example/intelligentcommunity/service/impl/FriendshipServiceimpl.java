@@ -2,6 +2,7 @@ package com.example.intelligentcommunity.service.impl;
 
 import com.example.intelligentcommunity.dao.Message;
 import com.example.intelligentcommunity.dto.FriendshipDTO;
+import com.example.intelligentcommunity.exception.GlobalCommonException;
 import com.example.intelligentcommunity.mapper.FriendMapper;
 import com.example.intelligentcommunity.dao.Friendship;
 import com.example.intelligentcommunity.mapper.MessageMapper;
@@ -23,6 +24,7 @@ public class FriendshipServiceimpl implements FriendshipService {
     @Autowired
     MessageMapper messageMapper;
     @Override
+//user1Id 用户id
     public List<FriendshipDTO> getFriendships(int user1Id) {
         List<FriendshipDTO> friendDTOlist = new ArrayList<>();
         List<Friendship> friendlist=friendMapper.getFriendsList(user1Id);
@@ -30,6 +32,17 @@ public class FriendshipServiceimpl implements FriendshipService {
         System.out.println(friendlist);
        for(Friendship friendship:friendlist){
            FriendshipDTO friendDTO=new FriendshipDTO();
+           Integer userId=user1Id;
+           Integer friendId=null;
+//           根据userid找出好友id
+           if(friendship.getUser1Id()==userId){
+               friendId= friendship.getUser2Id();
+           }else{
+              friendId= friendship.getUser1Id();
+           }
+           if(friendId==null){
+               throw new GlobalCommonException("更新失败,好友列表为空");
+           }
            System.out.println("循环信息");
            System.out.println(friendship);
            System.out.println(friendship.getUser2Id());
@@ -41,8 +54,8 @@ public class FriendshipServiceimpl implements FriendshipService {
            }
 
            //更新操作
-
-           List<Message> unmessagelist=messageMapper.getunreadMessage(friendship.getUser2Id(),friendship.getUser1Id());
+//            获取未读信息，信息接收者为用户id，发送者为好友id
+           List<Message> unmessagelist=messageMapper.getunreadMessage(userId,friendId);
            friendDTO.setUnreadMessageCount(unmessagelist.size());
            friendDTO.setUnreadMessageList(unmessagelist);
            friendDTO.setCreatedTime(friendship.getCreatedTime());

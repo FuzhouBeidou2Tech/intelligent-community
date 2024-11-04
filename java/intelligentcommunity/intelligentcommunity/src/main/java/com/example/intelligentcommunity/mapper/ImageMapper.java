@@ -11,7 +11,7 @@ import java.util.List;
 
 @Mapper
 public interface ImageMapper {
-    @Insert("INSERT INTO ImageGroup () VALUES ()")
+    @Insert("INSERT INTO ImageGroup  DEFAULT VALUES")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void insertImageGroup(ImageGroup imageGroup);
 

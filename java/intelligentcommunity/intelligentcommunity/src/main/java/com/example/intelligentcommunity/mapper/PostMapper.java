@@ -109,11 +109,11 @@ public interface PostMapper
     @Select("select * from favoritecount where favoritecount_group_id=#{groupId} and user_id=#{userId}")
     FavoriteCount selectfavoriteCount(int groupId,int userId);
 
-    @Insert("INSERT INTO likecountgroup () VALUES ()")
+    @Insert("INSERT INTO likecountgroup DEFAULT VALUES")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void insertLikeCountGroup(LikeCountGroup likeCountGroup);
 
-    @Insert("INSERT INTO favoritecountgroup () VALUES ()")
+    @Insert("INSERT INTO favoritecountgroup DEFAULT VALUES")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void insertFavoriteCountGroup(FavoriteCountGroup favoriteCountGroup );
 

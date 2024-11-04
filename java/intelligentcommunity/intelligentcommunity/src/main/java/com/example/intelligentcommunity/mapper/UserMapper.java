@@ -19,17 +19,17 @@ public interface UserMapper {
     @Select("select username from \"user\" where id=#{Id}")
     String findNameByid(int Id);
     //根据手机号码查询用户名
-    @Select("SELECT * FROM \"user\"  WHERE phoneNumber = #{PhoneNumber}")
+    @Select("SELECT * FROM \"user\"  WHERE \"phoneNumber\" = #{PhoneNumber}")
     User findByUserinfo(long PhoneNumber);
 //    添加手机号查询用户id
-    @Select("select id from \"user\"  where phoneNumber = #{PhoneNumber}")
+    @Select("select id from \"user\"  where \"phoneNumber\" = #{PhoneNumber}")
     Integer findIdByPhoneNumber(long PhoneNumber);
     //根据手机号码查询
-    @Select("select * from \"user\"  where phoneNumber=#{phoneNumber}")
+    @Select("select * from \"user\"  where \"phoneNumber\"=#{phoneNumber}")
     User findByPhoneNumber(Long phoneNumber);
     //添加
-    @Insert("insert into \"user\" (username,phoneNumber,userimage,create_time,update_time)" +
-            " values(#{username},#{phoneNumber},#{defaultImage},now(),now())")
+    @Insert("insert into \"user\" (username,\"phoneNumber\",userimage)" +
+            " values(#{username},#{phoneNumber},#{defaultImage})")
     void add(String username, Long phoneNumber,String defaultImage);
 //修改用户头像
     @Update("update \"user\"  set userimage=#{image} where id=#{Id}")
@@ -47,6 +47,6 @@ public interface UserMapper {
 
     //根据手机号或者用户名操作
 
-    @Select("SELECT * from \"user\"  where phoneNumber=#{value} or username=#{value}")
+    @Select("SELECT * from \"user\"  where \"phoneNumber\"=#{value} or username=#{value}")
     List<User> searchUser(String value);
 }

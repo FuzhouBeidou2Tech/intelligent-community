@@ -20,8 +20,8 @@ public class ImessageServiceimpl implements ImessageService {
     }
 
     @Override
-    public void readMessage(int userId, int senderId) {
-        messageMapper.readMessage(senderId,userId);
+    public void readMessage(int receiverId, int senderId) {
+        messageMapper.readMessage(receiverId,senderId);
     }
 
 

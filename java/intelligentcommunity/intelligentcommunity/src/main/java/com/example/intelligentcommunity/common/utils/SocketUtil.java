@@ -45,6 +45,7 @@ public class SocketUtil {
         messageDTO.setMessage(message);
         messageDTO.setSenderId(senderId);
         messageDTO.setIsImages(false);
+        messageDTO.setReceiveId(userId);
         if (Objects.nonNull(socketClient) ){
             //单独给他发消息
             socketClient.sendEvent(SocketEventContants.CHANNEL_USER,messageDTO);
@@ -70,7 +71,7 @@ public class SocketUtil {
         messageDTO.setMessage(message);
         messageDTO.setSenderId(senderId);
         messageDTO.setIsImages(true);
-
+        messageDTO.setReceiveId(userId);
 
         if (Objects.nonNull(socketClient) ){
             //单独给他发消息

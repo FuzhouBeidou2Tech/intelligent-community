@@ -250,7 +250,7 @@ Page({
   //处理成功
   COMPLETEDClick(e){
     const id=e.currentTarget.dataset.id;
-
+    
     wx.showModal({
       title: '提示',
       content: '您确定要处理成功吗？',

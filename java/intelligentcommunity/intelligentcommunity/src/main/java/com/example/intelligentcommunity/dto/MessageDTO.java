@@ -7,4 +7,5 @@ public class MessageDTO {
     private String message;
     private Integer senderId;
     private Boolean isImages;
+    private Integer receiveId;
 }

@@ -26,8 +26,8 @@ public class ImessageController {
     }
 
     @GetMapping("/readMessage")
-    public Result readMessage(@RequestParam int userId, int senderId){
-        imessageService.readMessage(userId, senderId);
+    public Result readMessage(@RequestParam int receiverId, int senderId){
+        imessageService.readMessage(receiverId, senderId);
         return Result.success("操作成功");
     }
 

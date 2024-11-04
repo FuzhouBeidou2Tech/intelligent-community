@@ -2,8 +2,10 @@
 import io from './pages/@holytiny/wxmp-socket.io-client/socket.io.js';
  const that=this;
 let socketUrl='ws://127.0.0.1:3300';
+var userId =wx.getStorageSync('user_Id');
 App({
   onLaunch() {
+    
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -18,7 +20,7 @@ App({
   },
   connect() {
     const app=this;
-    var userId = '3';
+    
     var opts = {
         query: 'userId=' + userId
     };
@@ -46,19 +48,21 @@ App({
     });
     // 接收特定频道消息的事件处理
     socket.on('channel_user', (data) => {
+      
       const app=getApp();
         let msg = JSON.stringify(data);
         //this.output('收到 channel_user 频道消息了：' + msg);
         console.log(data);
-        console.log("data.senderid",data.senderId)
+        console.log("data.senderid",data.senderId);
+        console.log("data.receiveId:",data.receiveId);
         //用户在线，且打开当前聊天会话
         if(app.globalData.globalMessageId==data.senderId){
           
         }//用户在线，但没有打开当前聊天会话
         else{
-          const useId=wx.getStorageSync('user_Id');
+          
           wx.request({
-            url: `http://localhost:8080/Friends/getfriends?user1Id=${useId}`,  // 服务器地址
+            url: `http://localhost:8080/Friends/getfriends?user1Id=${userId}`,  // 服务器地址
             method: 'GET',
             header: {
               'Content-Type': 'application/json',

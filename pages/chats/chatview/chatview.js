@@ -42,6 +42,7 @@ Page({
     });
     // 接收特定频道消息的事件处理
     socket1.on('channel_user', (data) => {
+      
       const senderId=data.senderId;
       const userId=wx.getStorageSync('user_Id');
       console.log("senderId：",senderId);
@@ -49,7 +50,7 @@ Page({
       console.log("isImages:",data.isImages)
       if(data.senderId==app.globalData.globalMessageId){
         wx.request({
-          url: `http://localhost:8080/IMessage/readMessage?userId=${userId}&senderId=${senderId}`,
+          url: `http://localhost:8080/IMessage/readMessage?receiverId=${userId}&senderId=${senderId}`,
           method: 'GET',
           header: {
             'Content-Type': 'application/json',
@@ -161,12 +162,12 @@ socketStop: function () {
   //发送信息事件
   sendMessage(){
     const userId=wx.getStorageSync('user_Id');
-    const senderId=app.globalData.globalMessageId;
+    const receiveId=app.globalData.globalMessageId;
     const message=this.data.inputValue;
     if(this.data.inputValue){
       // 发送人(本id)是senderId
       wx.request({
-        url: `http://localhost:8080/Message/sendmessage?userId=${senderId}&message=${message}&senderId=${userId}`,
+        url: `http://localhost:8080/Message/sendmessage?userId=${receiveId}&message=${message}&senderId=${userId}`,
         method: 'GET',
         header: {
           'Content-Type': 'application/json',
@@ -191,7 +192,7 @@ socketStop: function () {
             messageList: [...this.data.messageList, { 
               messageID: null, 
               senderID: userId, 
-              receiverID: senderId, 
+              receiverID: receiveId, 
               content: message, 
               createdTime: formattedDateChina,
               ifimage:false
@@ -264,8 +265,7 @@ uploadImages() {
 },
 // 发送图片方法
 snedImage(){
-  const userId=wx.getStorageSync('user_Id');
-  const senderId=app.globalData.globalMessageId;
+ 
   this.uploadImages()
   .then(uploadedUrls => {
     if (uploadedUrls.length === 0) {
@@ -280,10 +280,10 @@ snedImage(){
     array.forEach((element, index) => {
     // 提交其他数据
     const userId=wx.getStorageSync('user_Id');
-    const senderId=app.globalData.globalMessageId;
+    const receiveId=app.globalData.globalMessageId;
     const message=element;
       wx.request({
-        url: `http://localhost:8080/Message/sendimages?userId=${senderId}&message=${message}&senderId=${userId}`,
+        url: `http://localhost:8080/Message/sendimages?userId=${receiveId}&message=${message}&senderId=${userId}`,
         method: 'GET',
         header: {
           'Content-Type': 'application/json',
@@ -308,15 +308,14 @@ snedImage(){
             messageList: [...this.data.messageList, { 
               messageID: null, 
               senderID: userId, 
-              receiverID: senderId, 
+              receiverID: receiveId, 
               content: message, 
               createdTime: formattedDateChina,
               ifimage:true
           }],
           scrollToView: `msg${this.data.messageList.length}`, // 滚动到最新的消息
-
           })
-        //
+        // 
         }
       })
     });
