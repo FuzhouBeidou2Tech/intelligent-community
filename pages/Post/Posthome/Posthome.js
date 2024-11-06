@@ -32,9 +32,18 @@ myPostClick(){
   })
 },
 addPostClick(){
-  wx.navigateTo({
-    url: '/pages/Post/addPost/addPost',
-  })
+  if(wx.getStorageSync('user_communityId')){
+    wx.navigateTo({
+      url: '/pages/Post/addPost/addPost',
+    })
+  }else{
+    wx.showToast({
+      title: '请先前往个人资料绑定社区',
+      icon: 'none',
+      duration: 2000,
+    })
+  }
+ 
 },
 //点赞功能
 addlikeClick:function(e){
@@ -42,7 +51,6 @@ addlikeClick:function(e){
      if (this.data.isRequesting) {
       return; // 如果已经有请求在进行中，直接返回
     }
-
     // 设置请求状态为 "进行中"
     this.setData({
       isRequesting: true

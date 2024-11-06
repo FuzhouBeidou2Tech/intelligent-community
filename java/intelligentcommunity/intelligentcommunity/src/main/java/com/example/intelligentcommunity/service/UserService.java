@@ -21,10 +21,12 @@ public interface UserService {
     //更新
     void update(String username, byte gender,Long phoneNumber,String image);
 
-
     //搜索
     List<User> searchUser(String value);
     //修改用户头像
     void updateUserImage(Integer Id, String image);
+
+//查找用户头像
+    String findimagesByid(int friendId);
 
     }

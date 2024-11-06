@@ -17,6 +17,8 @@ public class FriendshipDTO extends Friendship {
 
     //记录未读显示条数
     private int unreadMessageCount;
-
+//最后一条信息是否为图片
     private boolean ifimage;
+//    用户头像
+    private String friendimage;
 }

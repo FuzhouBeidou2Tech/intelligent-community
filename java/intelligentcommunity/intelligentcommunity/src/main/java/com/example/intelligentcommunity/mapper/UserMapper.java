@@ -27,6 +27,9 @@ public interface UserMapper {
     //根据手机号码查询
     @Select("select * from \"user\"  where \"phoneNumber\"=#{phoneNumber}")
     User findByPhoneNumber(Long phoneNumber);
+//    根据用户id查找头像
+    @Select("select userimage from \"user\" where id=#{Id}")
+    String findimagesByid(int Id);
     //添加
     @Insert("insert into \"user\" (username,\"phoneNumber\",userimage)" +
             " values(#{username},#{phoneNumber},#{defaultImage})")
@@ -34,7 +37,6 @@ public interface UserMapper {
 //修改用户头像
     @Update("update \"user\"  set userimage=#{image} where id=#{Id}")
     void updateUserImage(Integer Id, String image);
-
 
     @Update("update \"user\"  set username=#{username},gender=#{gender},update_time=now(),userimage=#{image} where phoneNumber=#{phoneNumber}")
     void update(String username, byte gender,Long phoneNumber,String image);
@@ -46,7 +48,8 @@ public interface UserMapper {
     void updatePwd(String md5String, Integer id);
 
     //根据手机号或者用户名操作
-
     @Select("SELECT * from \"user\"  where \"phoneNumber\"=#{value} or username=#{value}")
     List<User> searchUser(String value);
+
+
 }

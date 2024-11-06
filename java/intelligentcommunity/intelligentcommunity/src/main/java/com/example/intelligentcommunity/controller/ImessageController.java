@@ -30,8 +30,5 @@ public class ImessageController {
         imessageService.readMessage(receiverId, senderId);
         return Result.success("操作成功");
     }
-
-
-
 }
 

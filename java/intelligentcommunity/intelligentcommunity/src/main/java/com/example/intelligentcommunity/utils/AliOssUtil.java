@@ -26,24 +26,19 @@ public class AliOssUtil {
     private static final String BUCKET_NAME = "intelligent-community627";
 
     public static String uploadFile(String objectName, InputStream in) throws Exception {
-
-
         // 创建OSSClient实例。
         OSS ossClient = new OSSClientBuilder().build(ENDPOINT,ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         String url = "";
         try {
             // 填写字符串。
             String content = "Hello OSS，你好世界";
-
             // 创建PutObjectRequest对象。
             PutObjectRequest putObjectRequest = new PutObjectRequest(BUCKET_NAME, objectName, in);
-
             // 如果需要上传时设置存储类型和访问权限，请参考以下示例代码。
             // ObjectMetadata metadata = new ObjectMetadata();
             // metadata.setHeader(OSSHeaders.OSS_STORAGE_CLASS, StorageClass.Standard.toString());
             // metadata.setObjectAcl(CannedAccessControlList.Private);
             // putObjectRequest.setMetadata(metadata);
-
             // 上传字符串。
             PutObjectResult result = ossClient.putObject(putObjectRequest);
             //url组成: https://bucket名称.区域节点/objectName
@@ -65,7 +60,6 @@ public class AliOssUtil {
                 ossClient.shutdown();
             }
         }
-
         return url;
     }
 }

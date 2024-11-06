@@ -66,5 +66,10 @@ public class UserServiceImpl implements UserService {
         userMapper.updateUserImage(Id,image);
     }
 
+    @Override
+    public String findimagesByid(int friendId) {
+        return userMapper.findimagesByid(friendId);
+    }
+
 
 }

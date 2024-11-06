@@ -32,13 +32,17 @@ public interface PostService {
     int findlikeCountGroupId(int Id);
 
     void addfavoritepost(int postId);
+
     void addfavoritecount(int favoriteCountGroupId,int userId);
 
     void deletelikepost(int postId);
+
     void deletelikecount(int likeCountGroupId,int userId);
 
     void deletefavoritepost(int postId);
+
     void deletefavoritecount(int favoriteCountGroupId,int userId);
+
     int findfavoriteCountGroupId(int Id);
 
     int  findimageGroupId(int postId);

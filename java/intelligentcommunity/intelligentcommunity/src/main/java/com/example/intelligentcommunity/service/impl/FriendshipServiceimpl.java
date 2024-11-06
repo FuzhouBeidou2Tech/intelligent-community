@@ -43,18 +43,15 @@ public class FriendshipServiceimpl implements FriendshipService {
            if(friendId==null){
                throw new GlobalCommonException("更新失败,好友列表为空");
            }
-           System.out.println("循环信息");
-           System.out.println(friendship);
-           System.out.println(friendship.getUser2Id());
            String username=userMapper.findNameByid(friendship.getUser2Id());
            Message message=messageMapper.getlastMessage(friendship.getUser1Id(),friendship.getUser2Id());
            String lastname="";
            if(message!=null){
                lastname=message.getContent();
            }
-
            //更新操作
 //            获取未读信息，信息接收者为用户id，发送者为好友id
+           friendDTO.setFriendimage(userMapper.findimagesByid(friendId));
            List<Message> unmessagelist=messageMapper.getunreadMessage(userId,friendId);
            friendDTO.setUnreadMessageCount(unmessagelist.size());
            friendDTO.setUnreadMessageList(unmessagelist);

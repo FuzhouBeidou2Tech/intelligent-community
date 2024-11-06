@@ -6,7 +6,7 @@
       <view class="chat-date">{{item.createdTime}}</view>
       <view class="chat-Container {{item.senderID==senderid ? 'self' : 'other'}}">
         <view class="avatar">
-        <image src="/images/icons/qq.png" class="avatar-image" />
+        <image src="{{item.senderID==senderid ? userimage:friendimage}}" class="avatar-image" />
       </view>
       <view class="message-content" wx:if="{{item.ifimage==false}}">
         <text>{{item.content}}</text>

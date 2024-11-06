@@ -165,6 +165,26 @@
             <artifactId>postgresql</artifactId>
             <version>42.5.0</version>
         </dependency>
+
+<!--        aop依赖-->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>

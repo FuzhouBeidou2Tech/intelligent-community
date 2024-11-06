@@ -93,6 +93,24 @@
   border-radius: 8px; /* 添加圆角 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加阴影 */
 }
+.post-Container{
+  display: flex;
+  
+}
+.post-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  margin-bottom: 10px;
+  width: 40%;
+  background-color: #fff;
+  border: 1px solid rgba(224, 224, 224, 0.7); /* 使用 rgba 设置淡边框 */
+  border-radius: 8px; /* 添加圆角 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}
+
+
 .icon {
   margin-right: 10px;
 }

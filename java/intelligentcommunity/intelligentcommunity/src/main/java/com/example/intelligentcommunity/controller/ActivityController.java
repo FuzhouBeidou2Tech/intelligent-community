@@ -64,6 +64,7 @@ public class ActivityController {
             return Result.error(e.getMessage());
         }
     }
+
     @PostMapping("insertOfflineSignup")
     public Result insertOfflineSignup(@RequestBody OfflineSignup offlineSignup){
         try {
@@ -83,6 +84,7 @@ public class ActivityController {
             return Result.error(e.getMessage());
         }
     }
+
     @PutMapping("deleteactivity")
     public Result deleteActivity(@RequestParam Integer activityId,@RequestParam Integer offlineActivityId){
         try {
@@ -92,6 +94,7 @@ public class ActivityController {
             return Result.error(e.getMessage());
         }
     }
+
     @PostMapping("updateactivity")
     public Result updateActivity(@RequestBody ActivityDTO activityDTO){
         try {
@@ -112,6 +115,7 @@ public class ActivityController {
         // 假设简单返回文件地址
         return Result.success(url);
     }
+
     @PostMapping("addactivity")
     public Result addActivity(@RequestBody ActivityDTO activityDTO){
         try {

@@ -131,5 +131,17 @@ chatClick(){
   wx.navigateTo({
     url: '/pages/chats/chat/chat',
   })
-}
+},
+// 我的帖子
+myPostClick(){
+  wx.navigateTo({
+    url: '/pages/Post/myPost/myPost',
+  })
+},
+//我的收藏
+myfavoriteClick(){
+  wx.navigateTo({
+    url: '/pages/Post/favoritePost/favoritePost',
+  })
+},
 })

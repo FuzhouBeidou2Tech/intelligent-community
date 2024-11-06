@@ -31,7 +31,31 @@
     </view>
   </view>
 <!-- body-container -->
+
+
+
+
   <view class="body-container">
+    <view class="post-Container">
+      <view class="post-item" bind:tap="myPostClick">
+      <text class="icon">📄</text>
+      <text class="item-title" >我的帖子</text>
+      <view class="right-section">
+        <text class="status-text">进入</text>
+        <text class="arrow">></text>
+      </view>
+    </view>
+
+    <view class="post-item" bind:tap="myfavoriteClick">
+      <text class="icon">📄</text>
+      <text class="item-title" >我的收藏</text>
+      <view class="right-section">
+        <text class="status-text">进入</text>
+        <text class="arrow">></text>
+      </view>
+    </view>
+  </view>
+
   <view class="list-item" bindtap="userinfoClick">
     <text class="icon">👤</text>
     <text class="item-title">个人资料</text>
@@ -41,8 +65,7 @@
     </view>
   </view>
 
-  
-  <view class="list-item" bindtap="userinfoClick">
+  <view class="list-item" >
     <text class="icon">🔒</text>
     <text class="item-title">管理员验证</text>
     <view class="right-section">
@@ -51,16 +74,7 @@
     </view>
   </view>
 
-  <view class="list-item" bindtap="postClick">
-    <text class="icon">📄</text>
-    <text class="item-title">帖子管理</text>
-    <view class="right-section">
-      <text class="status-text">进入</text>
-      <text class="arrow">></text>
-    </view>
-  </view>
-
-  <view class="list-item" bindtap="userinfoClick">
+  <view class="list-item" >
     <text class="icon">📄</text>
     <text class="item-title">用户协议</text>
     <view class="right-section">

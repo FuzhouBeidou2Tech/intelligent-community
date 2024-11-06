@@ -17,6 +17,8 @@ Page({
   scrollToView: '',     // 用于指定滚动到某个视图的id
   uploadedImageUrls: [], // 存储已经上传的图片URL
   images: [],// 存储选择的图片路径
+  friendimage:'',//好友头像
+  userimage:''//自己的头像
   },
 
   /**
@@ -114,12 +116,19 @@ socketStop: function () {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    
     this.setData({
       senderid:wx.getStorageSync('user_Id')
     })
     const senderId=app.globalData.globalMessageList.user1Id;
     const receiverId=app.globalData.globalMessageList.user2Id;
+    this.setData({
+      userimage:wx.getStorageSync('user_Image')
+    })
+    if(senderId==wx.getStorageSync('user_Id')){
+      this.getfriendimage(receiverId);
+    }else{
+      this.getfriendimage(senderId);
+    }
     this.getMessageList(senderId, receiverId).then(() => {
       // 数据加载完成后，在这里设置滚动到最新消息
       if (this.data.messageList.length > 0) {
@@ -339,7 +348,25 @@ snedImage(){
   onPullDownRefresh() {
 
   },
-
+// 获取好友头像
+getfriendimage(friendId){
+  wx.request({
+    url: `http://localhost:8080/user/findfriendsimage?friendId=${friendId}`,
+    method: 'GET',
+    header: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'  // 确保接收 JSON 格式的响应
+    },
+    success:(res)=>{
+      this.setData({
+        friendimage:res.data.data
+      })
+    },
+    fail:(res)=>{
+      console.log("err:",res.data);
+    }
+  })
+},
   /**
    * 页面上拉触底事件的处理函数
    */
@@ -351,6 +378,6 @@ snedImage(){
    * 用户点击右上角分享
    */
   onShareAppMessage() {
-
+    
   }
 })

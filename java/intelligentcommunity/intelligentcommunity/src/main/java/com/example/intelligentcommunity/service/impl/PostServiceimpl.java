@@ -198,15 +198,10 @@ public class PostServiceimpl implements PostService {
     public void addfavoritepost(int postId) {
         postMapper.addfavoritepost(postId);
     }
-
-
-
-
     @Override
     public void deletefavoritepost(int postId) {
         postMapper.deletefavoritepost(postId);
     }
-
     @Override
     public void deletefavoritecount(int favoriteCountGroupId, int userId) {
         postMapper.deletefavoritecount(favoriteCountGroupId,userId);

@@ -10,7 +10,6 @@ import java.util.List;
 
 public interface RepairRequestService {
 
-
     List<RepairRequestDTO> getRepairRequests(int userId);
 
     void addRepairRequest(RepairRequest repairRequest);

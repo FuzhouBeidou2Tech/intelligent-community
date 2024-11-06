@@ -88,8 +88,6 @@ public class UserController {
 
         }else{
             //注册过的用户
-
-
         }
         User user=userService.findByUserinfo(phoneNumber);
         //判断用户有没有填写地址
@@ -144,6 +142,15 @@ public class UserController {
         return userService.searchUser(value);
     }
 
+    @GetMapping("/findfriendsimage")
+    public Result<String> searchimage(@RequestParam Integer friendId){
+        try {
+            return Result.success(userService.findimagesByid(friendId));
+        }catch (Exception e){
+             return Result.error(e.getMessage());
+        }
+    }
+
     @PostMapping("/inserimage")
     public Result<String> uploadImage(@RequestParam("file") MultipartFile file) throws Exception {
         System.out.println("进去");
@@ -153,6 +160,7 @@ public class UserController {
         // 假设简单返回文件地址
         return Result.success(url);
     }
+
 
     //利用 Spring 的 RestTemplate 类向微信 API 发送 GET 请求获取 session_key
     private String getSessionKey(String code) {
