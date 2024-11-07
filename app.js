@@ -128,7 +128,7 @@ App({
     globalofflineActivityId:'',//全局线下活动表
     globalActivityId:'',//全局活动表
     globalActivity:'',
-    globalproductId:''//全局商品id
+    globalproductId:'',//全局商品id
   }, 
 })
 

@@ -1,9 +1,6 @@
 package com.example.intelligentcommunity.service.impl;
 
-import com.example.intelligentcommunity.dao.FavoriteCountGroup;
-import com.example.intelligentcommunity.dao.LikeCount;
-import com.example.intelligentcommunity.dao.LikeCountGroup;
-import com.example.intelligentcommunity.dao.Post;
+import com.example.intelligentcommunity.dao.*;
 import com.example.intelligentcommunity.dto.CommentDTO;
 import com.example.intelligentcommunity.dto.PostCommentDTO;
 import com.example.intelligentcommunity.dto.PostRequestDTO;
@@ -250,6 +247,41 @@ public class PostServiceimpl implements PostService {
         }else{
             throw new GlobalCommonException("更新失败,数据库中已存在信息");
         }
+    }
+
+    @Override
+    public List<PostRequestDTO> getpostallnologin() {
+        List<PostRequestDTO> postRequestDTOS= postMapper.findPostAll().stream().map(post -> {
+            PostRequestDTO postRequestDTO = new PostRequestDTO();
+            postRequestDTO.setId(post.getId());
+            postRequestDTO.setTitle(post.getTitle());
+            postRequestDTO.setAuthor(post.getAuthor());
+            postRequestDTO.setContent(post.getContent());
+            postRequestDTO.setCreatedAt(post.getCreatedAt());
+            postRequestDTO.setUpdatedAt(post.getUpdatedAt());
+            postRequestDTO.setCommentCount(post.getCommentCount());
+            postRequestDTO.setFavoriteCount(post.getFavoriteCount());
+            postRequestDTO.setViewCount(post.getViewCount());
+            postRequestDTO.setImageGroupId(post.getImageGroupId());
+            postRequestDTO.setUserId(post.getUserId());
+            postRequestDTO.setCommunityId(post.getCommunityId());
+            postRequestDTO.setLikeCount(post.getLikeCount());
+            postRequestDTO.setLikeCountGroupId(post.getLikeCountGroupId());
+            postRequestDTO.setFavoriteCountGroupId(post.getFavoriteCountGroupId());
+            postRequestDTO.setImageList(imageService.findImageByGroupId(post.getImageGroupId()));
+            //用户默认没有点赞收藏
+
+                postRequestDTO.setIflike(0);
+
+
+                postRequestDTO.setIffavorite(0);
+
+            //用户默认没有关注用户
+                postRequestDTO.setIffollow(0);
+            return postRequestDTO;
+        }).collect(Collectors.toList());
+        System.out.println("postRequestDTOS1日记文件"+postRequestDTOS);
+        return postRequestDTOS;
     }
 
 

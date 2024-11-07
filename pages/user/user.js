@@ -128,9 +128,22 @@ admClick(){
   })
 },
 chatClick(){
-  wx.navigateTo({
-    url: '/pages/chats/chat/chat',
-  })
+  if(wx.getStorageSync('user_Id'))
+  {
+    wx.navigateTo({
+      url: '/pages/chats/chat/chat',
+    })
+  }else{
+    wx.showToast({
+      title: '请先登录',
+      icon: 'none',
+      duration: 1500
+    })
+    wx.navigateTo({
+      url: '/pages/userlogin/userlogin',
+    })
+  }
+
 },
 // 我的帖子
 myPostClick(){

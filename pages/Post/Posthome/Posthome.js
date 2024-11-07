@@ -16,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    
   },
 
   /**
@@ -47,6 +47,15 @@ addPostClick(){
 },
 //点赞功能
 addlikeClick:function(e){
+  // 检查用户是否登录
+  if(!wx.getStorageSync('user_Id')){
+    wx.showToast({
+      title: '请先登录',
+      icon:'none',
+      duration:1500
+    })
+    return;
+  }
      // 检查请求状态是否处于进行中
      if (this.data.isRequesting) {
       return; // 如果已经有请求在进行中，直接返回
@@ -86,7 +95,6 @@ addlikeClick:function(e){
             duration: 2000
           });
         }
-       
       },
       fail: (err) => {
         wx.showToast({
@@ -151,8 +159,17 @@ addlikeClick:function(e){
       PostList: postList
     });
 },
+// 收藏功能
 addfavoriteClick:function(e){
-  
+   // 检查用户是否登录
+   if(!wx.getStorageSync('user_Id')){
+    wx.showToast({
+      title: '请先登录',
+      icon:'none',
+      duration:1500
+    })
+    return;
+  }
     // 检查请求状态是否处于进行中
     if (this.data.isRequestgFavorite) {
       return; // 如果已经有请求在进行中，直接返回
@@ -261,6 +278,16 @@ addfavoriteClick:function(e){
 },
 // 关注功能
 followClick(e){
+   // 检查用户是否登录
+   if(!wx.getStorageSync('user_Id')){
+    wx.showToast({
+      title: '请先登录',
+      icon:'none',
+      duration:1500
+    })
+    return;
+  }
+
   if (this.data.isRequestFollow) {
     return; // 如果已经有请求在进行中，直接返回
   }
@@ -397,43 +424,66 @@ myfavoriteClick(){
    */
   onShow() {
     const userId=wx.getStorageSync('user_Id');
-    wx.request({
-      url: `http://localhost:8080/Post/getpostsAll?userId=${userId}`,
-      method:'GET',
-      header: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'  // 确保接收 JSON 格式的响应
-      },
-      success:(res)=>{
-         // 拿到数据后处理内容截取
-      let postList = res.data.data;
-
-      postList = postList.map(post => {
-        if (post.content.length > 50) {
-          post.content = post.content.slice(0, 57) + '...'; // 截取字符并加上省略号
+    //用户登录
+    if(userId){
+      wx.request({
+        url: `http://localhost:8080/Post/getpostsAll?userId=${userId}`,
+        method:'GET',
+        header: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'  // 确保接收 JSON 格式的响应
+        },
+        success:(res)=>{
+           // 拿到数据后处理内容截取
+        let postList = res.data.data;
+        postList = postList.map(post => {
+          if (post.content.length > 50) {
+            post.content = post.content.slice(0, 57) + '...'; // 截取字符并加上省略号
+          }
+          return post;
+        });
+        // 更新数据
+        this.setData({
+          PostList: postList
+        });
+        console.log("PostList:", this.data.PostList);
         }
-        return post;
       });
-
-      
-      // 更新数据
-      this.setData({
-        PostList: postList
+    }//用户没有登录
+    else{
+      wx.request({
+        url: `http://localhost:8080/Post/getpostallnologin`,
+        method:'GET',
+        header: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'  // 确保接收 JSON 格式的响应
+        },
+        success:(res)=>{
+           // 拿到数据后处理内容截取
+        let postList = res.data.data;
+        postList = postList.map(post => {
+          if (post.content.length > 50) {
+            post.content = post.content.slice(0, 57) + '...'; // 截取字符并加上省略号
+          }
+          return post;
+        });
+        // 更新数据
+        this.setData({
+          PostList: postList
+        });
+        console.log("PostList:", this.data.PostList);
+        }
       });
-      
-      console.log("PostList:", this.data.PostList);
-      }
-    });
+    }
+   
     let postList = this.data.PostList;
-    
-    // 假设你已经获取了 PostList 的数据，接下来遍历并截取内容
+    // 已经获取了 PostList 的数据，接下来遍历并截取内容
     postList = postList.map(post => {
       if (post.content.length > 50) {
         post.content = post.content.slice(0, 50) + '...'; // 截取前50个字符并加上省略号
       }
       return post;
     });
-
     // 更新数据
     this.setData({
       PostList: postList

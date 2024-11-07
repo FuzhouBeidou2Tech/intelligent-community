@@ -1,9 +1,6 @@
 package com.example.intelligentcommunity.service;
 
-import com.example.intelligentcommunity.dao.FavoriteCountGroup;
-import com.example.intelligentcommunity.dao.LikeCount;
-import com.example.intelligentcommunity.dao.LikeCountGroup;
-import com.example.intelligentcommunity.dao.Post;
+import com.example.intelligentcommunity.dao.*;
 import com.example.intelligentcommunity.dto.PostCommentDTO;
 import com.example.intelligentcommunity.dto.PostRequestDTO;
 
@@ -57,4 +54,7 @@ public interface PostService {
     void insertUserFollow(int userId, int followUserId);
 
     void deleteUserFollow(int userId, int followUserId);
+
+//    未登录获取论坛
+    List<PostRequestDTO> getpostallnologin();
 }

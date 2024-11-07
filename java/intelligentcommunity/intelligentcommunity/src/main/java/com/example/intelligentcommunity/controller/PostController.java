@@ -203,5 +203,13 @@ public class PostController {
             return Result.error(e.getMessage());
         }
     }
-
+//    用户没有登录
+    @GetMapping("getpostallnologin")
+    public Result<List<PostRequestDTO>> getpostallnologin(){
+        try {
+            return Result.success(postService.getpostallnologin());
+        }catch (Exception e){
+            return Result.error(e.getMessage());
+        }
+    }
 }

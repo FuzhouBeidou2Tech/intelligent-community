@@ -186,15 +186,24 @@ Page({
      wx.showToast({
        title: '请先登录',
        icon:'error',
+       duration:2000
      })
     }
   },
   //物业报修
   repairClick(){
-    wx.navigateTo({
-      
-      url: '/pages/QuickService/Repair/Repairhome/Repairhome',
-    })
+    if(userId){
+      wx.navigateTo({
+        url: '/pages/QuickService/Repair/Repairhome/Repairhome',
+      })
+    }else{
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+    
   },
   //社区活动
   communityactivityClick(){
@@ -205,11 +214,18 @@ Page({
   },
   //投诉建议
   adviceClick(){
-    wx.navigateTo({
-      url: '/pages/QuickService/advice/advicehome/advicehome',
-    })
+    if(userId){
+      wx.navigateTo({
+        url: '/pages/QuickService/advice/advicehome/advicehome',
+      })
+    }else{
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none',
+        duration: 2000
+      })
+    }
   },
-  
   onReady(){
         // 监听 globaluserlistChange 事件
         this.updateUserList = this.updateUserList.bind(this); // 确保 this 绑定正确
