@@ -55,4 +55,6 @@
     <view class="publish-button" bindtap="publishPost">
     <image src="/images/post/icon/发布.png" class="publish-icon" bind:tap="addPostClick"/>
   </view>
+
+    
 </view>

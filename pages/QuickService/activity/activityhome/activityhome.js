@@ -2,7 +2,6 @@
 const app=getApp();
 const userId=wx.getStorageSync('user_Id');
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -22,37 +21,67 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-  
-     
+    
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    wx.request({
-      url: `http://localhost:8080/Activity/getproceedActivities?userId=${userId}`,
-      method:'GET',
-      header: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'  // 确保接收 JSON 格式的响应
-      },
-      success:(res)=>{
-        if(res.data.code==0){
-          this.setData({
-            activitylist:res.data.data
-          })
-          
-        }else{
-          wx.showToast({
-            title: '服务器异常,请稍后重试',
-            icon: 'none',
-            duration: 2000
-          });
-          console.error('数据提交失败：', res.data.message);
+   this.getactivity();
+  },
+  // 获取活动接口
+  getactivity(){
+    if(userId){
+      wx.request({
+        url: `http://localhost:8080/Activity/getproceedActivities?userId=${userId}`,
+        method:'GET',
+        header: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'  // 确保接收 JSON 格式的响应
+        },
+        success:(res)=>{
+          if(res.data.code==0){
+            this.setData({
+              activitylist:res.data.data
+            })
+            
+          }else{
+            wx.showToast({
+              title: '服务器异常,请稍后重试',
+              icon: 'none',
+              duration: 2000
+            });
+            console.error('数据提交失败：', res.data.message);
+          }
+          console.log("proceedactivitelist:",this.data.activitylist);
         }
-        console.log("proceedactivitelist:",this.data.activitylist);
-      }
-  })
+    })
+    }else{
+      wx.request({
+        url: `http://localhost:8080/Activity/getActivitynologin`,
+        method:'GET',
+        header: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'  // 确保接收 JSON 格式的响应
+        },
+        success:(res)=>{
+          if(res.data.code==0){
+            this.setData({
+              activitylist:res.data.data
+            })
+            
+          }else{
+            wx.showToast({
+              title: '服务器异常,请稍后重试',
+              icon: 'none',
+              duration: 2000
+            });
+            console.error('数据提交失败：', res.data.message);
+          }
+          console.log("proceedactivitelist:",this.data.activitylist);
+        }
+    })
+    }
   },
   // 点击进行中
   onUnderwayTap: function() {
@@ -63,31 +92,7 @@ Page({
       selectid: 0,
       activitylist:null
     });
-    const userId=wx.getStorageSync('user_Id');
-    wx.request({
-      url: `http://localhost:8080/Activity/getproceedActivities?userId=${userId}`,
-      method:'GET',
-      header: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'  // 确保接收 JSON 格式的响应
-      },
-      success:(res)=>{
-        if(res.data.code==0){
-          this.setData({
-            activitylist:res.data.data
-          })
-          
-        }else{
-          wx.showToast({
-            title: '服务器异常,请稍后重试',
-            icon: 'none',
-            duration: 2000
-          });
-          console.error('数据提交失败：', res.data.message);
-        }
-        console.log("proceedactivitelist:",this.data.activitylist);
-      }
-  })
+    this.getactivity();
   },
 
   // 点击已结束
@@ -98,7 +103,6 @@ Page({
     this.setData({
       selectid: 1
     });
-   
     wx.request({
       url: 'http://localhost:8080/Activity/getfinshActivities',
       method:'GET',
@@ -110,8 +114,7 @@ Page({
         if(res.data.code==0){
           this.setData({
             activitylist:res.data.data
-          })
-          
+          }) 
         }else{
           wx.showToast({
             title: '服务器异常,请稍后重试',
@@ -152,7 +155,6 @@ Page({
   viewClick(e){
     const index=Number(e.currentTarget.dataset.index);
     app.globalData.globalActivity=this.data.activitylist[index];
-    
     wx.navigateTo({
       url: '/pages/QuickService/activity/activityview/activityview',
     })
